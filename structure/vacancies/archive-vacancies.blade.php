@@ -31,9 +31,24 @@
                 // Filters
                 $meta_query = array('relation' => 'OR'); // Array of arrays that individually store key/value pairs.
                 $filter_keys = array(
-                    'field_5b06d097c1efe' => 'frequentie',
-                    'field_5b06d0e7c1f00' => 'opleidingsniveau',
-                    'field_5b06da1440f4e' => 'vergoeding',
+                    'field_5b7ef8e109d65' => 'region',
+                    'field_5b7ef92009d66' => 'frequency',
+                    'field_5b7ef96709d67' => 'period',
+                    'field_5b7ef9ba09d68' => 'categories',
+                    'field_5b7ef9f609d69' => 'competency',
+                    'field_5b7efa5509d6a' => 'target',
+                    'field_5b7efab409d6b' => 'requirements',
+                    'field_5b7efb4209d6c' => 'compensation'
+                );
+                $labels = array(
+                    'field_5b7ef8e109d65' => 'Locatie',
+                    'field_5b7ef92009d66' => 'Hoe vaak',
+                    'field_5b7ef96709d67' => 'Uren per week',
+                    'field_5b7ef9ba09d68' => 'Categorie',
+                    'field_5b7ef9f609d69' => 'Benodigde competenties',
+                    'field_5b7efa5509d6a' => 'Doelgroep',
+                    'field_5b7efab409d6b' => 'Ook geschikt voor',
+                    'field_5b7efb4209d6c' => 'Vergoeding'
                 );
             @endphp
                 <aside id="archive-filters" class="col-lg-4 vacancy-list__layered layered">
@@ -54,7 +69,7 @@
                             }
                             @endphp
                             <section class="mb-4 layered__group">
-                            <h2 class="layered__group-header">{{$field['label']}}</h2>
+                            <h2 class="layered__group-header">{{$labels[$acf_key]}}</h2>
                             <div class="b-4 layered__field filter" data-filter="{{  $key }}">
                                 {!! render_field($field); !!}
                             </div>
@@ -112,11 +127,11 @@
                         $vacancy = [
                             'title' => $p->post_title,
                             'link' => get_permalink($p->ID),
-                            'image_link' => get_field('afbeelding', 'user_'.$p->post_author),
+                            'image_link' => get_field('logo', 'user_'.$p->post_author),
                             'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
                             'footer' => $time . ' - Breda, Nederland',
                         ];
-                        $categories = get_field('categorie', $p->ID);
+                        $categories = get_field('categories', $p->ID);
                         if (is_array($categories)){
                             $vacancy['subtitle'] = implode(", ", $categories);
                         } else {

@@ -38,12 +38,15 @@
                                             'post_title' => true,
                                             'post_content' => true,
                                             'fields' => array(
-                                                'field_5b06d097c1efe', // Frequency
-                                                'field_5b06d0d3c1eff', // Start date
-                                                'field_5b06d9f740f4d', // End date
-                                                'field_5b06d0e7c1f00', // Education
-                                                'field_5b06d9e740f4c', // Experience
-                                                'field_5b06da1440f4e', // Compensation
+                                                'field_5b7ef8e109d65', //region
+                                                'field_5b7ef92009d66', //frequency
+                                                'field_5b7ef96709d67', //period
+                                                'field_5b7ef9ba09d68' , //categories
+                                                'field_5b7ef9f609d69', //competency
+                                                'field_5b7efa5509d6a', //target
+                                                'field_5b7efab409d6b', //requirements
+                                                'field_5b7efb4209d6c', //compensation
+                                                'field_5b7efba009d6d', //date
                                             ),
                                             'new_post'		=> array(
                                                 'post_type'		=> 'vacancies',

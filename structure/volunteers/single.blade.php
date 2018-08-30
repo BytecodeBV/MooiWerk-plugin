@@ -10,89 +10,83 @@
                         $ID = get_queried_object()->ID;
                         $usermeta = get_user_meta($ID);
                         $userdata = get_userdata($ID);
-                    @endphp
-                    <div class="card my-3">
-                        <h5 class="card-header">Posted on</h5>
-                        <div class="card-body">
-                        <h5 class="card-title">{{date_i18n("d M Y", strtotime($userdata->user_registered))}}</h5>
-                        </div>
-                    </div>
-                    <div class="card my-3">
-                        <h5 class="card-header">Login name</h5>
-                        <div class="card-body">
-                        <h5 class="card-title">{{$usermeta['nickname'][0]}}</h5>
-                        </div>
-                    </div>
-                    <div class="card my-3">
-                        <h5 class="card-header">First name</h5>
-                        <div class="card-body">
-                        <h5 class="card-title">{{$usermeta['first_name'][0]}}</h5>
-                        </div>
-                    </div>
-                    <div class="card my-3">
-                        <h5 class="card-header">Last name</h5>
-                        <div class="card-body">
-                        <h5 class="card-title">{{$usermeta['last_name'][0]}}</h5>
-                        </div>
-                    </div>
-                    @if (get_field('leeftijd', 'user_' . $ID))
-                        <div class="card my-3">
-                            <h5 class="card-header">Leeftijd</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">{{get_field('leeftijd', 'user_' . $ID)}}</h5>
-                            </div>
-                        </div>
-                    @endif
-                    @if(get_field('adres', 'user_' . $ID))
-                        <div class="card my-3">
-                            <h5 class="card-header">Adres</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">{{get_field('adres', 'user_' . $ID)['address']}}</h5>
-                            </div>
-                        </div>
-                    @endif
-                    @if(get_field('opleiding', 'user_' . $ID))
-                        <div class="card my-3">
-                            <h5 class="card-header">Opleiding</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">{{get_field('opleiding', 'user_' . $ID)}}</h5>
-                            </div>
-                        </div>
-                    @endif
-                    @if(get_field('ervaring', 'user_' . $ID))
-                        <div class="card my-3">
-                            <h5 class="card-header">Ervaring</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">{{get_field('ervaring', 'user_' . $ID)}}</h5>
-                            </div>
-                        </div>
-                    @endif
-                    @if(get_field('cv', 'user_' . $ID))
-                        <div class="card my-3">
-                            <h5 class="card-header">CV Downloadlink</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">{{get_field('cv', 'user_' . $ID)}}</h5>
-                            </div>
-                        </div>
-                    @endif
 
-                    @php
-                        $posts = get_field('applied', 'user_' . $ID);
+                        global $post; 
+                        $post = get_post( $ID, OBJECT );
+                        setup_postdata( $post );
                     @endphp
-                    @if($posts)
-                        <div class="row">
-                            <h2>Applied to<h2>
-                            @foreach ($posts as $p){{-- // variable must NOT be called $post (IMPORTANT) --}}                            
+                    <h1 class="company__name">{{ get_field('first-name', 'user_' . $ID)}} {{get_field('last-name', 'user_' . $ID) }}</h1>
+                    <div class="d-flex company__profile">
+                        <div class="company__logo-wrapper">
+                            @php
+                                $image = get_field('profile_image', 'user_' . $ID);
+                                $image = $image ? $image : '//placehold.it/114x76';
+                            @endphp
+                            <img src="{{ $image }}" class="company__logo">
+                        </div>
+                        <div class="company__contact">
+                            <div class="d-flex flex-column company__contact-group">
+                                @if(get_field('age', 'user_' . $ID))
+                                <small class="company__address">{{ get_field('age', 'user_' . $ID) }}</small>
+                                @endif
+                                @if(get_field('phone', 'user_' . $ID))
+                                <small class="company__phone">{{ get_field('phone', 'user_' . $ID) }}</small>
+                                @endif
+                                @if(get_field('email', 'user_' . $ID))
+                                <small class="company__email">{{get_field('email', 'user_' . $ID)}}</small>
+                                @endif
+                            </div>
+                            <nav class="company__social-links">
+                                <a href="{{get_field('facebook', 'user_' . $ID)}}" target="_blank" class="company__social-link">
+                                    <img src="@asset('images/facebook.svg')" alt="Facebook" class="company__social-link-icon">
+                                </a>
+                                <a href="{{get_field('twitter', 'user_' . $ID)}}" target="_blank" class="company__social-link">
+                                    <img src="@asset('images/twitter.svg')" alt="Twitter" class="company__social-link-icon">
+                                </a>
+                                <a href="{{get_field('linkedin', 'user_' . $ID)}}" target="_blank" class="company__social-link">
+                                    <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company__social-link-icon">
+                                </a>
+                                <a href="{{get_field('instagram', 'user_' . $ID)}}" target="_blank" class="company__social-link">
+                                    <img src="@asset('images/instagram.svg')" alt="Instagram" class="company__social-link-icon">
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="row company__bio">
+                            {{get_field('bio', 'user_' . $ID)}}
+                    </div>
+                    @if($categories = get_field('interest', 'user_' . $ID))
+                        <div class="d-flex flex-wrap text-dark company__categories">
+                            @if(is_array($categories))
+                                @foreach($categories as $category)
+                                <span class="btn bg-transparent border border-dark company__category">{{$category}}</span>
+                                @endforeach
+                            @else
+                                <span class="btn bg-transparent border border-dark company__category">{{$categories}}</span>
+                            @endif
+                        </div>
+                    @endif
+                    @if($applications = get_field('applications', 'user_' . $ID))
+                        @php
+                            $args = array(
+                            'post__in' => $applications,
+                            'post_type' => 'vacancies',
+                            );
+                            $posts = get_posts($args);
+                        @endphp
+                        @if ($posts)
+                        <h1>Reacties</h1>    
+                            @foreach ($posts as $p)
                                 @php
                                     $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
                                     $vacancy = [
                                         'title' => $p->post_title,
                                         'link' => get_permalink($p->ID),
-                                        'image_link' => get_field('afbeelding', 'user_'.$p->post_author),
+                                        'image_link' => get_field('logo', 'user_'.$p->post_author),
                                         'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
                                         'footer' => $time . ' - Breda, Nederland',
                                     ];
-                                    $categories = get_field('categorie', $p->ID);
+                                    $categories = get_field('categories', $p->ID);
                                     if (is_array($categories)){
                                         $vacancy['subtitle'] = implode(", ", $categories);
                                     } else {
@@ -115,9 +109,8 @@
                                     <div class="card-footer vacancy-card__footer">{{ $vacancy['footer'] }}</div>
                                 </div>
                             @endforeach
-                        </div>
+                        @endif
                     @endif
-
                     @php
                         wp_reset_postdata();
                     @endphp

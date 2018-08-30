@@ -1,81 +1,24 @@
 <?php
 /**
- * This file contains all functionality regarding courses as a custom post type in WordPress.
- */
-
-/**
- * Post Type: Courses.
- */
-function create_post_type_course()
-{
-    $labels = array(
-        "name" => __("Courses", "sage"),
-        "singular_name" => __("Course", "sage"),
-    );
-
-    $args = array(
-        "label" => __("Courses", "sage"),
-        "labels" => $labels,
-        "description" => "",
-        "public" => true,
-        "publicly_queryable" => true,
-        "show_ui" => true,
-        "show_in_rest" => false,
-        "rest_base" => "",
-        "has_archive" => false,
-        "show_in_menu" => true,
-        "show_in_nav_menus" => true,
-        "exclude_from_search" => false,
-        "capability_type" => "post",
-        "map_meta_cap" => true,
-        "hierarchical" => false,
-        "rewrite" => array("slug" => "course", "with_front" => true),
-        "query_var" => true,
-        "supports" => array("title", "editor", "thumbnail"),
-    );
-
-    register_post_type("course", $args);
-
-}
-add_action('init', 'create_post_type_course');
-
-/**
- * Add Custom Fields on plugin init.
+ * Add Custom Fields to the events plugin on init.
  */
 function register_custom_fields_course()
 {
     if (function_exists('acf_add_local_field_group')) {
         acf_add_local_field_group(
-            array(
-                'key' => 'group_5b5722ba58a81',
-                'title' => 'Course',
-                'fields' => array(
-                    array(
-                        'key' => 'field_5b5722cac4d7c',
-                        'label' => 'Date',
-                        'name' => 'date',
-                        'type' => 'date_picker',
+            array (
+                'key' => 'group_5b86cb5cbd4b1',
+                'title' => 'Events',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5b86cb7687d30',
+                        'label' => 'Sub titel',
+                        'name' => '_wcs_sub_title',
+                        'type' => 'text',
                         'instructions' => '',
                         'required' => 1,
                         'conditional_logic' => 0,
-                        'wrapper' => array(
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'display_format' => 'd/m/Y',
-                        'return_format' => 'd/m/Y',
-                        'first_day' => 1,
-                    ),
-                    array(
-                        'key' => 'field_5b572314c4d7d',
-                        'label' => 'Lesson',
-                        'name' => 'lesson',
-                        'type' => 'text',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
+                        'wrapper' => array (
                             'width' => '',
                             'class' => '',
                             'id' => '',
@@ -86,15 +29,92 @@ function register_custom_fields_course()
                         'append' => '',
                         'maxlength' => '',
                     ),
-                    array(
-                        'key' => 'field_5b572364c4d7e',
-                        'label' => '',
-                        'name' => '',
+                    array (
+                        'key' => 'field_5b86cc5787d31',
+                        'label' => 'Categorie',
+                        'name' => '_wcs_category',
+                        'type' => 'checkbox',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                            'Persoonlijke ontwikkeling' => 'Persoonlijke ontwikkeling',
+                            'Sociale veiligheid' => 'Sociale veiligheid',
+                            'Financiën en sponsoring' => 'Financiën en sponsoring',
+                            'Communicatie en PR' => 'Communicatie en PR',
+                            'Werving en Selectie' => 'Werving en Selectie',
+                            'Organisatie en Bestuur' => 'Organisatie en Bestuur',
+                        ),
+                        'allow_custom' => 0,
+                        'save_custom' => 0,
+                        'default_value' => array (
+                        ),
+                        'layout' => 'vertical',
+                        'toggle' => 0,
+                        'return_format' => 'value',
+                    ),
+                    array (
+                        'key' => 'field_5b86ccc587d32',
+                        'label' => 'Doelgroep',
+                        'name' => '_wcs_audience',
+                        'type' => 'checkbox',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                            'Vrijwilligers' => 'Vrijwilligers',
+                            'Professionals' => 'Professionals',
+                            'Bestuur' => 'Bestuur',
+                            'Coordinatoren' => 'Coordinatoren',
+                        ),
+                        'allow_custom' => 0,
+                        'save_custom' => 0,
+                        'default_value' => array (
+                        ),
+                        'layout' => 'vertical',
+                        'toggle' => 0,
+                        'return_format' => 'value',
+                    ),
+                    array (
+                        'key' => 'field_5b86cd1087d33',
+                        'label' => 'Duur',
+                        'name' => '_wcs_expensive',
+                        'type' => 'number',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86cd7687d34',
+                        'label' => 'Programma',
+                        'name' => '_wcs_program',
                         'type' => 'text',
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
-                        'wrapper' => array(
+                        'wrapper' => array (
                             'width' => '',
                             'class' => '',
                             'id' => '',
@@ -104,14 +124,56 @@ function register_custom_fields_course()
                         'prepend' => '',
                         'append' => '',
                         'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86cd9187d35',
+                        'label' => 'Kosten/Prijs',
+                        'name' => '_wcs_price',
+                        'type' => 'number',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86cdf987d36',
+                        'label' => 'Beschikbare plaatsen',
+                        'name' => '_wcs_available',
+                        'type' => 'number',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
                     ),
                 ),
-                'location' => array(
-                    array(
-                        array(
+                'location' => array (
+                    array (
+                        array (
                             'param' => 'post_type',
                             'operator' => '==',
-                            'value' => 'course',
+                            'value' => 'class',
                         ),
                     ),
                 ),
@@ -125,78 +187,140 @@ function register_custom_fields_course()
                 'description' => '',
             )
         );
-
+        
         acf_add_local_field_group(
-            array(
-                'key' => 'group_5b5a18ac28cdd',
-                'title' => 'Front Page',
-                'fields' => array(
-                    array(
-                        'key' => 'field_5b5a18eeaf710',
-                        'label' => 'Course Title',
-                        'name' => 'course_title',
+            array (
+                'key' => 'group_5b86ceba54ac9',
+                'title' => 'Location',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5b86cec2fae67',
+                        'label' => 'Straat',
+                        'name' => '_wcs_street',
                         'type' => 'text',
                         'instructions' => '',
-                        'required' => 0,
+                        'required' => 1,
                         'conditional_logic' => 0,
-                        'wrapper' => array(
+                        'wrapper' => array (
                             'width' => '',
                             'class' => '',
                             'id' => '',
                         ),
-                        'default_value' => 'Cursussen',
+                        'default_value' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
                         'maxlength' => '',
                     ),
-                    array(
-                        'key' => 'field_5b5a1929af711',
-                        'label' => 'Sidebar Title',
-                        'name' => 'course_subtitle',
-                        'type' => 'text',
+                    array (
+                        'key' => 'field_5b86cedcfae68',
+                        'label' => 'Nummer',
+                        'name' => '_wcs_number',
+                        'type' => 'number',
                         'instructions' => '',
-                        'required' => 0,
+                        'required' => 1,
                         'conditional_logic' => 0,
-                        'wrapper' => array(
+                        'wrapper' => array (
                             'width' => '',
                             'class' => '',
                             'id' => '',
                         ),
-                        'default_value' => 'Intro over cursussen lorep ipsum Breda cras sectum',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86cf01fae69',
+                        'label' => 'Toevoeging',
+                        'name' => '_wcs_addition',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
                         'maxlength' => '',
                     ),
-                    array(
-                        'key' => 'field_5b5a1955af712',
-                        'label' => 'Description',
-                        'name' => 'course_description',
-                        'type' => 'wysiwyg',
+                    array (
+                        'key' => 'field_5b86cf0cfae6a',
+                        'label' => 'Postcode',
+                        'name' => '_wcs_postcode',
+                        'type' => 'text',
                         'instructions' => '',
-                        'required' => 0,
+                        'required' => 1,
                         'conditional_logic' => 0,
-                        'wrapper' => array(
+                        'wrapper' => array (
                             'width' => '',
                             'class' => '',
                             'id' => '',
                         ),
-                        'default_value' => '<p>In tempus pulvinar mattis. Sed sed feugiat metus. Nam sollicitudin risus sapien, id bibendum urna laoreet nec. Etiam efficitur libero eget nisl euismod, a rutrum leo sagittis. Mauris egestas diam purus. In tempus pulvinar mattis. Sed sed feugiat metus. Nam sollicitudin risus sapien, id bibendum urna laoreet nec. Etiam efficitur libero eget nisl euismod, a rutrum leo sagittis. Mauris egestas diam purus.</p>
-
-        <p>In tempus pulvinar mattis. Sed sed feugiat metus. Nam sollicitudin risus sapien, id bibendum urna laoreet nec. Etiam efficitur libero eget nisl euismod. </p>',
-                        'tabs' => 'all',
-                        'toolbar' => 'full',
-                        'media_upload' => 1,
-                        'delay' => 0,
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86cf65fae6b',
+                        'label' => 'Plaats',
+                        'name' => '_wcs_place',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86cfa0fae6c',
+                        'label' => 'Image',
+                        'name' => '_wcs_image',
+                        'type' => 'image',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'return_format' => 'url',
+                        'preview_size' => 'full',
+                        'library' => 'all',
+                        'min_width' => '',
+                        'min_height' => '',
+                        'min_size' => '',
+                        'max_width' => '',
+                        'max_height' => '',
+                        'max_size' => '',
+                        'mime_types' => '',
                     ),
                 ),
-                'location' => array(
-                    array(
-                        array(
-                            'param' => 'page_type',
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'taxonomy',
                             'operator' => '==',
-                            'value' => 'front_page',
+                            'value' => 'wcs-room',
                         ),
                     ),
                 ),
@@ -210,7 +334,132 @@ function register_custom_fields_course()
                 'description' => '',
             )
         );
-
+        
+        acf_add_local_field_group(
+            array (
+                'key' => 'group_5b86d08001718',
+                'title' => 'Teachers',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5b86d124f9016',
+                        'label' => 'Tussenvoeging',
+                        'name' => '_wcs_interposition',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86d14bf9017',
+                        'label' => 'Achternaam',
+                        'name' => '_wcs_last-name',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86d165f9018',
+                        'label' => 'Titel',
+                        'name' => '_wcs_title',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86d17af9019',
+                        'label' => 'Organisatie',
+                        'name' => '_wcs_organisation',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_5b86d195f901a',
+                        'label' => 'Image',
+                        'name' => '_wcs_image',
+                        'type' => 'image',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'return_format' => 'url',
+                        'preview_size' => 'full',
+                        'library' => 'all',
+                        'min_width' => '',
+                        'min_height' => '',
+                        'min_size' => '',
+                        'max_width' => '',
+                        'max_height' => '',
+                        'max_size' => '',
+                        'mime_types' => '',
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'taxonomy',
+                            'operator' => '==',
+                            'value' => 'wcs-instructor',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => 1,
+                'description' => '',
+            )
+        );        
     }
 }
 add_action('acf/init', 'register_custom_fields_course');

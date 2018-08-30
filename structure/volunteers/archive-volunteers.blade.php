@@ -30,10 +30,12 @@
                         // Filters
                         $meta_query = array('relation' => 'OR'); // Array of arrays that individually store key/value pairs.
                         $filter_keys = array(
-                            'field_5b06xx6d43567' => 'soort_vrijwilligerswerk',
-                            'field_5c05966d1f567' => 'ervaring',
-                            'field_5c05963d1f567' => 'leeftijd',
-                            'field_5b05966d1f567' => 'opleiding',
+                            'field_5b7ef28594888' => 'region',
+                            'field_5b7ef2f894889'  => 'frequency',
+                            'field_5b7ef3339488a' => 'availability',
+                            'field_5b7ef39d9488b' => 'interest',
+                            'field_5b7ef3fc9488c'  => 'competency',
+                            'field_5b7ef4229488d' => 'preference',
                         );
                     @endphp
 
@@ -53,32 +55,15 @@
                                         $field['value'] = array();
                                     }
                                 @endphp
-                                @if($key  == "ervaring" || $key  == "leeftijd")
-                                    <section class="mb-4 layered__group">
-                                        <h2 class="layered__group-header">{{$field['label']}}</h2>
-                                        <div class="filter" data-filter="{{$key}}">
-                                            <select name="acf[{{$acf_key}}]" id="acf-{{$acf_key}}" class="form-control w-50 layered__field">
-                                                <option value="*">Alle</option>
-                                            @foreach($field['choices'] as $value => $label)
-                                                <option value="{{$value}}" @php echo ($value == $_GET[$key])? 'selected':'' @endphp>
-                                                    {{$label}}
-                                                </option>                                                    
-                                            @endforeach
-                                            </select>
-                                        </div>
-                                    </section>
-                                @else
-                                    <section class="mb-4 layered__group">
-                                        <h2 class="layered__group-header">{{$field['label']}}</h2>
-                                        <div class="filter" data-filter="{{$key}}">
-                                            {!! render_field($field) !!}
-                                        </div>
-                                    </section>
-                                @endif
+                                <section class="mb-4 layered__group">
+                                    <h2 class="layered__group-header">{{$field['label']}}</h2>
+                                    <div class="filter" data-filter="{{$key}}">
+                                        {!! render_field($field) !!}
+                                    </div>
+                                </section>
                             @endforeach
                         </div>
                     </aside>
-                    <main class="col-lg-8 vacancy-list__items">
                     @php
                         /**
                          * Add key, value pair to the post meta filters if it is set.
@@ -124,29 +109,37 @@
                         $total_users = $user_query->get_total(); // How many users we have in total (beyond the current page)
                         $num_pages = ceil($total_users / $users_per_page); // How many pages of users we will need
                     @endphp
-                    {{--// User Loop--}}
-                    @if(!empty($user_query->get_results()))
-                        @foreach ($user_query->get_results() as $user)
-                            <div class="card user-profile mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <img src="@asset('images/user.png')" class="img img-rounded img-fluid user-profile__avatar" alt="User Avatar"/>                                            
-                                        </div>
-                                        <div class="col-lg-10"> 
-                                            <a href="{{get_author_posts_url($user->ID)}}">
-                                                <h5 class="user-profile__name">{{$user->display_name}}</h5>
-                                            </a>                                           
-                                            <div class="user-profile__bio">{{$user->description}}</div>
-                                        </div>
+                    <main class="col-lg-8 vacancy-list__items">
+                        {{--// User Loop--}}
+                        @if (!empty($user_query->get_results())) 
+                        @foreach ($user_query->get_results() as $user) 
+                            <div class="card shadow border-light vacancy-list__item  vacancy-card">
+                                <div class="row vacancy-card__header-wrapper">
+                                    <div class="col-xxl-2 col-md-3 col-xs-12 vacancy-card__figure d-flex align-items-center">
+                                        @php
+                                            $image = get_field('profile_image', 'user_' . $user->ID);
+                                            $image = $image ? $image : '//placehold.it/114x76';
+                                        @endphp
+                                        <img src="{{$image}}" class="vacancy-card__image">
+                                    </div>
+                                    <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
+                                        <h2 class="card-title vacancy-card__header">{{ get_field('first-name', 'user_' . $user->ID)}} {{get_field('last-name', 'user_' . $user->ID) }}</h2>
+                                        @if(get_field('categorie', 'user_' . $user->ID))                                            
+                                        <h3 class="card-subtitle vacancy-card__subheader">{{get_field('age', 'user_' . $user->ID)}}</h3>
+                                        @endif
                                     </div>
                                 </div>
-                            </div>                             
-                        @endforeach
-                        {!! numeric_pagination($current_page, $num_pages) !!}
+                                <div class="card-body vacancy-card__body">
+                                    <div class="vacancy-card__text">{{get_field('bio', 'user_' . $user->ID)}}</div>
+                                    <a href="{{ get_author_posts_url($user->ID) }}" class="card-link">lees meer ›</a>
+                                </div>
+                                <div class="card-footer vacancy-card__footer">{{is_array(get_field('qualification', 'user_' . $user->ID))? implode(', ',get_field('qualification', 'user_' . $user->ID)) : get_field('qualification', 'user_' . $user->ID)}}</div>                                
+                            </div>
+                        @endforeach                
                     @else 
-                        <div class="alert alert-dark">Geen vrijwilliger gevonden die aan uw zoekopdracht voldeed.</div>
+                        <div class="alert alert-dark">Geen organisatie gevonden die aan uw zoekopdracht voldeed.</div>
                     @endif
+                    {!! numeric_pagination($current_page, $num_pages) !!}
                 </main>
             </div>
         </div>

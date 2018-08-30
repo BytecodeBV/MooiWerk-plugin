@@ -115,7 +115,23 @@ function change_template_single_author($template)
 }
 add_filter('template_include', 'change_template_single_author');
 
-/**
+/*
+ * Check if field  group exists
+ */
+function is_field_group_exists($value, $type='post_title') 
+{
+    $exists = false;
+    if ($field_groups = get_posts(array('post_type'=>'acf-field-group'))) {
+        foreach ($field_groups as $field_group) {
+            if ($field_group->$type == $value) {
+                $exists = true;
+            }
+        }
+    }
+    return $exists;
+}
+
+/*
  * Output pagination for posts and users.
  */
 function numeric_pagination($current_page, $num_pages)

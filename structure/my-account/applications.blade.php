@@ -27,18 +27,19 @@
                                     $posts = get_field('applications', 'user_' . $user->ID);
                                 @endphp
                                 @if ($posts)
-                                    <h1>Applied to</h1>
+                                    <h1>Reacties</h1>
                                     @foreach ($posts as $p) {{-- variable must NOT be called $post (IMPORTANT) --}}
                                         @php
+                                        $p = get_post($p);
                                         $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
                                         $vacancy = [
                                             'title' => $p->post_title,
                                             'link' => get_permalink($p->ID),
-                                            'image_link' => get_field('afbeelding', 'user_'.$p->post_author),
+                                            'image_link' => get_field('logo', 'user_'.$p->post_author),
                                             'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
                                             'footer' => $time . ' - Breda, Nederland',
                                         ];
-                                        $categories = get_field('categorie', $p->ID);
+                                        $categories = get_field('categories', $p->ID);
                                         if (is_array($categories)){
                                             $vacancy['subtitle'] = implode(", ", $categories);
                                         } else {

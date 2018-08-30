@@ -49,11 +49,11 @@
                                         $vacancy = [
                                             'title' => $p->post_title,
                                             'link' => get_permalink($p->ID),
-                                            'image_link' => get_field('afbeelding', 'user_'.$p->post_author),
+                                            'image_link' => get_field('logo', 'user_'.$p->post_author),
                                             'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
                                             'footer' => $time . ' - Breda, Nederland',
                                         ];
-                                        $categories = get_field('categorie', $p->ID);
+                                        $categories = get_field('categories', $p->ID);
                                         if (is_array($categories)){
                                             $vacancy['subtitle'] = implode(", ", $categories);
                                         } else {

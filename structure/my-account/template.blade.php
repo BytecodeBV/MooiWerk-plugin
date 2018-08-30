@@ -23,14 +23,19 @@
                                     @php 
                                     $options = array(
                                         'post_id' => 'user_'.$user->ID,
-                                        'form' => false, 
+                                        'form' => false,                                       
                                         'fields' => array(
-                                            'field_acf_form_first_name', // Name
-                                            'field_acf_form_email', // Email
-                                            'field_5b06cc6d43567', // Category
-                                            'field_5b06cc8f43568', // Phone number
-                                            'field_5b06ccef43569', // Image
-                                            'field_5b06cc0343564', // Address
+                                            'field_5b7ee8f6950e7', //logo
+                                            'field_5b7ee9fb950e8', //profile_pic
+                                            'field_5b7eea1a950e9', //name
+                                            'field_5b7eea36950ea', //address
+                                            'field_5b7eea5e950eb', //postcode
+                                            'field_5b7eea9a950ec', //place
+                                            'field_5b7eeac7950ed', //website
+                                            'field_5b7eeb458880a', //facebook
+                                            'field_5b7eeb578880b', //twitter
+                                            'field_5b7eeb668880c', //linkedin
+                                            'field_5b7eeb838880d', //instagram
                                         ),
                                         'html_before_fields' => '',
                                         'html_after_fields' => '',
@@ -49,14 +54,25 @@
                                         'post_id' => 'user_'.$user->ID,
                                         'form' => false, 
                                         'fields' => array(
-                                            'field_acf_form_first_name', // Name
-                                            'field_acf_form_email', // Email
-                                            'field_5b06xx6d43567', // Category
-                                            'field_5c05966d1f567', // Experience
-                                            'field_5c05963d1f567', // Age
-                                            'field_5b05966d1f567', // Education
-                                            'field_5b0596ba1f568', // CV
-                                            'field_5b0596121f564', // Address
+                                            'field_5b7ef0fd9487f', //profile_image
+                                            'field_5b7ef13794880', //first-name
+                                            'field_5b7ef15394881', //initials
+                                            'field_5b7ef16094882', //last-name
+                                            'field_5b7ef19394884', //telephone                                            
+                                            'field_5b7ef21994886', //age
+                                            'field_5b7ef4639488e', //bio
+                                            'field_5b7eeb458880a', //facebook
+                                            'field_5b7eeb578880b', //twitter
+                                            'field_5b7eeb668880c', //linkedin
+                                            'field_5b7eeb838880d', //instagram
+                                            'field_5b7ef1bf94885', //searchable
+                                            'field_5b7ef24e94887', //qualifications
+                                            'field_5b7ef28594888', //region
+                                            'field_5b7ef2f894889', //frequency
+                                            'field_5b7ef3339488a', //availability
+                                            'field_5b7ef39d9488b', //interest
+                                            'field_5b7ef3fc9488c', //competency
+                                            'field_5b7ef4229488d', //preference
                                         ),
                                         'html_before_fields' => '',
                                         'html_after_fields' => '',
