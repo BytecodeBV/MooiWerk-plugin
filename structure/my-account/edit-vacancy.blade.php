@@ -28,7 +28,7 @@
                                 @if(isset($_GET['trash']) && $_GET['trash'] == 'true')
                                     @php wp_trash_post($_GET['id']); @endphp
                                     <div class="member-page__message alert alert-success" role="alert">
-                                        Post deleted!
+                                        Vacature verwijderd!
                                     </div>
                                 @else
                                     <div id="edit-vacancy-form">
