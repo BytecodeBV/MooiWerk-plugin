@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body vacancy-card__body">
-                                            <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}</div>
+                                            <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>
                                             <div class="vacancy-card__actions my-3">
                                                 <a href="{{home_url('/bewerk-vacature')}}?id={{$p->ID}}" class="btn btn-primary vacancy-card__action mr-2">Bewerk</a>
                                                 <a href="{{home_url('/bewerk-vacature')}}?id={{$p->ID}}&trash=true" class="btn btn-primary vacancy-card__action">Verwijder</a>

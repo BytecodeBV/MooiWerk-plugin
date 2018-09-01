@@ -96,6 +96,38 @@
                     <div class="row cv__content">    
                         <article class="col-lg-8 cv__profile">
                                 {!! get_the_content() !!}
+                                @php
+                                    $fields = get_fields();
+                                    $labels = array(
+                                        'region' => 'Locatie',
+                                        'frequency' => 'Hoe vaak',
+                                        'period' => 'Uren per week',
+                                        'categories' => 'Categorie',
+                                        'target' => 'Doelgroep',
+                                        'date' => 'Datum'
+                                    );
+                                @endphp
+                                @if( $fields )
+                                    <div class=" vacancy__meta my-4"> 
+                                        <h3>Gegevens</h3>
+                                        <div class="row mt-3">
+                                            @foreach( $labels as $name => $value )
+                                                <div class="col-md-6 col-xxl-4 mb-3">
+                                                    <div class="card">
+                                                        <div class="card-block block-{{$loop->iteration}}">
+                                                            <h3 class="card-title">{{$value}}</h3>
+                                                            @if( is_array(get_field($name)) )
+                                                                <p class="card-text">{{implode(", ", get_field($name))}}</p>
+                                                            @else
+                                                                <p class="card-text">{{get_field($name)}}</p> 
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach                                            
+                                        </div>
+                                    </div>
+                                @endif
                                 @if (is_user_logged_in())
                                     @php comments_template('/partials/comments.blade.php') @endphp
                                 @else
@@ -143,14 +175,14 @@
                                                 <small class="company__website">{{ get_field('website', 'user_' . $author)}}</small>
                                                 @endif                                
                                             </div>
-                                            <nav class="company__social-links">
-                                                <a href="{{get_field('facebook', 'user_' . $author)}}" target="_blank" class="company__social-link">
+                                            <nav class="company__social-links mt-3">
+                                                <a href="{{get_field('facebook', 'user_' . $author)}}" target="_blank" class="company__social-link mr-2">
                                                     <img src="@asset('images/facebook.svg')" alt="Facebook" class="company__social-link-icon">
                                                 </a>
-                                                <a href="{{get_field('twitter', 'user_' . $author)}}" target="_blank" class="company__social-link">
+                                                <a href="{{get_field('twitter', 'user_' . $author)}}" target="_blank" class="company__social-link mr-2">
                                                     <img src="@asset('images/twitter.svg')" alt="Twitter" class="company__social-link-icon">
                                                 </a>
-                                                <a href="{{get_field('linkedin', 'user_' . $author)}}" target="_blank" class="company__social-link">
+                                                <a href="{{get_field('linkedin', 'user_' . $author)}}" target="_blank" class="company__social-link mr-2">
                                                     <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company__social-link-icon">
                                                 </a>
                                                 <a href="{{get_field('instagram', 'user_' . $author)}}" target="_blank" class="company__social-link">

@@ -338,7 +338,7 @@ function register_custom_fields_vacancy()
                 'fields' => array (
                     array (
                         'key' => 'field_5b86d5cc8043b',
-                        'label' => 'Ik ga akkoord met de Algemene Voorwaarden',
+                        'label' => '<a href='.home_url("/algemene-voorwaarden").'>Ik ga akkoord met de Algemene Voorwaarden</a>',
                         'name' => 'tos',
                         'type' => 'true_false',
                         'instructions' => '',
