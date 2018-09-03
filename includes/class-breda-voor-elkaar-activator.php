@@ -46,14 +46,22 @@ class Breda_Voor_Elkaar_Activator {
         create_page('Reacties');
         create_page('Favorieten');
         create_page('Wijzig Wachtwoord');
+        create_page('Opstelling');
+        create_page('Inloggen', '[theme-my-login action="login"]');
+        create_page('Uitloggen', '[theme-my-login action="logout"]');
+        create_page('Registreren', '[theme-my-login action="register"]');
+        create_page('Registreer Organisatie', '[theme-my-login action="register"]');
+        create_page('Registreer Vrijwilliger', '[theme-my-login action="register"]');
+        create_page('Maak hier een veilig wachtwoord aan', '[theme-my-login action="lostpassword"]');
+        create_page('Wachtwoord reset', '[theme-my-login action="resetpass"]');
     }
 }
 
 /**
  * Create a WordPress page.
  */
-function create_page($name) {
-    if(get_page_by_title($name) == NULL){
+function create_page($name, $content = NULL, $template = NULL) {
+    if (get_page_by_title($name) == NULL){
         $post = array(
             'comment_status' => 'closed',
             'ping_status' =>  'closed' ,
@@ -64,6 +72,12 @@ function create_page($name) {
             'post_title' => $name,
             'post_type' => 'page'
         );
-        wp_insert_post( $post ); 
+        if ($content != NULL) {
+            $post['post_content'] = $content;
+        }
+        if ($template != NULL) {
+            $post['page_template'] = $template;
+        }        
+        wp_insert_post($post); 
     }
 }

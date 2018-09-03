@@ -289,6 +289,14 @@ function restrict_post_deletion($post_ID)
         'Reacties',
         'Favorieten',
         'Wijzig Wachtwoord',
+        'Opstelling',
+        'Inloggen',
+        'Uitloggen',
+        'Registreren',
+        'Registreer Organisatie',
+        'Registreer Vrijwilliger',
+        'Maak hier een veilig wachtwoord aan',
+        'Wachtwoord reset'
     );
     if (in_array(get_the_title($post_ID), $restricted_pages)) {
         echo "Can not delete page from WordPress. Disable the Breda Voor Elkaar plugin to delete the page.";

@@ -22,6 +22,8 @@ function my_account_template($page_template)
         $page_template = plugin_dir_path(__FILE__) . '/favorites.blade.php';
     } elseif (is_page('Reacties')) {
         $page_template = plugin_dir_path(__FILE__) . '/applications.blade.php';
+    } elseif (is_page('Opstelling')) {
+        $page_template = plugin_dir_path(__FILE__) . '/setup.blade.php';
     }
     return $page_template;
 }
