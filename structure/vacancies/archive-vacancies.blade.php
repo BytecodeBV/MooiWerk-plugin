@@ -69,8 +69,15 @@
                             }
                             @endphp
                             <section class="mb-4 layered__group">
-                            <h2 class="layered__group-header">{{$labels[$acf_key]}}</h2>
-                            <div class="b-4 layered__field filter" data-filter="{{  $key }}">
+                            <div class="d-flex justify-content-between">                                
+                                <a data-toggle="collapse" href="#{{  $key }}" role="button">
+                                    <h2 class="layered__group-header">
+                                        {{$labels[$acf_key]}}
+                                    </h2>
+                                </a>
+                                <i class="fa fa-angle-right layered__group-header" aria-hidden="true"></i>
+                            </div>
+                            <div class="b-4 layered__field filter collapse" data-filter="{{  $key }}" id="{{  $key }}">
                                 {!! render_field($field); !!}
                             </div>
                         </section>

@@ -6,6 +6,7 @@
             <div class="container">
                 <div class="row">
                     @php
+                        global $wpdb;
                         // Start session to save posts per page
                         if (!session_id()) {
                             session_start();
