@@ -152,7 +152,7 @@ function register_custom_fields_volunteer() {
                             'id' => '',
                         ),
                         'choices' => array(
-                            'Yes' => 'Yes',
+                            'Ja' => 'Ja',
                             'Nee' => 'Nee',
                         ),
                         'allow_null' => 0,

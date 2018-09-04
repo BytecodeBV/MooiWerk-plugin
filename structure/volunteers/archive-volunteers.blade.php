@@ -28,7 +28,7 @@
                         }
 
                         // Filters
-                        $meta_query = array('relation' => 'OR'); // Array of arrays that individually store key/value pairs.
+                        $meta_query = array('relation' => 'AND'); // Array of arrays that individually store key/value pairs.
                         $filter_keys = array(
                             'field_5b7ef28594888' => 'region',
                             'field_5b7ef2f894889'  => 'frequency',
@@ -81,6 +81,13 @@
                                 }
                             }
                         }
+                        // Check if user wants to show up in results.
+                        $check_pref = array(
+                            'key' => 'searchable',
+                            'value' => 'Ja',
+                        );
+                        array_push($meta_query, $check_pref);
+
                         // Arguments for out main query
                         $args = array(
                             // Add filter and pagination arguments here later, and get them from ?= variables with default values.
