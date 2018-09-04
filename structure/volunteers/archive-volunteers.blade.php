@@ -99,7 +99,7 @@
                         );
 
                         // Add search term to wp-query if it is set in the url.
-                        if(isset($_GET['search'])){                           
+                        if(isset($_GET['search'])){
                             $search_term = $wpdb->esc_like($_GET['search']);
                             $args['search'] = '*'.$search_term.'*';
                             $args['search_columns'] = array(
