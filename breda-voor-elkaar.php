@@ -303,7 +303,7 @@ function restrict_post_deletion($post_ID)
         exit;
     }
 }
-add_action('before_edit_post', 'restrict_post_deletion', 10, 1);
-add_action('edit_post', 'restrict_post_deletion', 10, 1);
+//add_action('before_edit_post', 'restrict_post_deletion', 10, 1);
+//add_action('edit_post', 'restrict_post_deletion', 10, 1);
 add_action('wp_trash_post', 'restrict_post_deletion', 10, 1);
 add_action('before_delete_post', 'restrict_post_deletion', 10, 1);

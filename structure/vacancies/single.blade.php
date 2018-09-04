@@ -71,8 +71,6 @@
                                 @elseif (!is_user_logged_in())
                                     <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">Reageer nu ›</a>
                                     <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">Favoriet ›</a>
-                                @else
-                                    <span class="cv__link">Niet in aanmerking komen</span>
                                 @endif
                             </div>     
                         
@@ -96,6 +94,15 @@
                     <div class="row cv__content">    
                         <article class="col-lg-8 cv__profile">
                                 {!! get_the_content() !!}
+                                @if( is_user_logged_in() && get_the_author_meta('ID') == get_current_user_id() )
+                                    <div class=" vacancy__meta my-5"> 
+                                        <h3>Bewerken</h3>
+                                        <div class="vacancy-card__actions my-3">
+                                            <a href="{{add_query_arg('id', get_the_ID(), home_url('/bewerk-vacature'))}}" class="btn btn-primary vacancy-card__action mr-2">Bewerk</a>
+                                            <a href="{{add_query_arg(['id'=> get_the_ID(), 'trash'=> 'true'], home_url('/bewerk-vacature'))}}" class="btn btn-primary vacancy-card__action">Verwijder</a>
+                                        </div>
+                                    </div>
+                                @endif
                                 @php
                                     $fields = get_fields();
                                     $labels = array(

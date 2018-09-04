@@ -34,17 +34,7 @@
                             @if ($posts)
                                 <h1> {{count($posts)}} Vacature(s) geplaatst </h1>
                                 @foreach ($posts as $p) {{-- // variable must NOT be called $post (IMPORTANT) --}}
-                                    @php        
-                                        $reactions = get_users(array(
-                                            'role' => 'volunteer',
-                                            'meta_query' => array(
-                                                array(
-                                                    'key' => 'applications', // name of custom field
-                                                    'value' => '"' . $p->ID . '"', // matches exactly "123", not just 123. This prevents a match for "1234"
-                                                    'compare' => 'LIKE'
-                                                )
-                                            )
-                                        ));
+                                    @php
                                         $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
                                         $vacancy = [
                                             'title' => $p->post_title,
@@ -59,6 +49,7 @@
                                         } else {
                                             $vacancy['subtitle'] = $categories;
                                         }
+                                        $comments = wp_count_comments($p->ID);
                                     @endphp
                                     <div class="card shadow border-light vacancy-list__item  vacancy-card">
                                         <div class="row vacancy-card__header-wrapper">
@@ -71,13 +62,9 @@
                                             </div>
                                         </div>
                                         <div class="card-body vacancy-card__body">
-                                            <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>
-                                            <div class="vacancy-card__actions my-3">
-                                                <a href="{{home_url('/bewerk-vacature')}}?id={{$p->ID}}" class="btn btn-primary vacancy-card__action mr-2">Bewerk</a>
-                                                <a href="{{home_url('/bewerk-vacature')}}?id={{$p->ID}}&trash=true" class="btn btn-primary vacancy-card__action">Verwijder</a>
-                                            </div>       
+                                            <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>      
                                         </div>
-                                        <div class="card-footer vacancy-card__footer">Aantal reacties: {{count($reactions)}}</div>
+                                        <div class="card-footer vacancy-card__footer">Aantal reacties: {{$comments->total_comments}}</div>
                                     </div>
                                 @endforeach
                             </div>

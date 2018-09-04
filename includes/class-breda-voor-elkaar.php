@@ -143,9 +143,15 @@ class Breda_Voor_Elkaar
         require_once plugin_dir_path(dirname(__FILE__)) . 'structure/my-account/my-account.php';
 
         /**
-         * The class responsible for the custom courses functionality.
+         * The code responsible for the custom courses functionality.
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'structure/courses/courses.php';
+
+        /**
+         * The code responsible for the header functionality.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'structure/header/header.php';
+
 
         /**
          * The class responsible for the custom content block functionality.
