@@ -36,27 +36,14 @@
                     @php dynamic_sidebar('sidebar-primary') @endphp
                 </aside>                
                 @php
-                // Add key, value pair to the post meta filters if it is set.
-                function add_to_meta_query_if_get_exists($filter_key, $filter_value, &$query){
-                    if(isset($_GET[$filter_key])){
-                        $values_to_search = explode(',', $_GET[$filter_key]);
-                        foreach ($values_to_search as $value) {
-                            $meta_addition = array(
-                                'key' => rawurldecode($filter_key),
-                                'value' => rawurldecode($value),
-                                'compare' => 'LIKE'
-                            );
-                            array_push($query,$meta_addition);
-                        }
-                    }
-                }
                 // Arguments for out main query
                 $args = array(
                     // Add filter and pagination arguments here later, and get them from ?= variables with default values.
                     'role' => 'organisation',
                     'number' => $users_per_page,
-                    'paged' => $current_page,
-                    'meta_query' => $meta_query
+                    'paged' => $current_page, 
+                    'meta_key' => 'show_in_search', 
+                    'meta_value' => 'Ja',
                 );
 
                 // Add search term to wp-query if it is set in the url.
