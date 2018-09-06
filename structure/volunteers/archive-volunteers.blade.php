@@ -145,7 +145,7 @@
                             </div>
                         @endforeach                
                     @else 
-                        <div class="alert alert-dark">Geen organisatie gevonden die aan uw zoekopdracht voldeed.</div>
+                        <div class="alert alert-dark">Geen vrijwilliger gevonden die aan uw zoekopdracht voldeed.</div>
                     @endif
                     {!! numeric_pagination($current_page, $num_pages) !!}
                 </main>
