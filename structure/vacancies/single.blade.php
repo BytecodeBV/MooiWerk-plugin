@@ -21,7 +21,7 @@
                         ];
                     @endphp
                     @if(get_field('date') < date('d/m/Y'))
-                        <div class="alert alert-danger"><strong>{{__('Vacature gesloten:', 'mooiwerk')}}</strong>{{__(' u kunt niet inloggen', 'mooiwerk')}}</div>
+                        <div class="alert alert-danger"><strong>{{__('Vacature gesloten:', 'mooiwerk')}}</strong>{{__(' u kunt zich niet meer aanmelden voor deze vacature.', 'mooiwerk')}}</div>
                     @endif                
                     <div class="row">
                         <div class="col-sm-10  cv__header">
