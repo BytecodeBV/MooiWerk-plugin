@@ -19,9 +19,11 @@
                             'ervaring' => implode(', ', get_field('competency')),
                             'vergoeding' => implode(', ', get_field('compensation'))
                         ];
+                        $date = date_create_from_format('m/d/Y', get_field('date'));                        
+                        $date = date_format($date, 'm/d/Y');
                     @endphp
-                    @if(get_field('date') < date('d/m/Y'))
-                        <div class="alert alert-danger"><strong>{{__('Vacature gesloten:', 'mooiwerk')}}</strong>{{__(' u kunt zich niet meer aanmelden voor deze vacature.', 'mooiwerk')}}</div>
+                    @if(isExpired($date))
+                        <div class="alert alert-danger"><strong>{{__('Vacature gesloten:', 'mooiwerk')}}</strong>{{__(' u kunt zich niet meer aanmelden voor deze vacature', 'mooiwerk')}}</div>
                     @endif                
                     <div class="row">
                         <div class="col-sm-10  cv__header">
@@ -60,7 +62,7 @@
                         @endphp
                         <nav class="col d-flex flex-column flex-sm-row justify-content-between border-top cv__social-bar">
                             <div class="cv__links d-flex">  
-                                @if($role[0] == 'volunteer')                  
+                                @if($role[0] == 'volunteer' && !isExpired($date))                  
                                     <form method="post">
                                         <input type="hidden" name="user_id" value="{{ $user->ID  }}">
                                         <input type="hidden" name="post_id" value="{{ $post->ID }}">
@@ -71,7 +73,7 @@
                                         <input type="hidden" name="post_id" value="{{ $post->ID }}">
                                         <input type="submit" name="Favoriet" value="{{__('Favoriet ›', 'mooiwerk')}}" class="cv__link">
                                     </form>
-                                @elseif (!is_user_logged_in())
+                                @elseif (!is_user_logged_in() && !isExpired($date))
                                     <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">{{__('Reageer nu ›', 'mooiwerk')}}</a>
                                     <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">{{__('Favoriet ›', 'mooiwerk')}}</a>
                                 @endif

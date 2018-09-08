@@ -221,6 +221,12 @@ function filter_script($page)
     <?php
 }
 
+//compare dates
+function isExpired($time)
+{
+    return (strtotime($time) > time());
+}
+
 /**
  * Disable the administrator bar for non-admins.
  */
