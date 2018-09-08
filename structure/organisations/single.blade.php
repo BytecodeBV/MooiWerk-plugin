@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="row company__bio">
-                        {{ $userdata->description }}
+                        {!! get_field('bio', 'user_' . $ID) !!}
                     </div>
 
                     @php
@@ -74,13 +74,13 @@
                     <h1>Vacancies</h1>    
                         @foreach ($posts as $p)
                             @php
-                                $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
+                                $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');
                                 $vacancy = [
                                     'title' => $p->post_title,
                                     'link' => get_permalink($p->ID),
                                     'image_link' => get_field('logo', 'user_'.$p->post_author),
                                     'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
-                                    'footer' => $time . ' - Breda, Nederland',
+                                    'footer' => $time . __(' - Breda, Nederland', 'mooiwerk'),
                                 ];
                                 $categories = get_field('categories', $p->ID);
                                 if (is_array($categories)){

@@ -1,6 +1,6 @@
 {
-    "name": "bytecode/breda-voor-elkaar-plugin",
-    "description": "Plugin for Breda voor Elkaar's custom functionality",
+    "name": "bytecode/mooiwerk-plugin",
+    "description": "Plugin for MooiWerk's custom functionality",
     "type": "project",
     "require": {
         "phpunit/phpunit": "^7.1"

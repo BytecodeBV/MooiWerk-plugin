@@ -1,6 +1,6 @@
 # Breda voor Elkaar plugin
 
-A plugin with custom functionality for Breda voor Elkaar
+A plugin with custom functionality for MooiWerk Patform
 
 ## Table of Contents
 

@@ -11,11 +11,11 @@ function register_custom_fields_organisation() {
         acf_add_local_field_group(
             array (
                 'key' => 'group_5b7ee8a1ae2ac',
-                'title' => 'Organisations',
+                'title' => __('Organisations', 'mooiwerk'),
                 'fields' => array (
                     array (
                         'key' => 'field_5b7ee8f6950e7',
-                        'label' => 'Upload profielfoto contactpersoon of logo organisatie',
+                        'label' => __('Upload profielfoto contactpersoon of logo organisatie', 'mooiwerk'),
                         'name' => 'logo',
                         'type' => 'image',
                         'instructions' => '',
@@ -39,7 +39,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7ee9fb950e8',
-                        'label' => 'Upload omslagfoto',
+                        'label' => __('Upload omslagfoto', 'mooiwerk'),
                         'name' => 'profile_pic',
                         'type' => 'image',
                         'instructions' => '',
@@ -63,7 +63,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eea1a950e9',
-                        'label' => 'Naam organisatie',
+                        'label' => __('Naam organisatie', 'mooiwerk'),
                         'name' => 'name',
                         'type' => 'text',
                         'instructions' => '',
@@ -82,7 +82,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eea36950ea',
-                        'label' => 'Adres',
+                        'label' => __('Adres', 'mooiwerk'),
                         'name' => 'address',
                         'type' => 'google_map',
                         'instructions' => '',
@@ -100,7 +100,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eea5e950eb',
-                        'label' => 'Postcode',
+                        'label' => __('Postcode', 'mooiwerk'),
                         'name' => 'postcode',
                         'type' => 'text',
                         'instructions' => '',
@@ -119,7 +119,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eea9a950ec',
-                        'label' => 'Plaats',
+                        'label' => __('Plaats', 'mooiwerk'),
                         'name' => 'place',
                         'type' => 'text',
                         'instructions' => '',
@@ -138,7 +138,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eeac7950ed',
-                        'label' => 'Website',
+                        'label' => __('Website', 'mooiwerk'),
                         'name' => 'website',
                         'type' => 'text',
                         'instructions' => '',
@@ -179,11 +179,11 @@ function register_custom_fields_organisation() {
         acf_add_local_field_group(
             array (
                 'key' => 'group_5b7eebc3623f1',
-                'title' => 'Contact Person',
+                'title' => __('Contact Person', 'mooiwerk'),
                 'fields' => array (
                     array (
                         'key' => 'field_5b7eebd77da33',
-                        'label' => 'Voornaam',
+                        'label' => __('Voornaam', 'mooiwerk'),
                         'name' => 'first-name',
                         'type' => 'text',
                         'instructions' => '',
@@ -202,7 +202,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eec2a7da35',
-                        'label' => 'Achternaam',
+                        'label' => __('Achternaam', 'mooiwerk'),
                         'name' => 'last-name',
                         'type' => 'text',
                         'instructions' => '',
@@ -221,7 +221,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eebf97da34',
-                        'label' => 'Tussenvoegsel',
+                        'label' => __('Tussenvoegsel', 'mooiwerk'),
                         'name' => 'position',
                         'type' => 'text',
                         'instructions' => '',
@@ -239,26 +239,8 @@ function register_custom_fields_organisation() {
                         'maxlength' => '',
                     ),
                     array (
-                        'key' => 'field_5b7eec3a7da36',
-                        'label' => 'E-mailadres',
-                        'name' => 'email',
-                        'type' => 'email',
-                        'instructions' => '',
-                        'required' => 1,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'default_value' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                    ),
-                    array (
                         'key' => 'field_5b7eec577da37',
-                        'label' => 'Telefoonnummer',
+                        'label' => __('Telefoonnummer', 'mooiwerk'),
                         'name' => 'phone',
                         'type' => 'text',
                         'instructions' => '',
@@ -277,7 +259,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eec737da38',
-                        'label' => 'Vertel iets over de organisatie',
+                        'label' => __('Vertel iets over de organisatie', 'mooiwerk'),
                         'name' => 'bio',
                         'type' => 'wysiwyg',
                         'instructions' => '',
@@ -296,7 +278,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eecca7da39',
-                        'label' => 'Het organisatieprofiel tonen in de zoekresultaten',
+                        'label' => __('Het organisatieprofiel tonen in de zoekresultaten', 'mooiwerk'),
                         'name' => 'show_in_search',
                         'type' => 'radio',
                         'instructions' => '',
@@ -308,10 +290,10 @@ function register_custom_fields_organisation() {
                             'id' => '',
                         ),
                         'choices' => array (
-                            'Ja' => 'Ja',
-                            'Nee' => 'Nee',
+                            'Ja' => __('Ja', 'mooiwerk'),
+                            'Nee' => __('Nee', 'mooiwerk'),
                         ),
-                        'allow_null' => 0,
+                        'allow_null' => 1,
                         'other_choice' => 0,
                         'save_other_choice' => 0,
                         'default_value' => '',
@@ -320,7 +302,7 @@ function register_custom_fields_organisation() {
                     ),
                     array (
                         'key' => 'field_5b7eed557da3a',
-                        'label' => 'In welke sector is jouw organisatie actief (maximaal 3 antwoorden mogelijk)',
+                        'label' => __('In welke sector is jouw organisatie actief (maximaal 3 antwoorden mogelijk)', 'mooiwerk'),
                         'name' => 'category',
                         'type' => 'checkbox',
                         'instructions' => '',
@@ -332,12 +314,12 @@ function register_custom_fields_organisation() {
                             'id' => '',
                         ),
                         'choices' => array (
-                            'Goede doelen en belangenbehartigers' => 'Goede doelen en belangenbehartigers',
-                            'Kunst en Cultuur' => 'Kunst en Cultuur',
-                            'Natuur en Milieu' => 'Natuur en Milieu',
-                            'Onderwijs, Educatie en Openbaar bestuur (incl. taal)' => 'Onderwijs, Educatie en Openbaar bestuur (incl. taal)',
-                            'Sport, bewegen en recreatie' => 'Sport, bewegen en recreatie',
-                            'Zorg en Welzijn (incl. religie)' => 'Zorg en Welzijn (incl. religie)',
+                            'Goede doelen en belangenbehartigers' => __('Goede doelen en belangenbehartigers', 'mooiwerk'),
+                            'Kunst en Cultuur' => __('Kunst en Cultuur', 'mooiwerk'),
+                            'Natuur en Milieu' => __('Natuur en Milieu', 'mooiwerk'),
+                            'Onderwijs, Educatie en Openbaar bestuur (incl. taal)' => __('Onderwijs, Educatie en Openbaar bestuur (incl. taal)', 'mooiwerk'),
+                            'Sport, bewegen en recreatie' => __('Sport, bewegen en recreatie', 'mooiwerk'),
+                            'Zorg en Welzijn (incl. religie)' => __('Zorg en Welzijn (incl. religie)', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
@@ -372,11 +354,11 @@ function register_custom_fields_organisation() {
             acf_add_local_field_group(
                 array (
                     'key' => 'group_5b7eeb2cb8b3e',
-                    'title' => 'Social Media',
+                    'title' => __('Social Media', 'mooiwerk'),
                     'fields' => array (
                         array (
                             'key' => 'field_5b7eeb458880a',
-                            'label' => 'Facebook',
+                            'label' => __('Facebook', 'mooiwerk'),
                             'name' => 'facebook',
                             'type' => 'url',
                             'instructions' => '',
@@ -392,7 +374,7 @@ function register_custom_fields_organisation() {
                         ),
                         array (
                             'key' => 'field_5b7eeb578880b',
-                            'label' => 'Twitter',
+                            'label' => __('Twitter', 'mooiwerk'),
                             'name' => 'twitter',
                             'type' => 'url',
                             'instructions' => '',
@@ -408,7 +390,7 @@ function register_custom_fields_organisation() {
                         ),
                         array (
                             'key' => 'field_5b7eeb668880c',
-                            'label' => 'Linkedin',
+                            'label' => __('Linkedin', 'mooiwerk'),
                             'name' => 'linkedin',
                             'type' => 'url',
                             'instructions' => '',
@@ -424,7 +406,7 @@ function register_custom_fields_organisation() {
                         ),
                         array (
                             'key' => 'field_5b7eeb838880d',
-                            'label' => 'Instagram',
+                            'label' => __('Instagram', 'mooiwerk'),
                             'name' => 'instagram',
                             'type' => 'url',
                             'instructions' => '',
@@ -474,7 +456,7 @@ add_action('acf/init', 'register_custom_fields_organisation');
  * Set template for archive page.
  */    
  function archive_organisation_template( $page_template ) {
-     if ( is_page( 'Organisaties' ) ) {
+     if ( is_page( __('Organisaties', 'mooiwerk') ) ) {
          $page_template = plugin_dir_path( __FILE__ ) . '/archive-organisations.blade.php';
      }
      return $page_template;

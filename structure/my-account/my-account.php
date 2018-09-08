@@ -8,21 +8,21 @@
  */
 function my_account_template($page_template)
 {
-    if (is_page('Mijn Account')) {
+    if (is_page(__('Mijn Account', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/template.blade.php';
-    } elseif (is_page('Wijzig Wachtwoord')) {
+    } elseif (is_page(__('Wijzig Wachtwoord', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/change-password.blade.php';
-    } elseif (is_page('Beheer Vacatures')) {
+    } elseif (is_page(__('Beheer Vacatures', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/manage-vacancies.blade.php';
-    } elseif (is_page('Nieuwe Vacature')) {
+    } elseif (is_page(__('Nieuwe Vacature', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/new-vacancy.blade.php';
-    } elseif (is_page('Bewerk Vacature')) {
+    } elseif (is_page(__('Bewerk Vacature', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/edit-vacancy.blade.php';
-    } elseif (is_page('Favorieten')) {
+    } elseif (is_page(__('Favorieten', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/favorites.blade.php';
-    } elseif (is_page('Reacties')) {
+    } elseif (is_page(__('Reacties', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/applications.blade.php';
-    } elseif (is_page('Opstelling')) {
+    } elseif (is_page(__('Opstelling', 'mooiwerk'))) {
         $page_template = plugin_dir_path(__FILE__) . '/setup.blade.php';
     }
     return $page_template;
@@ -42,28 +42,28 @@ function my_account_menu()
         if ($role[0] == 'organisation') {
             ?>
             <ul class="sidebar-nav">
-                <li class="sidebar-nav__item"><a href="<?php echo home_url('/mijn-account') ?>" class="nav-link">Profiel</a></li>
-                <li class="sidebar-nav__item"><a href="<?php echo home_url('/beheer-vacatures') ?>" class="nav-link">Beheer vacatures</a></li>
-                <li class="sidebar-nav__item"><a href="<?php echo home_url('/nieuwe-vacature') ?>" class="nav-link">Nieuwe vacature plaatsen</a></li>
-                <li class="sidebar-nav__item"><a href="<?php echo home_url('/wijzig-wachtwoord') ?>" class="nav-link">Wijzig wachtwoord</a></li>
-                <li class="sidebar-nav__item"><a href="<?php echo wp_logout_url(home_url()); ?>" class="nav-link">Logout</a></li>
+                <li class="sidebar-nav__item"><a href="<?php echo home_url('/mijn-account') ?>" class="nav-link"><?php _e('Profiel', 'mooiwerk') ?></a></li>
+                <li class="sidebar-nav__item"><a href="<?php echo home_url('/beheer-vacatures') ?>" class="nav-link"><?php _e('Beheer vacatures', 'mooiwerk') ?></a></li>
+                <li class="sidebar-nav__item"><a href="<?php echo home_url('/nieuwe-vacature') ?>" class="nav-link"><?php _e('Nieuwe vacature plaatsen', 'mooiwerk') ?></a></li>
+                <li class="sidebar-nav__item"><a href="<?php echo home_url('/wijzig-wachtwoord') ?>" class="nav-link"><?php _e('Wijzig wachtwoord', 'mooiwerk') ?></a></li>
+                <li class="sidebar-nav__item"><a href="<?php echo wp_logout_url(home_url()); ?>" class="nav-link"><?php _e('Logout', 'mooiwerk') ?></a></li>
             </ul>
         <?php
         } elseif ($role[0] == 'volunteer') {
             ?>
                 <ul class="sidebar-nav">
-                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/mijn-account') ?>" class="nav-link">Profiel</a></li>
-                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/reacties') ?>" class="nav-link">Reacties</a></li>
-                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/favorieten') ?>" class="nav-link">Favorieten</a></li>
-                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/wijzig-wachtwoord') ?>" class="nav-link">Wijzig wachtwoord</a></li>
-                    <li class="sidebar-nav__item"><a href="<?php echo wp_logout_url(home_url()); ?>" class="nav-link">Logout</a></li>
+                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/mijn-account') ?>" class="nav-link"><?php _e('Profiel', 'mooiwerk') ?></a></li>
+                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/reacties') ?>" class="nav-link"><?php _e('Reacties', 'mooiwerk') ?></a></li>
+                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/favorieten') ?>" class="nav-link"><?php _e('Favorieten', 'mooiwerk') ?></a></li>
+                    <li class="sidebar-nav__item"><a href="<?php echo home_url('/wijzig-wachtwoord') ?>" class="nav-link"><?php _e('Wijzig wachtwoord', 'mooiwerk') ?></a></li>
+                    <li class="sidebar-nav__item"><a href="<?php echo wp_logout_url(home_url()); ?>" class="nav-link"><?php _e('Logout', 'mooiwerk') ?></a></li>
                 </ul>
         <?php
         } else {
-            echo '<div class="alert alert-warning">Uw account is geen vrijwilliger of organisatie.</div>';
+            echo '<div class="alert alert-warning">'.__('Uw account is geen vrijwilliger of organisatie.', 'mooiwerk').'</div>';
         }
     } else {
-        echo '<div class="alert alert-warning">Je moet ingelogd zijn om deze pagina te bekijken.</div>';
+        echo '<div class="alert alert-warning">'.__('Je moet ingelogd zijn om deze pagina te bekijken.', 'mooiwerk').'</div>';
     }
 }
 

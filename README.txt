@@ -8,15 +8,15 @@ Stable tag: 4.9.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Plugin that adds custom functionality as per Breda voor Elkaar's needs. It was delivered with a complementary Theme: https://github.com/BytecodeBV/Breda-voor-Elkaar-theme
+Plugin that adds custom functionality as per Mooiwerk's needs. It was delivered with a complementary Theme: https://github.com/BytecodeBV/Breda-voor-Elkaar-theme
 
 == Description ==
 
-Plugin that adds custom functionality as per Breda voor Elkaar's needs.
+Plugin that adds custom functionality as per MooiWerk's needs.
 
 == Installation ==
 
-1. Upload the `breda-voor-elkaar` directory to the `/wp-content/plugins/` directory
+1. Upload the `mooiwerk` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==

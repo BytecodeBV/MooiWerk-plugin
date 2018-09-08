@@ -12,7 +12,7 @@ function register_custom_fields_course()
                 'fields' => array (
                     array (
                         'key' => 'field_5b86cb7687d30',
-                        'label' => 'Sub titel',
+                        'label' => __('Sub titel', 'mooiwerk'),
                         'name' => '_wcs_sub_title',
                         'type' => 'text',
                         'instructions' => '',
@@ -31,7 +31,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cc5787d31',
-                        'label' => 'Categorie',
+                        'label' => __('Categorie', 'mooiwerk'),
                         'name' => '_wcs_category',
                         'type' => 'checkbox',
                         'instructions' => '',
@@ -43,12 +43,12 @@ function register_custom_fields_course()
                             'id' => '',
                         ),
                         'choices' => array (
-                            'Persoonlijke ontwikkeling' => 'Persoonlijke ontwikkeling',
-                            'Sociale veiligheid' => 'Sociale veiligheid',
-                            'Financiën en sponsoring' => 'Financiën en sponsoring',
-                            'Communicatie en PR' => 'Communicatie en PR',
-                            'Werving en Selectie' => 'Werving en Selectie',
-                            'Organisatie en Bestuur' => 'Organisatie en Bestuur',
+                            'Persoonlijke ontwikkeling' => __('Persoonlijke ontwikkeling', 'mooiwerk'),
+                            'Sociale veiligheid' => __('Sociale veiligheid', 'mooiwerk'),
+                            'Financiën en sponsoring' => __('Financiën en sponsoring', 'mooiwerk'),
+                            'Communicatie en PR' => __('Communicatie en PR', 'mooiwerk'),
+                            'Werving en Selectie' => __('Werving en Selectie', 'mooiwerk'),
+                            'Organisatie en Bestuur' => __('Organisatie en Bestuur', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
@@ -60,7 +60,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86ccc587d32',
-                        'label' => 'Doelgroep',
+                        'label' => __('Doelgroep', 'mooiwerk'),
                         'name' => '_wcs_audience',
                         'type' => 'checkbox',
                         'instructions' => '',
@@ -72,10 +72,10 @@ function register_custom_fields_course()
                             'id' => '',
                         ),
                         'choices' => array (
-                            'Vrijwilligers' => 'Vrijwilligers',
-                            'Professionals' => 'Professionals',
-                            'Bestuur' => 'Bestuur',
-                            'Coordinatoren' => 'Coordinatoren',
+                            'Vrijwilligers' => __('Vrijwilligers', 'mooiwerk'),
+                            'Professionals' => __('Professionals', 'mooiwerk'),
+                            'Bestuur' => __('Bestuur', 'mooiwerk'),
+                            'Coordinatoren' => __('Coordinatoren', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
@@ -87,7 +87,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cd1087d33',
-                        'label' => 'Duur',
+                        'label' => __('Duur', 'mooiwerk'),
                         'name' => '_wcs_expensive',
                         'type' => 'number',
                         'instructions' => '',
@@ -108,7 +108,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cd7687d34',
-                        'label' => 'Programma',
+                        'label' => __('Programma', 'mooiwerk'),
                         'name' => '_wcs_program',
                         'type' => 'text',
                         'instructions' => '',
@@ -127,7 +127,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cd9187d35',
-                        'label' => 'Kosten/Prijs',
+                        'label' => __('Kosten/Prijs', 'mooiwerk'),
                         'name' => '_wcs_price',
                         'type' => 'number',
                         'instructions' => '',
@@ -148,7 +148,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cdf987d36',
-                        'label' => 'Beschikbare plaatsen',
+                        'label' => __('Beschikbare plaatsen', 'mooiwerk'),
                         'name' => '_wcs_available',
                         'type' => 'number',
                         'instructions' => '',
@@ -191,11 +191,11 @@ function register_custom_fields_course()
         acf_add_local_field_group(
             array (
                 'key' => 'group_5b86ceba54ac9',
-                'title' => 'Location',
+                'title' => __('Location', 'mooiwerk'),
                 'fields' => array (
                     array (
                         'key' => 'field_5b86cec2fae67',
-                        'label' => 'Straat',
+                        'label' => __('Straat', 'mooiwerk'),
                         'name' => '_wcs_street',
                         'type' => 'text',
                         'instructions' => '',
@@ -214,7 +214,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cedcfae68',
-                        'label' => 'Nummer',
+                        'label' => __('Nummer', 'mooiwerk'),
                         'name' => '_wcs_number',
                         'type' => 'number',
                         'instructions' => '',
@@ -235,7 +235,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cf01fae69',
-                        'label' => 'Toevoeging',
+                        'label' => __('Toevoeging', 'mooiwerk'),
                         'name' => '_wcs_addition',
                         'type' => 'text',
                         'instructions' => '',
@@ -254,7 +254,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cf0cfae6a',
-                        'label' => 'Postcode',
+                        'label' => __('Postcode', 'mooiwerk'),
                         'name' => '_wcs_postcode',
                         'type' => 'text',
                         'instructions' => '',
@@ -273,7 +273,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cf65fae6b',
-                        'label' => 'Plaats',
+                        'label' => __('Plaats', 'mooiwerk'),
                         'name' => '_wcs_place',
                         'type' => 'text',
                         'instructions' => '',
@@ -292,7 +292,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86cfa0fae6c',
-                        'label' => 'Image',
+                        'label' => __('Image', 'mooiwerk'),
                         'name' => '_wcs_image',
                         'type' => 'image',
                         'instructions' => '',
@@ -342,7 +342,7 @@ function register_custom_fields_course()
                 'fields' => array (
                     array (
                         'key' => 'field_5b86d124f9016',
-                        'label' => 'Tussenvoeging',
+                        'label' => __('Tussenvoeging', 'mooiwerk'),
                         'name' => '_wcs_interposition',
                         'type' => 'text',
                         'instructions' => '',
@@ -361,7 +361,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86d14bf9017',
-                        'label' => 'Achternaam',
+                        'label' => __('Achternaam', 'mooiwerk'),
                         'name' => '_wcs_last-name',
                         'type' => 'text',
                         'instructions' => '',
@@ -380,7 +380,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86d165f9018',
-                        'label' => 'Titel',
+                        'label' => __('Titel', 'mooiwerk'),
                         'name' => '_wcs_title',
                         'type' => 'text',
                         'instructions' => '',
@@ -399,7 +399,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86d17af9019',
-                        'label' => 'Organisatie',
+                        'label' => __('Organisatie', 'mooiwerk'),
                         'name' => '_wcs_organisation',
                         'type' => 'text',
                         'instructions' => '',
@@ -418,7 +418,7 @@ function register_custom_fields_course()
                     ),
                     array (
                         'key' => 'field_5b86d195f901a',
-                        'label' => 'Image',
+                        'label' => __('Image', 'mooiwerk'),
                         'name' => '_wcs_image',
                         'type' => 'image',
                         'instructions' => '',

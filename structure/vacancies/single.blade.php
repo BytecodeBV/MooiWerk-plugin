@@ -11,7 +11,7 @@
                         $title = get_the_title();
                         $category = is_array(get_field('categories'))? implode(', ',get_field('categories')) : get_field('categories');
                         //date("d M Y", strtotime(get_the_date()))
-                        $time = date_i18n("j M Y", strtotime(get_the_date())) . ' - Breda, Nederland';
+                        $time = date_i18n("j M Y", strtotime(get_the_date())) . __(' - Breda, Nederland', 'mooiwerk');
                         $author = get_the_author_meta( 'ID' );
 
                         $acf = [
@@ -19,7 +19,10 @@
                             'ervaring' => implode(', ', get_field('competency')),
                             'vergoeding' => implode(', ', get_field('compensation'))
                         ];
-                    @endphp                 
+                    @endphp
+                    @if(get_field('date') < date('d/m/Y'))
+                        <div class="alert alert-danger"><strong>{{__('Vacature gesloten:', 'mooiwerk')}}</strong>{{__(' u kunt niet inloggen', 'mooiwerk')}}</div>
+                    @endif                
                     <div class="row">
                         <div class="col-sm-10  cv__header">
                             <h1 class="cv__name"> {{ $title }}</h1>
@@ -61,21 +64,21 @@
                                     <form method="post">
                                         <input type="hidden" name="user_id" value="{{ $user->ID  }}">
                                         <input type="hidden" name="post_id" value="{{ $post->ID }}">
-                                        <input type="submit" name="Reageer" value="Reageer nu ›" class="cv__link">
+                                        <input type="submit" name="Reageer" value="{{__('Reageer nu ›', 'mooiwerk')}}" class="cv__link">
                                     </form>
                                     <form method="post">
                                         <input type="hidden" name="user_id" value="{{ $user->ID  }}">
                                         <input type="hidden" name="post_id" value="{{ $post->ID }}">
-                                        <input type="submit" name="Favoriet" value="Favoriet ›" class="cv__link">
+                                        <input type="submit" name="Favoriet" value="{{__('Favoriet ›', 'mooiwerk')}}" class="cv__link">
                                     </form>
                                 @elseif (!is_user_logged_in())
-                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">Reageer nu ›</a>
-                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">Favoriet ›</a>
+                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">{{__('Reageer nu ›', 'mooiwerk')}}</a>
+                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">{{__('Favoriet ›', 'mooiwerk')}}</a>
                                 @endif
                             </div>     
                         
                             <div class="cv__social-icons">
-                                <span class="d-sm-none d-md-inline cv__social-text">Deel deze pagina</span>
+                                <span class="d-sm-none d-md-inline cv__social-text">{{__('Deel deze pagina', 'mooiwerk')}}</span>
                                 <a href="{{$share['facebook']}}" target="_blank">
                                     <img src="@asset('images/facebook.svg')" class="cv__social-link" alt="Facebook">
                                 </a>
@@ -96,27 +99,27 @@
                                 {!! get_the_content() !!}
                                 @if( is_user_logged_in() && get_the_author_meta('ID') == get_current_user_id() )
                                     <div class=" vacancy__meta my-5"> 
-                                        <h3>Bewerken</h3>
+                                        <h3>{{__('Bewerken', 'mooiwerk')}}</h3>
                                         <div class="vacancy-card__actions my-3">
-                                            <a href="{{add_query_arg('id', get_the_ID(), home_url('/bewerk-vacature'))}}" class="btn btn-primary vacancy-card__action mr-2">Bewerk</a>
-                                            <a href="{{add_query_arg(['id'=> get_the_ID(), 'trash'=> 'true'], home_url('/bewerk-vacature'))}}" class="btn btn-primary vacancy-card__action">Verwijder</a>
+                                            <a href="{{add_query_arg('id', get_the_ID(), home_url('/bewerk-vacature'))}}" class="btn btn-primary vacancy-card__action mr-2">{{__('Bewerk', 'mooiwerk')}}</a>
+                                            <a href="{{add_query_arg(['id'=> get_the_ID(), 'trash'=> 'true'], home_url('/bewerk-vacature'))}}" class="btn btn-primary vacancy-card__action">{{__('Verwijder', 'mooiwerk')}}</a>
                                         </div>
                                     </div>
                                 @endif
                                 @php
                                     $fields = get_fields();
                                     $labels = array(
-                                        'region' => 'Locatie',
-                                        'frequency' => 'Hoe vaak',
-                                        'period' => 'Uren per week',
-                                        'categories' => 'Categorie',
-                                        'target' => 'Doelgroep',
-                                        'date' => 'Datum'
+                                        'region' => __('Locatie', 'mooiwerk'),
+                                        'frequency' => __('Hoe vaak', 'mooiwerk'),
+                                        'period' => __('Uren per week', 'mooiwerk'),
+                                        'categories' => __('Categorie', 'mooiwerk'),
+                                        'target' => __('Doelgroep', 'mooiwerk'),
+                                        'date' => __('Datum', 'mooiwerk')
                                     );
                                 @endphp
                                 @if( $fields )
                                     <div class=" vacancy__meta my-4"> 
-                                        <h3>Gegevens</h3>
+                                        <h3>{{__('Gegevens', 'mooiwerk')}}</h3>
                                         <div class="row mt-3">
                                             @foreach( $labels as $name => $value )
                                                 <div class="col-md-6 col-xxl-4 mb-3">
@@ -138,12 +141,12 @@
                                 @if (is_user_logged_in())
                                     @php comments_template('/partials/comments.blade.php') @endphp
                                 @else
-                                    <div class="alert alert-dark mt-3"><a href="{{wp_login_url()}}">Log in</a> om te reageren op deze vacature</div> 
+                                    <div class="alert alert-dark mt-3"><a href="{{wp_login_url()}}">{{__('Log in', 'mooiwerk')}}</a>{{__(' om te reageren op deze vacature', 'mooiwerk')}}</div> 
                                 @endif
                         </article>
                         <aside class="col-lg-4 cv__sidebar sidebar">
                             <div class="sidebar__item cv__extra">
-                                <h5 class="sidebar__title">Extra informatie</h5>
+                                <h5 class="sidebar__title">{{__('Extra informatie', 'mooiwerk')}}</h5>
                                 <ul class="cv__extra-list">
                                     <li class="cv__extra-list-item">
                                         <img src="@asset('images/academy.svg')" alt="Academic Icon" class="cv__extra-icon">{{$acf['opleidingsniveau']}}

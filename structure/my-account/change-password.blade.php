@@ -10,7 +10,7 @@
         <div class="member-page__body  container">
             <div class="row">
                 <aside class="col-sm-4 sidebar">
-                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">Menu</a>
+                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">{{__('Menu', 'mooiwerk')}}</a>
                     <div id="sidebarnav" class="member-page__menu sidebar__item collapse dont-collapse-lg">
                         {!! my_account_menu() !!}
                     </div>
@@ -25,7 +25,7 @@
                             if(isset($_POST['changepass']) && isset($_POST['opass'])){
                                 if(wp_check_password($_POST['opass'], $user->data->user_pass,  $user->ID)){
                                     if($_POST['npass']!=$_POST['cpass']){
-                                        $output='Uw wachtwoorden kwamen niet overeen';    
+                                        $output = __('Uw wachtwoorden kwamen niet overeen', 'mooiwerk');    
                                     } else{
                                     if($_POST['npass']==''){
                                         $password=$_POST['password'];
@@ -37,36 +37,36 @@
                                     wp_set_auth_cookie($user->ID);
                                     wp_set_current_user($user->ID);
                                     do_action('wp_login', $user->user_login, $user);
-                                    $output='Uw wachtwoord is veranderd';
+                                    $output= __('Uw wachtwoord is veranderd', 'mooiwerk');
                                     } 
                                 } else{
-                                    $output = 'Uw oude wachtwoord was incorrect';
+                                    $output = __('Uw oude wachtwoord was incorrect', 'mooiwerk');
                                 }
                             }
                         @endphp
                         <div class="row">
                             <div class="col-lg-10 offset-g-1">
-                                <h2>Wachtwoord Aanpassen</h2>
+                                <h2>{{__('Wachtwoord Aanpassen', 'mooiwerk')}}</h2>
                                 <form class="password_change"  method="post" enctype="multipart/form-data" action="#" onsubmit="return change_password();">                           
                                     <div class="form-group">
-                                        <label>Oude Wachtwoord</label>
+                                        <label>{{__('Oude Wachtwoord', 'mooiwerk')}}</label>
                                         <input type="password" name="opass" id="opass" class="form-control" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Nieuw Wachtwoord</label>
+                                        <label>{{__('Nieuw Wachtwoord', 'mooiwerk')}}</label>
                                         <input type="password" name="npass" id="pass" class="form-control" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Bevestig Wachtwoord</label>
+                                        <label>{{__('Bevestig Wachtwoord', 'mooiwerk')}}</label>
                                         <input type="password" name="cpass" id="cpass" class="form-control" />
                                     </div>
                                     <div id="error">{{$output}}</div>
-                                    <input type="submit" name="changepass"  value="Submit" class="btn btn-block" />
+                                    <input type="submit" name="changepass"  value="{{__('Submit', 'mooiwerk')}}" class="btn btn-block" />
                                 </form>                            
                             </div>
                         </div>                        
                     @else
-                        <div class="member-page__message alert alert-dark" role="alert">Je moet ingelogd zijn om deze pagina te bekijken.</div>
+                        <div class="member-page__message alert alert-dark" role="alert">{{__('Je moet ingelogd zijn om deze pagina te bekijken.', 'mooiwerk')}}</div>
                     @endif
                 </div>
             </div>

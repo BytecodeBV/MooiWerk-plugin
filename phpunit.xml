@@ -10,7 +10,7 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix="BredaTest.php">./</directory>
+            <directory suffix="MooiWerkTest.php">./</directory>
         </testsuite>
     </testsuites>
 </phpunit>

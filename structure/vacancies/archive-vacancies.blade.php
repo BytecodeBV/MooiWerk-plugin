@@ -29,8 +29,16 @@
                 }
 
                 // Filters
-                $meta_query = array('relation' => 'OR'); // Array of arrays that individually store key/value pairs.
-                $filter_keys = array(
+                $meta_query = array(
+                    'relation' => 'AND',
+                    array(
+                        'key'     => 'date',
+                        'value'   => date('d/m/Y'),
+                        'compare' => '>=',
+                        'type' => 'DATE',
+                    )
+                ); // Array of arrays that individually store key/value pairs.
+                            $filter_keys = array(
                     'field_5b7ef8e109d65' => 'region',
                     'field_5b7ef92009d66' => 'frequency',
                     'field_5b7ef96709d67' => 'period',
@@ -41,18 +49,18 @@
                     'field_5b7efb4209d6c' => 'compensation'
                 );
                 $labels = array(
-                    'field_5b7ef8e109d65' => 'Locatie',
-                    'field_5b7ef92009d66' => 'Hoe vaak',
-                    'field_5b7ef96709d67' => 'Uren per week',
-                    'field_5b7ef9ba09d68' => 'Categorie',
-                    'field_5b7ef9f609d69' => 'Benodigde competenties',
-                    'field_5b7efa5509d6a' => 'Doelgroep',
-                    'field_5b7efab409d6b' => 'Ook geschikt voor',
-                    'field_5b7efb4209d6c' => 'Vergoeding'
+                    'field_5b7ef8e109d65' => __('Locatie', 'mooiwerk'),
+                    'field_5b7ef92009d66' => __('Hoe vaak', 'mooiwerk'),
+                    'field_5b7ef96709d67' => __('Uren per week', 'mooiwerk'),
+                    'field_5b7ef9ba09d68' => __('Categorie', 'mooiwerk'),
+                    'field_5b7ef9f609d69' => __('Benodigde competenties', 'mooiwerk'),
+                    'field_5b7efa5509d6a' => __('Doelgroep', 'mooiwerk'),
+                    'field_5b7efab409d6b' => __('Ook geschikt voor', 'mooiwerk'),
+                    'field_5b7efb4209d6c' => __('Vergoeding', 'mooiwerk')
                 );
             @endphp
                 <aside id="archive-filters" class="col-lg-4 vacancy-list__layered layered">
-                    <a href="#filters" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">Filter</a>
+                    <a href="#filters" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">{{__('Filter', 'mooiwerk')}}</a>
                     <div id="filters" class="layered__form collapse dont-collapse-lg">
                         {{--// Loop over all filter keys and check if they are set in the _Get variable. --}}
 
@@ -130,13 +138,13 @@
                 @if (!empty($posts))
                     @foreach($posts as $p)
                         @php
-                        $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
+                        $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');
                         $vacancy = [
                             'title' => $p->post_title,
                             'link' => get_permalink($p->ID),
                             'image_link' => get_field('logo', 'user_'.$p->post_author),
                             'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
-                            'footer' => $time . ' - Breda, Nederland',
+                            'footer' => $time . __(' - Breda, Nederland', 'mooiwerk'),
                         ];
                         $categories = get_field('categories', $p->ID);
                         if (is_array($categories)){
@@ -156,14 +164,14 @@
                                 </div>
                             </div>
                             <div class="card-body vacancy-card__body">
-                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>       
+                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">{{__('lees meer ›', 'mooiwerk')}}</a></div>       
                             </div>
                             <div class="card-footer vacancy-card__footer">{{ $vacancy['footer'] }}</div>
                         </div>
                     @endforeach
                     {!! numeric_pagination($current_page, $num_pages) !!}
                 @else 
-                    <div class="alert alert-dark">Geen vacature gevonden die aan uw zoekopdracht voldeed.</div>
+                    <div class="alert alert-dark">{{__('Geen vacature gevonden die aan uw zoekopdracht voldeed.', 'mooiwerk')}}</div>
                 @endif                
                 </main>
             </div>

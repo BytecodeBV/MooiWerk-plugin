@@ -10,7 +10,7 @@
         <div class="member-page__body  container">
             <div class="row">
                 <aside class="col-lg-4 sidebar">
-                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">Menu</a>
+                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">{{__('Menu', 'mooiwerk')}}</a>
                     <div id="sidebarnav" class="member-page__menu sidebar__item collapse dont-collapse-lg">
                         {!! my_account_menu() !!}
                     </div>
@@ -27,17 +27,17 @@
                                     $posts = get_field('favorites', 'user_' . $user->ID);
                                 @endphp
                                 @if ($posts)
-                                <h1>Your Favorites</h1>
+                                <h1>{{__('Your Favorites', 'mooiwerk')}}</h1>
                                     @foreach ($posts as $p){{-- // variable must NOT be called $post (IMPORTANT) --}}
                                         @php
                                         $p = get_post($p);
-                                        $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
+                                        $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');
                                         $vacancy = [
                                             'title' => $p->post_title,
                                             'link' => get_permalink($p->ID),
                                             'image_link' => get_field('logo', 'user_'.$p->post_author),
                                             'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
-                                            'footer' => $time . ' - Breda, Nederland',
+                                            'footer' => $time . __(' - Breda, Nederland', 'mooiwerk'),
                                         ];
                                         $categories = get_field('categories', $p->ID);
                                         if (is_array($categories)){
@@ -57,20 +57,20 @@
                                                 </div>
                                             </div>
                                             <div class="card-body vacancy-card__body">
-                                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>       
+                                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">{{__('lees meer ›', 'mooiwerk')}}</a></div>       
                                             </div>
                                             <div class="card-footer vacancy-card__footer">{{ $vacancy['footer'] }}</div>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="member-page__message alert alert-dark" role="alert">Geen favorieten.</div>
+                                    <div class="member-page__message alert alert-dark" role="alert">{{__('Geen favorieten.', 'mooiwerk')}}</div>
                                 @endif
                             </div>
                         @else
-                            <div class="member-page__message alert alert-dark" role="alert">Uw account is geen vrijwilliger.</div>
+                            <div class="member-page__message alert alert-dark" role="alert">{{__('Uw account is geen vrijwilliger.', 'mooiwerk')}}</div>
                         @endif
                     @else
-                        <div class="member-page__message alert alert-dark" role="alert">Je moet ingelogd zijn om deze pagina te bekijken.</div>
+                        <div class="member-page__message alert alert-dark" role="alert">{{__('Je moet ingelogd zijn om deze pagina te bekijken.', 'mooiwerk')}}</div>
                     @endif
                 </div>
             </div>
