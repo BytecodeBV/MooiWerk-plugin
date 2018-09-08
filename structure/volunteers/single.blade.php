@@ -15,7 +15,7 @@
                         $post = get_post( $ID, OBJECT );
                         setup_postdata( $post );
                     @endphp
-                    <h1 class="company__name">{{ get_field('first-name', 'user_' . $ID)}} {{get_field('last-name', 'user_' . $ID) }}</h1>
+                    <h1 class="company__name">{{ get_field('first-name', 'user_' . $ID)}} {{ get_field('initials', 'user_' . $ID)}} {{get_field('last-name', 'user_' . $ID) }}</h1>
                     <div class="d-flex company__profile">
                         <div class="company__logo-wrapper">
                             @php
@@ -31,9 +31,6 @@
                                 @endif
                                 @if(get_field('phone', 'user_' . $ID))
                                 <small class="company__phone">{{ get_field('phone', 'user_' . $ID) }}</small>
-                                @endif
-                                @if(get_field('email', 'user_' . $ID))
-                                <small class="company__email">{{get_field('email', 'user_' . $ID)}}</small>
                                 @endif
                             </div>
                             <nav class="company__social-links">
@@ -53,7 +50,7 @@
                         </div>
                     </div>
                     <div class="row company__bio">
-                            {{get_field('bio', 'user_' . $ID)}}
+                            {!!get_field('bio', 'user_' . $ID)!!}
                     </div>
                     @if($categories = get_field('interest', 'user_' . $ID))
                         <div class="d-flex flex-wrap text-dark company__categories">
@@ -78,13 +75,13 @@
                         <h1>Reacties</h1>    
                             @foreach ($posts as $p)
                                 @php
-                                    $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . ' geleden';
+                                    $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');
                                     $vacancy = [
                                         'title' => $p->post_title,
                                         'link' => get_permalink($p->ID),
                                         'image_link' => get_field('logo', 'user_'.$p->post_author),
                                         'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
-                                        'footer' => $time . ' - Breda, Nederland',
+                                        'footer' => $time . __(' - Breda, Nederland', 'mooiwerk'),
                                     ];
                                     $categories = get_field('categories', $p->ID);
                                     if (is_array($categories)){
@@ -104,7 +101,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body vacancy-card__body">
-                                        <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>       
+                                        <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">{{__('lees meer ›', 'mooiwerk')}}</a></div>       
                                     </div>
                                     <div class="card-footer vacancy-card__footer">{{ $vacancy['footer'] }}</div>
                                 </div>
@@ -116,7 +113,7 @@
                     @endphp
                 </div>
                 <aside class="col-sm-4 company__sidebar blog__sidebar sidebar">
-                    {!! dynamic_sidebar('sidebar-primary') !!}
+                    {{-- dynamic_sidebar('sidebar-primary') --}}
                 </aside>
             </div>
         </div>

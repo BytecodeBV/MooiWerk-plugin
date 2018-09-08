@@ -10,18 +10,18 @@
  *
  * @link              https://bytecode.nl
  * @since             1.0.0
- * @package           Breda_Voor_Elkaar
+ * @package           MooiWerk
  *
  * @wordpress-plugin
- * Plugin Name:       Breda voor Elkaar
+ * Plugin Name:       MooiWerk
  * Plugin URI:        https://bytecode.nl
- * Description:       Adds all custom functionality for Breda voor Elkaar
+ * Description:       Adds all custom functionality for MooiWerk platform
  * Version:           1.0.0
  * Author:            Bytecode Digital Agency B.V.
  * Author URI:        https://bytecode.nl
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       breda-voor-elkaar
+ * Text Domain:       mooiwerk
  * Domain Path:       /languages
  */
 
@@ -38,32 +38,32 @@ define('PLUGIN_NAME_VERSION', '0.1.0');
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-breda-voor-elkaar-activator.php
+ * This action is documented in includes/class-mooiwerk-activator.php
  */
-function activate_breda_voor_elkaar()
+function activate_mooiwerk()
 {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-breda-voor-elkaar-activator.php';
-    Breda_Voor_Elkaar_Activator::activate();
+    require_once plugin_dir_path(__FILE__) . 'includes/class-mooiwerk-activator.php';
+    Mooiwerk_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-breda-voor-elkaar-deactivator.php
+ * This action is documented in includes/class-mooiwerk-deactivator.php
  */
-function deactivate_breda_voor_elkaar()
+function deactivate_mooiwerk()
 {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-breda-voor-elkaar-deactivator.php';
-    Breda_Voor_Elkaar_Deactivator::deactivate();
+    require_once plugin_dir_path(__FILE__) . 'includes/class-mooiwerk-deactivator.php';
+    Mooiwerk_Deactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_breda_voor_elkaar');
-register_deactivation_hook(__FILE__, 'deactivate_breda_voor_elkaar');
+register_activation_hook(__FILE__, 'activate_mooiwerk');
+register_deactivation_hook(__FILE__, 'deactivate_mooiwerk');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'includes/class-breda-voor-elkaar.php';
+require plugin_dir_path(__FILE__) . 'includes/class-mooiwerk.php';
 
 /**
  * Begins execution of the plugin.
@@ -74,12 +74,12 @@ require plugin_dir_path(__FILE__) . 'includes/class-breda-voor-elkaar.php';
  *
  * @since    1.0.0
  */
-function run_breda_voor_elkaar()
+function run_mooiwerk()
 {
-    $plugin = new Breda_Voor_Elkaar();
+    $plugin = new MooiWerk();
     $plugin->run();
 }
-run_breda_voor_elkaar();
+run_mooiwerk();
 
 /**
  * Change author slug
@@ -108,7 +108,7 @@ function change_template_single_author($template)
         } elseif (in_array('volunteer', $author_roles)) {
             $template = plugin_dir_path(__FILE__) . 'structure/volunteers/single.blade.php';
         } else {
-            echo 'user was not an organisation nor a volunteer';
+            _e('gebruiker was geen organisatie noch een vrijwilliger', 'mooiwerk');
         }
     }
     return $template;
@@ -184,7 +184,7 @@ function filter_script($page)
 <script type="text/javascript">
 (function($) {
     // change
-    $('#archive-filters').on('change', 'input[type="checkbox"],select', function(){
+    $('#archive-filters').on('change', 'input[type="checkbox"],input[type="radio"],select', function(){
         // vars
         var url = '<?php echo home_url($page); ?>';
             args = {};
@@ -238,17 +238,17 @@ function register_custom_fields_users()
     if (function_exists('acf_add_local_field_group')) {
         acf_add_local_field_group([
             'key' => 'acf_user',
-            'title' => 'User Custom Fields',
+            'title' => __('User Custom Fields', 'mooiwerk'),
             'fields' => [
                 [
                     'key' => 'field_acf_form_first_name',
-                    'label' => 'Naam',
+                    'label' => __('Naam', 'mooiwerk'),
                     'name' => 'first_name',
                     'type' => 'text',
                 ],
                 [
                     'key' => 'field_acf_form_email',
-                    'label' => 'Email',
+                    'label' => __('Email', 'mooiwerk'),
                     'name' => 'email',
                     'type' => 'text',
                 ],
@@ -279,29 +279,31 @@ add_action('acf/init', 'register_custom_fields_users');
 function restrict_post_deletion($post_ID)
 {
     $restricted_pages = array(
-        'Organisaties',
-        'Vrijwilligers',
-        'Vacatures',
-        'Mijn Account',
-        'Nieuwe Vacature',
-        'Bewerk Vacature',
-        'Beheer Vacatures',
-        'Reacties',
-        'Favorieten',
-        'Wijzig Wachtwoord',
-        'Opstelling',
-        'Inloggen',
-        'Uitloggen',
-        'Registreren',
-        'Registreer Organisatie',
-        'Registreer Vrijwilliger',
-        'Maak hier een veilig wachtwoord aan',
-        'Wachtwoord reset'
+        __('Organisaties', 'mooiwerk'),
+        __('Vrijwilligers', 'mooiwerk'),
+        __('Vacatures', 'mooiwerk'),
+        __('Mijn Account', 'mooiwerk'),
+        __('Nieuwe Vacature', 'mooiwerk'),
+        __('Bewerk Vacature', 'mooiwerk'),
+        __('Beheer Vacatures', 'mooiwerk'),
+        __('Reacties', 'mooiwerk'),
+        __('Favorieten', 'mooiwerk'),
+        __('Wijzig Wachtwoord', 'mooiwerk'),
+        __('Opstelling', 'mooiwerk'),
+        __('Inloggen', 'mooiwerk'),
+        __('Uitloggen', 'mooiwerk'),
+        __('Registreren', 'mooiwerk'),
+        __('Registreer Organisatie', 'mooiwerk'),
+        __('Registreer Vrijwilliger', 'mooiwerk'),
+        __('Maak hier een veilig wachtwoord aan', 'mooiwerk'),
+        __('Wachtwoord reset', 'mooiwerk')
     );
     if (in_array(get_the_title($post_ID), $restricted_pages)) {
-        echo "Can not delete page from WordPress. Disable the Breda Voor Elkaar plugin to delete the page.";
+        _e("Kan pagina van WordPress niet verwijderen. Schakel de MooiWerk-plug-in uit om de pagina te verwijderen.", 'mooiwerk');
         exit;
     }
 }
+//add_action('before_edit_post', 'restrict_post_deletion', 10, 1);
+//add_action('edit_post', 'restrict_post_deletion', 10, 1);
 add_action('wp_trash_post', 'restrict_post_deletion', 10, 1);
 add_action('before_delete_post', 'restrict_post_deletion', 10, 1);

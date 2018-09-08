@@ -22,7 +22,7 @@
  * @link       https://bytecode.nl
  * @since      1.0.0
  *
- * @package    Breda_Voor_Elkaar
+ * @package    MooiWerk
  */
 
 // If uninstall not called from WordPress, then exit.

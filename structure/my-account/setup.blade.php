@@ -42,7 +42,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = "Organisatie informatie";
+                $title = __("Organisatie informatie", 'mooiwerk');
                 break;
             case 2:
                 $options = array(
@@ -57,7 +57,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = "Uitgebreide informatie";
+                $title = __('Uitgebreide informatie', 'mooiwerk');
                 break;
             case 3:
                 $options = array(
@@ -70,7 +70,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = "Categorie";
+                $title = __("Categorie", 'mooiwerk');
                 break;
             case 4:
                 $options = array(
@@ -86,7 +86,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = "Social Media";
+                $title = __("Social Media", 'mooiwerk');
                 break;
         }
 
@@ -100,10 +100,10 @@
                         <form id="acf-form" class="acf-form" action="" method="post">
                             {!! acf_form( $options ) !!}
                             <div class="acf-form-submit">
-                                <input type="submit" class="acf-button" value="Update"><span class="acf-spinner"></span>			
+                                <input type="submit" class="acf-button" value="{{__('Update', 'mooiwerk')}}"><span class="acf-spinner"></span>			
                             </div>
                         </form>
-                        <a href="{{home_url('/mijn-account')}}">Profielregistratie verlaten?</a>
+                        <a href="{{home_url('/mijn-account')}}">{{__('Profielregistratie verlaten?', 'mooiwerk')}}</a>
                     </div>
                 </div>
             </div>

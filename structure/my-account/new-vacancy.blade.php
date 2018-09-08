@@ -10,7 +10,7 @@
         <div class="member-page__body  container">
             <div class="row">
                 <aside class="col-lg-4 sidebar">
-                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">Menu</a>
+                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">{{__('Menu', 'mooiwerk')}}</a>
                     <div id="sidebarnav" class="member-page__menu sidebar__item collapse dont-collapse-lg">
                         {!! my_account_menu() !!}
                     </div>
@@ -25,6 +25,7 @@
                             <div id="new-vacancy-form">
                                 @php 
                                     $options = array(
+                                        'id' => 'new-vacancy',
                                         'post_id' => 'new_post',
                                         'post_title'	=> true,
                                         'post_content'	=> true,
@@ -48,10 +49,10 @@
                                 {!! acf_form( $options ) !!}
                             </div>
                         @else
-                            <div class="member-page__message alert alert-dark" role="alert">Uw account is geen organisatie.</div>
+                            <div class="member-page__message alert alert-dark" role="alert">{{__('Uw account is geen organisatie.', 'mooiwerk')}}</div>
                         @endif
                     @else
-                        <div class="member-page__message alert alert-dark" role="alert">Je moet ingelogd zijn om deze pagina te bekijken.</div>
+                        <div class="member-page__message alert alert-dark" role="alert">{{__('Je moet ingelogd zijn om deze pagina te bekijken.', 'mooiwerk')}}</div>
                     @endif
                 </div>
             </div>

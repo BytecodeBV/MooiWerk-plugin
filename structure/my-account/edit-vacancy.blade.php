@@ -10,7 +10,7 @@
         <div class="member-page__body  container">
             <div class="row">
                 <aside class="col-lg-4 sidebar">
-                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">Menu</a>
+                    <a href="#sidebarnav" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">{{__('Menu', 'mooiwerk')}}</a>
                     <div id="sidebarnav" class="member-page__menu sidebar__item collapse dont-collapse-lg">
                         {!! my_account_menu() !!}
                     </div>
@@ -28,7 +28,7 @@
                                 @if(isset($_GET['trash']) && $_GET['trash'] == 'true')
                                     @php wp_trash_post($_GET['id']); @endphp
                                     <div class="member-page__message alert alert-success" role="alert">
-                                        Post deleted!
+                                       {{__('Post deleted!', 'mooiwerk')}}
                                     </div>
                                 @else
                                     <div id="edit-vacancy-form">
@@ -58,13 +58,13 @@
                                     </div>
                                 @endif
                             @else
-                                <div class="member-page__message alert alert-dark" role="alert">Uw account: {{$user->ID}} is niet de eigenaar {{$author_id}} van deze vacature.</div>
+                                <div class="member-page__message alert alert-dark" role="alert">{{sprintf(__('Uw account: %s is niet de eigenaar %s van deze vacature.', 'mooiwerk'), $user->ID, $author_id)}}</div>
                             @endif
                         @else
-                            <div class="member-page__message alert alert-dark" role="alert">Geen vacature geselecteerd</div>
+                            <div class="member-page__message alert alert-dark" role="alert">{{__('Geen vacature geselecteerd', 'mooiwerk')}}</div>
                         @endif
                     @else
-                        <div class="member-page__message alert alert-dark" role="alert">Je moet ingelogd zijn om deze pagina te bekijken.</div>
+                        <div class="member-page__message alert alert-dark" role="alert">{{__('Je moet ingelogd zijn om deze pagina te bekijken.', 'mooiwerk')}}</div>
                     @endif
                 </div>
             </div>

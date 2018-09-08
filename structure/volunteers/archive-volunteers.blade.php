@@ -41,20 +41,34 @@
                     @endphp
 
                     <aside id="archive-filters" class="col-lg-4 vacancy-list__layered layered">
-                        <a href="#filters" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">Filter</a>
+                        <a href="#filters" class="list-group-item d-lg-none layered__bar" data-toggle="collapse" aria-expanded="false">{{__('Filter', 'mooiwerk')}}</a>
                         <div id="filters" class="layered__form collapse dont-collapse-lg">
                             {{--// Loop over all filter keys and check if they are set in the _Get variable.--}}
                             @foreach($filter_keys as $acf_key => $key)
                                 @php
                                     // get the field's settings without attempting to load a value
                                     $field = get_field_object($acf_key, false, false);
+                                    if ($field['type'] == 'radio') {
+                                        if(isset($_GET[$key])){
+                                        
+                                            $field['value'] = $_GET[$key];
+                                            add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
+                                        } else {
+                                            $field['value'] = '';
+                                        }
+                                            
+                                    } else {
+                                         if(isset($_GET[$key])){
+                                        
+                                            $field['value'] = explode(',', $_GET[$key]);
+                                            add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
+                                        } else {
+                                            $field['value'] = array();
+                                        }
 
-                                    if(isset($_GET[$key])){
-                                        $field['value'] = explode(',', $_GET[$key]);
-                                        add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
-                                    } else{
-                                        $field['value'] = array();
                                     }
+
+                                   
                                 @endphp
                                 <section class="mb-4 layered__group">
                                     <h2 class="layered__group-header">{{$field['label']}}</h2>
@@ -99,7 +113,7 @@
                         );
 
                         // Add search term to wp-query if it is set in the url.
-                        if(isset($_GET['search'])){
+                        if(isset($_GET['search'])){                           
                             $search_term = $wpdb->esc_like($_GET['search']);
                             $args['search'] = '*'.$search_term.'*';
                             $args['search_columns'] = array(
@@ -138,14 +152,14 @@
                                     </div>
                                 </div>
                                 <div class="card-body vacancy-card__body">
-                                    <div class="vacancy-card__text">{{get_field('bio', 'user_' . $user->ID)}}</div>
+                                    <div class="vacancy-card__text">{!!get_field('bio', 'user_' . $user->ID)!!}</div>
                                     <a href="{{ get_author_posts_url($user->ID) }}" class="card-link">lees meer ›</a>
                                 </div>
                                 <div class="card-footer vacancy-card__footer">{{is_array(get_field('qualification', 'user_' . $user->ID))? implode(', ',get_field('qualification', 'user_' . $user->ID)) : get_field('qualification', 'user_' . $user->ID)}}</div>                                
                             </div>
                         @endforeach                
                     @else 
-                        <div class="alert alert-dark">Geen vrijwilliger gevonden die aan uw zoekopdracht voldeed.</div>
+                        <div class="alert alert-dark">{{__('Geen organisatie gevonden die aan uw zoekopdracht voldeed.', 'mooiwerk')}}</div>
                     @endif
                     {!! numeric_pagination($current_page, $num_pages) !!}
                 </main>

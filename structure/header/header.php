@@ -5,16 +5,16 @@
 function create_header_post_type()
 {
     $labels = array(
-        'name' => __('Headers'),
-        'singular_name' => __('Header'),
-        'add_new' => __('New Header'),
-        'add_new_item' => __('Add New Header'),
-        'edit_item' => __('Edit Header'),
-        'new_item' => __('New Header'),
-        'view_item' => __('View Header'),
-        'search_items' => __('Search Headers'),
-        'not_found' =>  __('No Headers Found'),
-        'not_found_in_trash' => __('No Headers found in Trash'),
+        'name' => __('Headers', 'mooiwerk'),
+        'singular_name' => __('Header', 'mooiwerk'),
+        'add_new' => __('New Header', 'mooiwerk'),
+        'add_new_item' => __('Add New Header', 'mooiwerk'),
+        'edit_item' => __('Edit Header', 'mooiwerk'),
+        'new_item' => __('New Header', 'mooiwerk'),
+        'view_item' => __('View Header', 'mooiwerk'),
+        'search_items' => __('Search Headers', 'mooiwerk'),
+        'not_found' =>  __('No Headers Found', 'mooiwerk'),
+        'not_found_in_trash' => __('No Headers found in Trash', 'mooiwerk'),
     );
     $args = array(
         'labels' => $labels,
@@ -44,11 +44,11 @@ function register_custom_fields_header()
         acf_add_local_field_group(
             array (
                 'key' => 'group_5b8e7145d0f1a',
-                'title' => 'Paginakoptekstvelden',
+                'title' => __('Paginakoptekstvelden', 'mooiwerk'),
                 'fields' => array (
                     array (
                         'key' => 'field_5b8e7193708a5',
-                        'label' => 'Titel',
+                        'label' => __('Titel', 'mooiwerk'),
                         'name' => 'title',
                         'type' => 'text',
                         'instructions' => '',
@@ -67,7 +67,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e71d4708a6',
-                        'label' => 'Subtitel',
+                        'label' => __('Subtitel', 'mooiwerk'),
                         'name' => 'subtitle',
                         'type' => 'text',
                         'instructions' => '',
@@ -86,7 +86,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e71f1708a7',
-                        'label' => 'Achtergrond Afbeelding',
+                        'label' => __('Achtergrond Afbeelding', 'mooiwerk'),
                         'name' => 'background',
                         'type' => 'image',
                         'instructions' => '',
@@ -110,7 +110,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e72d6708a8',
-                        'label' => 'Toon zoekformulier',
+                        'label' => __('Toon zoekformulier', 'mooiwerk'),
                         'name' => 'show_form',
                         'type' => 'true_false',
                         'instructions' => '',
@@ -129,7 +129,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e7313708a9',
-                        'label' => 'Zoek label',
+                        'label' => __('Zoek label', 'mooiwerk'),
                         'name' => 'search_label',
                         'type' => 'text',
                         'instructions' => '',
@@ -156,7 +156,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e73bc708aa',
-                        'label' => 'Zoek placeholder',
+                        'label' => __('Zoek placeholder', 'mooiwerk'),
                         'name' => 'search_placeholder',
                         'type' => 'text',
                         'instructions' => '',
@@ -183,7 +183,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e742a708ab',
-                        'label' => 'Wat te zoeken',
+                        'label' => __('Wat te zoeken', 'mooiwerk'),
                         'name' => 'search_type',
                         'type' => 'select',
                         'instructions' => '',
@@ -204,10 +204,10 @@ function register_custom_fields_header()
                         ),
                         'choices' => array (
                             '*' => 'Alle',
-                            'vacancies' => 'Vacatures',
-                            'class' => 'Vrijwilligersacademie',
-                            'volunteers' => 'Vrijwilligers',
-                            'organisations' => 'Organisaties',
+                            'vacancies' => __('Vacatures', 'mooiwerk'),
+                            'class' => __('Vrijwilligersacademie', 'mooiwerk'),
+                            'volunteers' => __('Vrijwilligers', 'mooiwerk'),
+                            'organisations' => __('Organisaties', 'mooiwerk'),
                         ),
                         'default_value' => array (
                         ),
@@ -220,7 +220,7 @@ function register_custom_fields_header()
                     ),
                     array (
                         'key' => 'field_5b8e755e708ac',
-                        'label' => 'Verzend label',
+                        'label' => __('Verzend label', 'mooiwerk'),
                         'name' => 'submit_label',
                         'type' => 'text',
                         'instructions' => '',
@@ -269,11 +269,11 @@ function register_custom_fields_header()
         acf_add_local_field_group(
             array (
                 'key' => 'group_5b8e835e1b571',
-                'title' => 'Pagina hoofd',
+                'title' => __('Pagina hoofd', 'mooiwerk'),
                 'fields' => array (
                     array (
                         'key' => 'field_5b8e837eafa79',
-                        'label' => 'Kies Header',
+                        'label' => __('Kies Header', 'mooiwerk'),
                         'name' => 'page_header',
                         'type' => 'post_object',
                         'instructions' => '',
@@ -289,7 +289,7 @@ function register_custom_fields_header()
                         ),
                         'taxonomy' => array (
                         ),
-                        'allow_null' => 0,
+                        'allow_null' => 1,
                         'multiple' => 0,
                         'return_format' => 'id',
                         'ui' => 1,
@@ -349,7 +349,7 @@ function get_header_by_ID($ID)
     // now check if the query has posts and if so, output their content in a banner-box div
     if (!empty($banner) && get_post_type($ID) == 'header') {
         ob_start(); ?>
-        <section class="hero-banner" style="background-image:url(<?php echo get_field('background', $ID) ?>); 
+        <section class="hero" style="background-image:url(<?php echo get_field('background', $ID) ?>); 
             background-size:cover; background-position: center;">
             <?php if (!empty(get_field('title', $ID))) { ?>
                 <div class="container">

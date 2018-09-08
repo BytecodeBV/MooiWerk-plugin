@@ -85,8 +85,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body vacancy-card__body">
-                                    <div class="vacancy-card__text">{!! $user->description !!}</div>
-                                    <a href="{{ get_author_posts_url($user->ID) }}" class="card-link">lees meer ›</a>
+                                    <div class="vacancy-card__text">{!! get_field('bio', 'user_' . $user->ID) !!}</div>
+                                    <a href="{{ get_author_posts_url($user->ID) }}" class="card-link">{{__('lees meer ›', 'mooiwerk')}}</a>
                                 </div>
                                 @php
                                     $args = array(
@@ -99,11 +99,11 @@
                                     else
                                         $count = 0;
                                 @endphp
-                                <div class="card-footer vacancy-card__footer">No of Vacancies: {{$count}}</div>                                
+                                <div class="card-footer vacancy-card__footer">{{sprintf(__('No of Vacancies: %s', 'mooiwerk'), $count)}}</div>                                
                             </div>
                         @endforeach                
                     @else 
-                        <div class="alert alert-dark">Geen organisatie gevonden die aan uw zoekopdracht voldeed.</div>
+                        <div class="alert alert-dark">{{__('Geen organisatie gevonden die aan uw zoekopdracht voldeed.', 'mooiwerk')}}</div>
                     @endif
                     {!! numeric_pagination($current_page, $num_pages) !!}
                 </main>

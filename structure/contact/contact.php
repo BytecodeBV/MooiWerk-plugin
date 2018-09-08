@@ -12,11 +12,11 @@ function register_custom_fields_contact()
         acf_add_local_field_group(
             array(
                 'key' => 'group_5b6b10ffe2ca3',
-                'title' => 'Contact',
+                'title' => __('Contact', 'mooiwerk'),
                 'fields' => array(
                     array(
                         'key' => 'field_5b6b111410336',
-                        'label' => 'Phone',
+                        'label' => __('Phone', 'mooiwerk'),
                         'name' => 'phone',
                         'type' => 'text',
                         'instructions' => '',
@@ -35,7 +35,7 @@ function register_custom_fields_contact()
                     ),
                     array(
                         'key' => 'field_5b6b112610337',
-                        'label' => 'Address',
+                        'label' => __('Address', 'mooiwerk'),
                         'name' => 'address',
                         'type' => 'text',
                         'instructions' => '',
@@ -54,7 +54,7 @@ function register_custom_fields_contact()
                     ),
                     array(
                         'key' => 'field_5b6b113d10338',
-                        'label' => 'Email',
+                        'label' => __('Email', 'mooiwerk'),
                         'name' => 'email',
                         'type' => 'email',
                         'instructions' => '',
@@ -72,10 +72,10 @@ function register_custom_fields_contact()
                     ),
                     array(
                         'key' => 'field_5b6b114c10339',
-                        'label' => 'Form',
+                        'label' => __('Form', 'mooiwerk'),
                         'name' => 'form',
                         'type' => 'text',
-                        'instructions' => 'Paste Contact form shortcode here',
+                        'instructions' => __('Paste Contact form shortcode here', 'mooiwerk'),
                         'required' => 1,
                         'conditional_logic' => 0,
                         'wrapper' => array(
