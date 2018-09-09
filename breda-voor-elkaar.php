@@ -224,7 +224,7 @@ function filter_script($page)
 //compare dates
 function isExpired($time)
 {
-    return (strtotime($time) > time());
+    return (time() > strtotime($time));
 }
 
 /**

@@ -48,24 +48,19 @@
                                 @php
                                     // get the field's settings without attempting to load a value
                                     $field = get_field_object($acf_key, false, false);
+                                   //change radio to checkbox
                                     if ($field['type'] == 'radio') {
-                                        if(isset($_GET[$key])){
-                                        
-                                            $field['value'] = $_GET[$key];
+                                        $field['type'] = 'checkbox';
+                                    }
+									if (isset($_GET[$key])){                                                                                
+                                        $field['value'] = explode(',', $_GET[$key]);
+                                        if ($key == 'availability') {
+                                            add_to_meta_query_if_get_exists_or($key,$_GET[$key],$meta_query);
+                                        } else {                                            
                                             add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
-                                        } else {
-                                            $field['value'] = '';
                                         }
-                                            
                                     } else {
-                                         if(isset($_GET[$key])){
-                                        
-                                            $field['value'] = explode(',', $_GET[$key]);
-                                            add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
-                                        } else {
-                                            $field['value'] = array();
-                                        }
-
+                                        $field['value'] = array();
                                     }
 
                                    
@@ -95,6 +90,24 @@
                                     array_push($query,$meta_addition);
                                 }
                             }
+                        }
+						/**
+                         * Add key, value pair OR to the post meta filters if it is set.
+                         */
+                        function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query){
+                            $nested_meta = ['relation' => 'OR'];
+                            if(isset($_GET[$filter_key])){
+                                $values_to_search = explode(',', $_GET[$filter_key]);
+                                foreach ($values_to_search as $value) {
+                                    $meta_addition = array(
+                                        'key' => rawurldecode($filter_key),
+                                        'value' => rawurldecode($value),
+                                        'compare' => 'LIKE'
+                                    );
+                                    array_push($nested_meta,$meta_addition);
+                                }
+                            }
+                            array_push($query,$nested_meta);
                         }
                         // Check if user wants to show up in results.
                         $check_pref = array(
