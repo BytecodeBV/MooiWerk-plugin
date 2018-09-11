@@ -66,7 +66,7 @@
 
                         @foreach($filter_keys as $acf_key => $key)
                             @php
-                            // get the field's settings without attempting to load a value
+                            // get the fields settings without attempting to load a value
                             $field = get_field_object($acf_key, false, false);
 
                             if(isset($_GET[$key])){

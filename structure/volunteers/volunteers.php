@@ -547,7 +547,10 @@ add_action('acf/init', 'register_custom_fields_volunteer');
  */    
 function archive_volunteer_template( $page_template )
 {
-    if (is_page(__('Vrijwilligers', 'mooiwerk'))) {
+    if (is_page(__('Vrijwilligers', 'mooiwerk')) 
+        && (current_user_can('administrator')
+        || current_user_can('organisation'))
+    ) {
         $page_template = plugin_dir_path(__FILE__).'/archive-volunteers.blade.php';
     }
     return $page_template;

@@ -58,10 +58,10 @@
                                     </div>
                                 @endif
                             @else
-                                <div class="member-page__message alert alert-dark" role="alert">{{sprintf(__('Uw account: %s is niet de eigenaar %s van deze vacature.', 'mooiwerk'), $user->ID, $author_id)}}</div>
+                                <div class="member-page__message alert alert-dark" role="alert">{{ sprintf( __("Uw account: %1$s is niet de eigenaar %2$s van deze vacature.", 'mooiwerk'), $user->ID, $author_id) }}</div>
                             @endif
                         @else
-                            <div class="member-page__message alert alert-dark" role="alert">{{__('Geen vacature geselecteerd', 'mooiwerk')}}</div>
+                            <div class="member-page__message alert alert-dark" role="alert">{{ __('Geen vacature geselecteerd', 'mooiwerk') }}</div>
                         @endif
                     @else
                         <div class="member-page__message alert alert-dark" role="alert">{{__('Je moet ingelogd zijn om deze pagina te bekijken.', 'mooiwerk')}}</div>
