@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="row company__bio">
-                        {!! get_field('bio', 'user_' . $ID) !!}
+                        {!! apply_filters('the_content', get_field('bio', 'user_' . $ID)) !!}
                     </div>
 
                     @php

@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="row company__bio">
-                            {!!get_field('bio', 'user_' . $ID)!!}
+                            {!! apply_filters('the_content', get_field('bio', 'user_' . $ID)) !!}
                     </div>
                     @if($categories = get_field('interest', 'user_' . $ID))
                         <div class="d-flex flex-wrap text-dark company__categories">

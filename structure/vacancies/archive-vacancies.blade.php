@@ -3,7 +3,27 @@
 @section('content')
     @include('partials.page-header')
     <section class="vacancy-list">
-        <div class="container">
+        <div class="container">                           
+            <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
+                @php
+                    $pages = ['Vacatures', 'Organisaties', 'Vrijwilligers'];
+                @endphp
+                @foreach($pages as $page)
+                    @php 
+                        if($page == 'Vrijwilligers') {
+                            if (!current_user_can('administrator') || !current_user_can('organisation')) {
+                                continue;
+                            }
+                        }
+                        $page_object = get_page_by_title( $page, NULL, 'page' );
+                    @endphp
+                    @if($page_object)
+                        <li class="nav-item">
+                            <a class="nav-link {{ ($page == 'Vacatures')? 'active':'' }}" href="{{ get_permalink(get_page_by_path($page_object->post_name )) }}">{{$page}}</a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
             <div class="row">
             @php
                 global $wpdb;

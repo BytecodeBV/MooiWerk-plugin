@@ -87,9 +87,9 @@ function register_custom_fields_vacancy()
                             'id' => '',
                         ),
                         'choices' => array (
-                            'Regelmatig (elke week, elke 2 weken, elke maand)' => __('Regelmatig (elke week, elke 2 weken, elke maand)', 'mooiwerk'),
-                            'Eenmalig (een dag of dagdeel)' => __('Eenmalig (een dag of dagdeel)', 'mooiwerk'),
-                            'Tijdelijk (maximaal 3 maanden, projectmatig)' => __('Tijdelijk (maximaal 3 maanden, projectmatig)', 'mooiwerk'),
+                            'Regelmatig' => __('Regelmatig', 'mooiwerk'),
+                            'Eenmalig' => __('Eenmalig', 'mooiwerk'),
+                            'Tijdelijk' => __('Tijdelijk', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
