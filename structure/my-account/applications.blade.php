@@ -25,10 +25,22 @@
                             <div id="applications">
                                 @php
                                     $posts = get_field('applications', 'user_' . $user->ID);
+                                    $args = array(
+                                        'post_type' => 'vacancies',
+                                        'user_id' => $user->ID,
+                                        //'status' => 'approve'
+                                    );
+                                    $comments = get_comments( $args );
+                                    $vacancies = array_unique( 
+                                        wp_list_pluck( 
+                                            $comments,       
+                                            'comment_post_ID' 
+                                        )
+                                    );
                                 @endphp
-                                @if ($posts)
-                                    <h1>Reacties</h1>
-                                    @foreach ($posts as $p) {{-- variable must NOT be called $post (IMPORTANT) --}}
+                                @if ($vacancies)
+                                    <h1>{{__('Reacties','mooiwerk')}}</h1>
+                                    @foreach ($vacancies as $p) {{-- variable must NOT be called $post (IMPORTANT) --}}
                                         @php
                                         $p = get_post($p);
                                         $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');
@@ -37,29 +49,22 @@
                                             'link' => get_permalink($p->ID),
                                             'image_link' => get_field('logo', 'user_'.$p->post_author),
                                             'excerpt' => wp_kses_post(wp_trim_words($p->post_content, 25, '...')),
-                                            'footer' => $time . __(' - Breda, Nederland', 'mooiwerk'),
                                         ];
-                                        $categories = get_field('categories', $p->ID);
-                                        if (is_array($categories)){
-                                            $vacancy['subtitle'] = implode(", ", $categories);
-                                        } else {
-                                            $vacancy['subtitle'] = $categories;
-                                        }
+                                        $post_comments = array_filter($comments, function($comment) use ($p){
+                                            return ($comment->comment_post_ID == $p->ID);
+                                        });
                                         @endphp
-                                        <div class="card shadow border-light vacancy-list__item  vacancy-card">
-                                            <div class="row vacancy-card__header-wrapper">
-                                                <div class="col-xxl-2 col-md-3 col-xs-12 vacancy-card__figure d-flex align-items-center">
-                                                <img src="{{ $vacancy['image_link']? $vacancy['image_link'] : '//placehold.it/114x76' }}" class="vacancy-card__image">
-                                                </div>
-                                                <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
-                                                    <h2 class="card-title vacancy-card__header">{{ $vacancy['title'] }}</h2>
-                                                    <h3 class="card-subtitle vacancy-card__subheader">{{ $vacancy['subtitle'] }}</h3>
-                                                </div>
+                                        <div class="card shadow border-light  vacancy-card">                                        
+                                            <div class="card-body">                                            
+                                                <h2 class="card-title vacancy-card__header">{{ $vacancy['title'] }}</h2>
+                                                <div class="card-text">{!! apply_filters('the_content', $vacancy['excerpt']) !!}</div>
                                             </div>
-                                            <div class="card-body vacancy-card__body">
-                                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">lees meer ›</a></div>       
-                                            </div>
-                                            <div class="card-footer vacancy-card__footer">{{ $vacancy['footer'] }}</div>
+                                            <ul class="list-group list-group-flush">                                                
+                                                @foreach(array_slice($post_comments, 0, 3) as $comment)
+                                                    <li class="list-group-item">{!! apply_filters('the_content', $comment->comment_content) !!}</li>
+                                                @endforeach
+                                            </ul>
+                                            <div class="card-body"><a href="{{ $vacancy['link'] }}" class="card-link">{{__('lees meer ›', 'mooiwerk')}}</a></div>
                                         </div>
                                     @endforeach
                                 @else

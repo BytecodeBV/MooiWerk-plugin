@@ -9,12 +9,7 @@
                         $pages = ['Vrijwilligers', 'Organisaties', 'Vacatures'];
                     @endphp
                     @foreach($pages as $page)
-                        @php 
-                            if($page == 'Vrijwilligers') {
-                                if (!current_user_can('administrator') || !current_user_can('organisation')) {
-                                    continue;
-                                }
-                            }
+                        @php
                             $page_object = get_page_by_title( $page, NULL, 'page' );
                         @endphp
                         @if($page_object)
@@ -194,7 +189,7 @@
                             </div>
                         @endforeach                
                     @else 
-                        <div class="alert alert-dark">{{__('Geen organisatie gevonden die aan uw zoekopdracht voldeed.', 'mooiwerk')}}</div>
+                        <div class="alert alert-dark">{{__('Geen vrijwilliger gevonden die aan uw zoekopdracht voldeed.', 'mooiwerk')}}</div>
                     @endif
                     {!! numeric_pagination($current_page, $num_pages) !!}
                 </main>

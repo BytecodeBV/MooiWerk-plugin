@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('partials.page-header')
     @php
         $ID = get_queried_object()->ID;
         $usermeta = get_user_meta($ID);
@@ -9,12 +10,7 @@
         global $post; 
         $post = get_post( $ID, OBJECT );
         setup_postdata( $post );
-
-        $cover = get_field('profile_pic', 'user_' . $ID);
-        $cover= $cover ? $cover : App\asset_path('images/header_u.png');
     @endphp
-    <section class="hero-banner" style="background-image:url({{$cover}}); background-size:cover; background-position: center;">
-    </section>
     <section class="company">
         <div class="container">
             <div class="row">

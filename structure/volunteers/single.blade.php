@@ -27,10 +27,10 @@
                         <div class="company__contact">
                             <div class="d-flex flex-column company__contact-group">
                                 @if(get_field('age', 'user_' . $ID))
-                                <small class="company__address">{{ get_field('age', 'user_' . $ID) }}</small>
+                                    <small class="company__address">{{ get_field('age', 'user_' . $ID) }}</small>
                                 @endif
                                 @if(get_field('phone', 'user_' . $ID))
-                                <small class="company__phone">{{ get_field('phone', 'user_' . $ID) }}</small>
+                                    <small class="company__phone">{{ get_field('phone', 'user_' . $ID) }}</small>
                                 @endif
                             </div>
                             <nav class="company__social-links">

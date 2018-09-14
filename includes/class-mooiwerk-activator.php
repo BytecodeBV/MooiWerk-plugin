@@ -39,6 +39,7 @@ class MooiWerk_Activator {
         create_page(__('Vrijwilligers', 'mooiwerk'));
         create_page(__('Vacatures', 'mooiwerk'));
         create_page(__('Vrijwilligersacademie', 'mooiwerk'));
+        create_page(__('Advies', 'mooiwerk'));
 
         create_page(__('Mijn Account', 'mooiwerk'));
         create_page(__('Nieuwe Vacature', 'mooiwerk'));

@@ -6,16 +6,15 @@
         <div class="container">                           
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
-                    $pages = ['Vacatures', 'Organisaties', 'Vrijwilligers'];
+                    $pages = ['Organisaties', 'Vacatures', 'Vrijwilligers'];
+                    $user = wp_get_current_user();
                 @endphp
                 @foreach($pages as $page)
+                    @if ( $page == 'Vrijwilligers' &&  ! in_array('organisation', $user->roles) )
+                        @continue
+                    @endif
                     @php 
-                        if($page == 'Vrijwilligers') {
-                            if (!current_user_can('administrator') || !current_user_can('organisation')) {
-                                continue;
-                            }
-                        }
-                        $page_object = get_page_by_title( $page, NULL, 'page' );
+                      $page_object = get_page_by_title( $page, NULL, 'page' );
                     @endphp
                     @if($page_object)
                         <li class="nav-item">

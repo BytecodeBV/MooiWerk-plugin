@@ -324,6 +324,13 @@ function register_custom_fields_header()
                             'value' => 'class',
                         ),
                     ),
+                    array (
+                        array (
+                            'param' => 'user_form',
+                            'operator' => '==',
+                            'value' => 'edit',
+                        ),
+                    ),
                 ),
                 'menu_order' => 0,
                 'position' => 'normal',

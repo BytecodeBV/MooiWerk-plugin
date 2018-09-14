@@ -38,30 +38,6 @@ function register_custom_fields_organisation() {
                         'mime_types' => '',
                     ),
                     array (
-                        'key' => 'field_5b7ee9fb950e8',
-                        'label' => __('Upload omslagfoto', 'mooiwerk'),
-                        'name' => 'profile_pic',
-                        'type' => 'image',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'return_format' => 'url',
-                        'preview_size' => 'full',
-                        'library' => 'all',
-                        'min_width' => '',
-                        'min_height' => '',
-                        'min_size' => '',
-                        'max_width' => '',
-                        'max_height' => '',
-                        'max_size' => '',
-                        'mime_types' => '',
-                    ),
-                    array (
                         'key' => 'field_5b7eea1a950e9',
                         'label' => __('Naam organisatie', 'mooiwerk'),
                         'name' => 'name',
@@ -455,11 +431,13 @@ add_action('acf/init', 'register_custom_fields_organisation');
 /**
  * Set template for archive page.
  */    
- function archive_organisation_template( $page_template ) {
-     if ( is_page( __('Organisaties', 'mooiwerk') ) ) {
-         $page_template = plugin_dir_path( __FILE__ ) . '/archive-organisations.blade.php';
-     }
-     return $page_template;
- }
- add_filter( 'page_template', 'archive_organisation_template' );
+function archive_organisation_template( $page_template )
+{
+    if (is_page(__('Organisaties', 'mooiwerk'))) {
+        $page_template = plugin_dir_path( __FILE__ ) . '/archive-organisations.blade.php';
+    }
+    return $page_template;
+}
+add_filter('page_template', 'archive_organisation_template');
+
  

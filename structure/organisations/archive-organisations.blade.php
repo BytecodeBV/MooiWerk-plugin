@@ -7,15 +7,14 @@
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
                     $pages = ['Organisaties', 'Vacatures', 'Vrijwilligers'];
+                    $user = wp_get_current_user();
                 @endphp
                 @foreach($pages as $page)
+                    @if ( $page == 'Vrijwilligers' &&  ! in_array('organisation', $user->roles) )
+                        @continue
+                    @endif
                     @php 
-                        if($page == 'Vrijwilligers') {
-                            if (!current_user_can('administrator') || !current_user_can('organisation')) {
-                                continue;
-                            }
-                        }
-                        $page_object = get_page_by_title( $page, NULL, 'page' );
+                      $page_object = get_page_by_title( $page, NULL, 'page' );
                     @endphp
                     @if($page_object)
                         <li class="nav-item">
@@ -105,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body vacancy-card__body">
-                                    <div class="vacancy-card__text">{!! get_field('bio', 'user_' . $user->ID) !!}</div>
+                                    <div class="vacancy-card__text">{!! wp_kses_post(wp_trim_words(get_field('bio', 'user_' . $user->ID), 25, '...')) !!}</div>
                                     <a href="{{ get_author_posts_url($user->ID) }}" class="card-link">{{__('lees meer ›', 'mooiwerk')}}</a>
                                 </div>
                                 @php

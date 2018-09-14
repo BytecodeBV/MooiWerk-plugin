@@ -3,8 +3,7 @@
 /**
  * Add Custom Fields on plugin init.
  */
-function register_custom_fields_frontpage() 
-{
+function register_custom_fields_frontpage() {
     if (function_exists('acf_add_local_field_group')) {
         acf_add_local_field_group(
             [
@@ -68,7 +67,8 @@ function register_custom_fields_frontpage()
                             ' Nam sollicitudin risus sapien, id bibendum urna laoreet nec.' .
                             ' Etiam efficitur libero eget nisl euismod, a rutrum leo sagittis. Mauris egestas diam purus.</p>' .
                             '<p>In tempus pulvinar mattis. Sed sed feugiat metus. Nam sollicitudin risus sapien, id bibendum urna laoreet nec.' .
-                            ' Etiam efficitur libero eget nisl euismod. </p>', 'mooiwerk'
+                            ' Etiam efficitur libero eget nisl euismod. </p>',
+                            'mooiwerk'
                         ),
                         'tabs' => 'all',
                         'toolbar' => 'full',
@@ -185,6 +185,13 @@ function register_custom_fields_frontpage()
                             'value' => 'front_page',
                         ],
                     ],
+                    [
+                        [
+                            'param' => 'page_type',
+                            'operator' => '==',
+                            'value' => 'posts_page',
+                        ],
+                    ],
                 ],
                 'menu_order' => 0,
                 'position' => 'normal',
@@ -265,6 +272,13 @@ function register_custom_fields_frontpage()
                             'param' => 'page_type',
                             'operator' => '==',
                             'value' => 'front_page',
+                        ],
+                    ],
+                    [
+                        [
+                            'param' => 'page_type',
+                            'operator' => '==',
+                            'value' => 'posts_page',
                         ],
                     ],
                 ],
