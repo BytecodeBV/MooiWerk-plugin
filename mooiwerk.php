@@ -16,7 +16,7 @@
  * Plugin Name:       MooiWerk
  * Plugin URI:        https://bytecode.nl
  * Description:       Adds all custom functionality for MooiWerk platform
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            Bytecode Digital Agency B.V.
  * Author URI:        https://bytecode.nl
  * License:           GPL-2.0+
@@ -280,7 +280,7 @@ function register_custom_fields_users()
         ]);
     }
 }
-add_action('acf/init', 'register_custom_fields_users');
+//add_action('acf/init', 'register_custom_fields_users');
 
 function restrict_post_deletion($post_ID)
 {

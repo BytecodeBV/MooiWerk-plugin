@@ -4,6 +4,26 @@
   @include('partials.page-header')
     <section class="vacancy-list">
         <div class="container">
+            <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
+                @php
+                    $pages = ['Organisaties', 'Vacatures', 'Vrijwilligers'];
+                @endphp
+                @foreach($pages as $page)
+                    @php 
+                        if($page == 'Vrijwilligers') {
+                            if (!current_user_can('administrator') || !current_user_can('organisation')) {
+                                continue;
+                            }
+                        }
+                        $page_object = get_page_by_title( $page, NULL, 'page' );
+                    @endphp
+                    @if($page_object)
+                        <li class="nav-item">
+                            <a class="nav-link {{ ($page == 'Organisaties')? 'active':'' }}" href="{{ get_permalink(get_page_by_path($page_object->post_name )) }}">{{$page}}</a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
             @php
                 global $wpdb;
                 // Start session to save posts per page
@@ -31,7 +51,7 @@
                 $meta_query = array('relation' => 'OR'); // Array of arrays that individually store key/value pairs.
                 
             @endphp
-            <div class="row">
+            <div class="row">            
                 <aside id="archive-filters" class="col-lg-4 vacancy-list__layered layered">
                     @php dynamic_sidebar('sidebar-primary') @endphp
                 </aside>                

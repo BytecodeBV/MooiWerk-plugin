@@ -98,7 +98,7 @@
                     </div>
                     <div class="row cv__content">    
                         <article class="col-lg-8 cv__profile">
-                                {!! get_the_content() !!}
+                                {!! apply_filters('the_content', get_the_content())  !!}
                                 @if( is_user_logged_in() && get_the_author_meta('ID') == get_current_user_id() )
                                     <div class=" vacancy__meta my-5"> 
                                         <h3>{{__('Bewerken', 'mooiwerk')}}</h3>

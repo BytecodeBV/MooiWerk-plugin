@@ -152,6 +152,10 @@ class MooiWerk
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'structure/header/header.php';
 
+        /**
+         * The class responsible for the custom frontpage functionality.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'structure/frontpage/frontpage.php';
 
         /**
          * The class responsible for the custom content block functionality.

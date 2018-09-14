@@ -4,6 +4,26 @@
   @include('partials.page-header')
         <section class="vacancy-list no-background">
             <div class="container">
+                <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
+                    @php
+                        $pages = ['Vrijwilligers', 'Organisaties', 'Vacatures'];
+                    @endphp
+                    @foreach($pages as $page)
+                        @php 
+                            if($page == 'Vrijwilligers') {
+                                if (!current_user_can('administrator') || !current_user_can('organisation')) {
+                                    continue;
+                                }
+                            }
+                            $page_object = get_page_by_title( $page, NULL, 'page' );
+                        @endphp
+                        @if($page_object)
+                            <li class="nav-item">
+                                <a class="nav-link {{ ($page == 'Vrijwilligers')? 'active':'' }}" href="{{ get_permalink(get_page_by_path($page_object->post_name )) }}">{{$page}}</a>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
                 <div class="row">
                     @php
                         global $wpdb;
@@ -46,13 +66,15 @@
                             {{--// Loop over all filter keys and check if they are set in the _Get variable.--}}
                             @foreach($filter_keys as $acf_key => $key)
                                 @php
-                                    // get the field's settings without attempting to load a value
+                                    
+                                    // get the fields settings without attempting to load a value
                                     $field = get_field_object($acf_key, false, false);
-                                   //change radio to checkbox
+
+                                    //change radio to checkbox
                                     if ($field['type'] == 'radio') {
                                         $field['type'] = 'checkbox';
                                     }
-									if (isset($_GET[$key])){                                                                                
+                                   if (isset($_GET[$key])){                                                                                
                                         $field['value'] = explode(',', $_GET[$key]);
                                         if ($key == 'availability') {
                                             add_to_meta_query_if_get_exists_or($key,$_GET[$key],$meta_query);
@@ -62,7 +84,6 @@
                                     } else {
                                         $field['value'] = array();
                                     }
-
                                    
                                 @endphp
                                 <section class="mb-4 layered__group">
@@ -91,7 +112,8 @@
                                 }
                             }
                         }
-						/**
+
+                        /**
                          * Add key, value pair OR to the post meta filters if it is set.
                          */
                         function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query){
