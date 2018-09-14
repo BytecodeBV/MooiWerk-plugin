@@ -51,9 +51,10 @@ class MooiWerk_Activator {
         create_page(__('Opstelling', 'mooiwerk'));
         create_page(__('Inloggen', 'mooiwerk'), '[theme-my-login action="login"]');
         create_page(__('Uitloggen', 'mooiwerk'), '[theme-my-login action="logout"]');
-        create_page(__('Registreren', 'mooiwerk'), '[theme-my-login action="register"]');
+        create_page(__('Registreren', 'mooiwerk'));
         create_page(__('Registreer Organisatie', 'mooiwerk'), '[theme-my-login action="register"]');
         create_page(__('Registreer Vrijwilliger', 'mooiwerk'), '[theme-my-login action="register"]');
+        create_page(__('Nieuw account', 'mooiwerk'), '[theme-my-login action="register"]');
         create_page(__('Maak hier een veilig wachtwoord aan', 'mooiwerk'), '[theme-my-login action="lostpassword"]');
         create_page(__('Maak hier een veilig wachtwoord aan', 'mooiwerk'), '[theme-my-login action="resetpass"]');
     }

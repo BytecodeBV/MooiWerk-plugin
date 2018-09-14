@@ -40,18 +40,26 @@
                                 @endif                                
                             </div>
                             <nav class="company__social-links">
-                                <a href="{{get_field('facebook', 'user_' . $ID)}}" target="_blank" class="company__social-link">
-                                    <img src="@asset('images/facebook.svg')" alt="Facebook" class="company__social-link-icon">
-                                </a>
-                                <a href="{{get_field('twitter', 'user_' . $ID)}}" target="_blank" class="company__social-link">
-                                    <img src="@asset('images/twitter.svg')" alt="Twitter" class="company__social-link-icon">
-                                </a>
-                                <a href="{{get_field('linkedin', 'user_' . $ID)}}" target="_blank" class="company__social-link">
-                                    <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company__social-link-icon">
-                                </a>
-                                <a href="{{get_field('instagram', 'user_' . $ID)}}" target="_blank" class="company__social-link">
-                                    <img src="@asset('images/instagram.svg')" alt="Instagram" class="company__social-link-icon">
-                                </a>
+                                @if(get_field('facebook', 'user_' . $ID))
+                                    <a href="{{get_field('facebook', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                        <img src="@asset('images/facebook.svg')" alt="Facebook" class="company__social-link-icon">
+                                    </a>
+                                 @endif
+                                @if(get_field('twitter', 'user_' . $ID))
+                                    <a href="{{get_field('twitter', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                        <img src="@asset('images/twitter.svg')" alt="Twitter" class="company__social-link-icon">
+                                    </a>
+                                 @endif
+                                @if(get_field('linkedin', 'user_' . $ID))
+                                    <a href="{{get_field('linkedin', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                        <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company__social-link-icon">
+                                    </a>
+                                @endif
+                                @if(get_field('instagram', 'user_' . $ID))
+                                    <a href="{{get_field('instagram', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                        <img src="@asset('images/instagram.svg')" alt="Instagram" class="company__social-link-icon">
+                                    </a>
+                                @endif
                             </nav>
                         </div>
                     </div>

@@ -8,10 +8,17 @@
                 @php
                     $pages = ['Organisaties', 'Vacatures', 'Vrijwilligers'];
                     $user = wp_get_current_user();
+                    $roles = $user->roles;
                 @endphp
                 @foreach($pages as $page)
-                    @if ( $page == 'Vrijwilligers' &&  ! in_array('organisation', $user->roles) )
-                        @continue
+                    @if ($page == 'Vrijwilligers')
+                         @php
+                            if(in_array('administrator', $roles)) {
+                            } elseif (in_array('organisation', $roles)) {
+                            } else {
+                                continue;
+                            }
+                        @endphp
                     @endif
                     @php 
                       $page_object = get_page_by_title( $page, NULL, 'page' );

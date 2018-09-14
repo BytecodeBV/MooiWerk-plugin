@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-09-11 19:55+0100\n"
-"PO-Revision-Date: 2018-09-11 19:56+0100\n"
+"POT-Creation-Date: 2018-09-14 22:50+0100\n"
+"PO-Revision-Date: 2018-09-14 22:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -27,35 +27,43 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: structure/my-account/applications.blade.php:34
+#: structure/my-account/applications.blade.php:42
+#: includes/class-mooiwerk-activator.php:48 mooiwerk.php:257
+#: structure/my-account/my-account.php:23
+#: structure/my-account/my-account.php:56
+msgid "Reacties"
+msgstr ""
+
+#: structure/my-account/applications.blade.php:46
 #: structure/my-account/favorites.blade.php:34
 #: structure/my-account/manage-vacancies.blade.php:38
-#: structure/organisations/single.blade.php:77
-#: structure/vacancies/archive-vacancies.blade.php:141
-#: structure/volunteers/single.blade.php:78
+#: structure/organisations/single.blade.php:81
+#: structure/vacancies/archive-vacancies.blade.php:167
+#: structure/volunteers/single.blade.php:86
 msgid " geleden"
 msgstr ""
 
-#: structure/my-account/applications.blade.php:40
-#: structure/my-account/favorites.blade.php:40
-#: structure/organisations/single.blade.php:83
-#: structure/vacancies/archive-vacancies.blade.php:147
-#: structure/vacancies/single.blade.php:14
-#: structure/volunteers/single.blade.php:84
-msgid " - Breda, Nederland"
+#: structure/my-account/applications.blade.php:67
+#: structure/my-account/favorites.blade.php:60
+#: structure/my-account/manage-vacancies.blade.php:65
+#: structure/organisations/archive-organisations.blade.php:115
+#: structure/vacancies/archive-vacancies.blade.php:193
+#: structure/vacancies/single.blade.php:210
+#: structure/volunteers/single.blade.php:112
+msgid "lees meer ›"
 msgstr ""
 
-#: structure/my-account/applications.blade.php:66
+#: structure/my-account/applications.blade.php:71
 msgid "Geen reacties."
 msgstr ""
 
-#: structure/my-account/applications.blade.php:70
+#: structure/my-account/applications.blade.php:75
 #: structure/my-account/favorites.blade.php:70
 #: structure/my-account/manage-vacancies.blade.php:82
 msgid "Uw account is geen vrijwilliger."
 msgstr ""
 
-#: structure/my-account/applications.blade.php:73
+#: structure/my-account/applications.blade.php:78
 #: structure/my-account/change-password.blade.php:69
 #: structure/my-account/edit-vacancy.blade.php:67
 #: structure/my-account/favorites.blade.php:73
@@ -107,15 +115,18 @@ msgid "Geen vacature geselecteerd"
 msgstr ""
 
 #: structure/my-account/favorites.blade.php:30
-msgid "Your Favorites"
+#: includes/class-mooiwerk-activator.php:49 mooiwerk.php:258
+#: structure/my-account/my-account.php:21
+#: structure/my-account/my-account.php:57
+msgid "Favorieten"
 msgstr ""
 
-#: structure/my-account/favorites.blade.php:60
-#: structure/my-account/manage-vacancies.blade.php:65
-#: structure/organisations/archive-organisations.blade.php:89
-#: structure/vacancies/archive-vacancies.blade.php:167
-#: structure/volunteers/single.blade.php:104
-msgid "lees meer ›"
+#: structure/my-account/favorites.blade.php:40
+#: structure/organisations/single.blade.php:87
+#: structure/vacancies/archive-vacancies.blade.php:173
+#: structure/vacancies/single.blade.php:14
+#: structure/volunteers/single.blade.php:92
+msgid " - Breda, Nederland"
 msgstr ""
 
 #: structure/my-account/favorites.blade.php:66
@@ -152,23 +163,23 @@ msgstr ""
 msgid "Organisatie informatie"
 msgstr ""
 
-#: structure/my-account/setup.blade.php:60
+#: structure/my-account/setup.blade.php:59
 msgid "Uitgebreide informatie"
 msgstr ""
 
-#: structure/my-account/setup.blade.php:73
-#: structure/vacancies/archive-vacancies.blade.php:55
-#: structure/vacancies/single.blade.php:117 structure/courses/courses.php:34
+#: structure/my-account/setup.blade.php:72
+#: structure/vacancies/archive-vacancies.blade.php:81
+#: structure/vacancies/single.blade.php:112 structure/courses/courses.php:13
 msgid "Categorie"
 msgstr ""
 
-#: structure/my-account/setup.blade.php:89
-#: structure/organisations/organisations.php:357
-#: structure/volunteers/volunteers.php:446
+#: structure/my-account/setup.blade.php:88
+#: structure/organisations/organisations.php:333
+#: structure/volunteers/volunteers.php:435
 msgid "Social Media"
 msgstr ""
 
-#: structure/my-account/setup.blade.php:106
+#: structure/my-account/setup.blade.php:105
 msgid "Profielregistratie verlaten?"
 msgstr ""
 
@@ -177,54 +188,53 @@ msgstr ""
 msgid "Uw account is geen vrijwilliger of organisatie."
 msgstr ""
 
-#: structure/organisations/archive-organisations.blade.php:102
+#: structure/organisations/archive-organisations.blade.php:128
 #, python-format
 msgid "No of Vacancies: %s"
 msgstr ""
 
-#: structure/organisations/archive-organisations.blade.php:106
-#: structure/volunteers/archive-volunteers.blade.php:177
+#: structure/organisations/archive-organisations.blade.php:132
 msgid "Geen organisatie gevonden die aan uw zoekopdracht voldeed."
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:52
-#: structure/vacancies/single.blade.php:114
+#: structure/vacancies/archive-vacancies.blade.php:78
+#: structure/vacancies/single.blade.php:109
 msgid "Locatie"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:53
-#: structure/vacancies/single.blade.php:115
+#: structure/vacancies/archive-vacancies.blade.php:79
+#: structure/vacancies/single.blade.php:110
 msgid "Hoe vaak"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:54
-#: structure/vacancies/single.blade.php:116
+#: structure/vacancies/archive-vacancies.blade.php:80
+#: structure/vacancies/single.blade.php:111
 msgid "Uren per week"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:56
+#: structure/vacancies/archive-vacancies.blade.php:82
 msgid "Benodigde competenties"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:57
-#: structure/vacancies/single.blade.php:118 structure/courses/courses.php:63
+#: structure/vacancies/archive-vacancies.blade.php:83
+#: structure/vacancies/single.blade.php:113 structure/courses/courses.php:123
 msgid "Doelgroep"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:58
+#: structure/vacancies/archive-vacancies.blade.php:84
 msgid "Ook geschikt voor"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:59
+#: structure/vacancies/archive-vacancies.blade.php:85
 msgid "Vergoeding"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:63
-#: structure/volunteers/archive-volunteers.blade.php:44
+#: structure/vacancies/archive-vacancies.blade.php:89
+#: structure/volunteers/archive-volunteers.blade.php:59
 msgid "Filter"
 msgstr ""
 
-#: structure/vacancies/archive-vacancies.blade.php:174
+#: structure/vacancies/archive-vacancies.blade.php:200
 msgid "Geen vacature gevonden die aan uw zoekopdracht voldeed."
 msgstr ""
 
@@ -236,51 +246,47 @@ msgstr ""
 msgid " u kunt zich niet meer aanmelden voor deze vacature"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:77
-msgid "Reageer nu ›"
-msgstr ""
-
 #: structure/vacancies/single.blade.php:78
-msgid "Favoriet ›"
-msgstr ""
-
-#: structure/vacancies/single.blade.php:83
 msgid "Deel deze pagina"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:104
+#: structure/vacancies/single.blade.php:99
 msgid "Bewerken"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:106
+#: structure/vacancies/single.blade.php:101
 msgid "Bewerk"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:107
+#: structure/vacancies/single.blade.php:102
 msgid "Verwijder"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:119
+#: structure/vacancies/single.blade.php:114
 msgid "Datum"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:124
+#: structure/vacancies/single.blade.php:119
 msgid "Gegevens"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:146
+#: structure/vacancies/single.blade.php:141
 msgid "Log in"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:146
+#: structure/vacancies/single.blade.php:141
 msgid " om te reageren op deze vacature"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:151
+#: structure/vacancies/single.blade.php:146
 msgid "Extra informatie"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:35 structure/courses/courses.php:402
+#: structure/volunteers/archive-volunteers.blade.php:192
+msgid "Geen vrijwilliger gevonden die aan uw zoekopdracht voldeed."
+msgstr ""
+
+#: includes/class-mooiwerk-activator.php:35 structure/courses/courses.php:441
 msgid "Organisatie"
 msgstr ""
 
@@ -288,19 +294,19 @@ msgstr ""
 msgid "Vrijwilliger"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:38 mooiwerk.php:288
+#: includes/class-mooiwerk-activator.php:38 mooiwerk.php:250
 #: structure/header/header.php:210
-#: structure/organisations/organisations.php:459
+#: structure/organisations/organisations.php:436
 msgid "Organisaties"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:39 mooiwerk.php:289
-#: structure/courses/courses.php:75 structure/header/header.php:209
-#: structure/volunteers/volunteers.php:550
+#: includes/class-mooiwerk-activator.php:39 mooiwerk.php:251
+#: structure/courses/courses.php:135 structure/header/header.php:209
+#: structure/volunteers/volunteers.php:541
 msgid "Vrijwilligers"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:40 mooiwerk.php:290
+#: includes/class-mooiwerk-activator.php:40 mooiwerk.php:252
 #: structure/header/header.php:207
 msgid "Vacatures"
 msgstr ""
@@ -309,98 +315,82 @@ msgstr ""
 msgid "Vrijwilligersacademie"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:43 mooiwerk.php:291
+#: includes/class-mooiwerk-activator.php:42
+msgid "Advies"
+msgstr ""
+
+#: includes/class-mooiwerk-activator.php:44 mooiwerk.php:253
 #: structure/my-account/my-account.php:11
 msgid "Mijn Account"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:44 mooiwerk.php:292
+#: includes/class-mooiwerk-activator.php:45 mooiwerk.php:254
 #: structure/my-account/my-account.php:17
 msgid "Nieuwe Vacature"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:45 mooiwerk.php:293
+#: includes/class-mooiwerk-activator.php:46 mooiwerk.php:255
 #: structure/my-account/my-account.php:19
 msgid "Bewerk Vacature"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:46 mooiwerk.php:294
+#: includes/class-mooiwerk-activator.php:47 mooiwerk.php:256
 #: structure/my-account/my-account.php:15
 msgid "Beheer Vacatures"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:47 mooiwerk.php:295
-#: structure/my-account/my-account.php:23
-#: structure/my-account/my-account.php:56
-msgid "Reacties"
-msgstr ""
-
-#: includes/class-mooiwerk-activator.php:48 mooiwerk.php:296
-#: structure/my-account/my-account.php:21
-#: structure/my-account/my-account.php:57
-msgid "Favorieten"
-msgstr ""
-
-#: includes/class-mooiwerk-activator.php:49 mooiwerk.php:297
+#: includes/class-mooiwerk-activator.php:50 mooiwerk.php:259
 #: structure/my-account/my-account.php:13
 msgid "Wijzig Wachtwoord"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:50 mooiwerk.php:298
+#: includes/class-mooiwerk-activator.php:51 mooiwerk.php:260
 #: structure/my-account/my-account.php:25
 msgid "Opstelling"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:51 mooiwerk.php:299
+#: includes/class-mooiwerk-activator.php:52 mooiwerk.php:261
 msgid "Inloggen"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:52 mooiwerk.php:300
+#: includes/class-mooiwerk-activator.php:53 mooiwerk.php:262
 msgid "Uitloggen"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:53 mooiwerk.php:301
+#: includes/class-mooiwerk-activator.php:54 mooiwerk.php:263
 msgid "Registreren"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:54 mooiwerk.php:302
+#: includes/class-mooiwerk-activator.php:55 mooiwerk.php:265
 msgid "Registreer Organisatie"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:55 mooiwerk.php:303
+#: includes/class-mooiwerk-activator.php:56 mooiwerk.php:266
 msgid "Registreer Vrijwilliger"
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:56
-#: includes/class-mooiwerk-activator.php:57 mooiwerk.php:304
+#: includes/class-mooiwerk-activator.php:57 mooiwerk.php:264
+msgid "Nieuw account"
+msgstr ""
+
+#: includes/class-mooiwerk-activator.php:58
+#: includes/class-mooiwerk-activator.php:59 mooiwerk.php:267
 msgid "Maak hier een veilig wachtwoord aan"
 msgstr ""
 
-#: includes/class-mooiwerk.php:165
+#: includes/class-mooiwerk.php:174
 msgid "ACF(-PRO) is not installed! Please install ACF pro to continue..."
 msgstr ""
 
-#: mooiwerk.php:111
+#: mooiwerk.php:116
 msgid "gebruiker was geen organisatie noch een vrijwilliger"
 msgstr ""
 
-#: mooiwerk.php:247
-msgid "User Custom Fields"
-msgstr ""
-
-#: mooiwerk.php:251
-msgid "Naam"
-msgstr ""
-
-#: mooiwerk.php:257 structure/contact/contact.php:57
-msgid "Email"
-msgstr ""
-
-#: mooiwerk.php:305
+#: mooiwerk.php:268
 msgid "Wachtwoord reset"
 msgstr ""
 
-#: mooiwerk.php:308
+#: mooiwerk.php:271
 msgid ""
 "Kan pagina van WordPress niet verwijderen. Schakel de MooiWerk-plug-in uit "
 "om de pagina te verwijderen."
@@ -418,6 +408,10 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+#: structure/contact/contact.php:57
+msgid "Email"
+msgstr ""
+
 #: structure/contact/contact.php:75
 msgid "Form"
 msgstr ""
@@ -426,104 +420,180 @@ msgstr ""
 msgid "Paste Contact form shortcode here"
 msgstr ""
 
-#: structure/courses/courses.php:15
-msgid "Sub titel"
+#: structure/courses/courses.php:12 structure/courses/courses.php:21
+msgid "Categorieën"
 msgstr ""
 
-#: structure/courses/courses.php:46
+#: structure/courses/courses.php:14
+msgid "Alle Categorieën"
+msgstr ""
+
+#: structure/courses/courses.php:15
+msgid "Eategorie Bewerken"
+msgstr ""
+
+#: structure/courses/courses.php:16
+msgid "Bekijk categorie"
+msgstr ""
+
+#: structure/courses/courses.php:17
+msgid "Voeg een nieuwe categorie toe"
+msgstr ""
+
+#: structure/courses/courses.php:45 structure/courses/courses.php:47
 msgid "Persoonlijke ontwikkeling"
 msgstr ""
 
-#: structure/courses/courses.php:47
+#: structure/courses/courses.php:52 structure/courses/courses.php:54
 msgid "Sociale veiligheid"
 msgstr ""
 
-#: structure/courses/courses.php:48
+#: structure/courses/courses.php:59 structure/courses/courses.php:61
 msgid "Financiën en sponsoring"
 msgstr ""
 
-#: structure/courses/courses.php:49
+#: structure/courses/courses.php:66 structure/courses/courses.php:68
 msgid "Communicatie en PR"
 msgstr ""
 
-#: structure/courses/courses.php:50
+#: structure/courses/courses.php:73 structure/courses/courses.php:75
 msgid "Werving en Selectie"
 msgstr ""
 
-#: structure/courses/courses.php:51
+#: structure/courses/courses.php:80 structure/courses/courses.php:82
 msgid "Organisatie en Bestuur"
 msgstr ""
 
-#: structure/courses/courses.php:76
+#: structure/courses/courses.php:104
+msgid "Sub titel"
+msgstr ""
+
+#: structure/courses/courses.php:136
 msgid "Professionals"
 msgstr ""
 
-#: structure/courses/courses.php:77
+#: structure/courses/courses.php:137
 msgid "Bestuur"
 msgstr ""
 
-#: structure/courses/courses.php:78
+#: structure/courses/courses.php:138
 msgid "Coordinatoren"
 msgstr ""
 
-#: structure/courses/courses.php:90
-msgid "Duur"
-msgstr ""
-
-#: structure/courses/courses.php:111
+#: structure/courses/courses.php:150
 msgid "Programma"
 msgstr ""
 
-#: structure/courses/courses.php:130
+#: structure/courses/courses.php:169
 msgid "Kosten/Prijs"
 msgstr ""
 
-#: structure/courses/courses.php:151
+#: structure/courses/courses.php:190
 msgid "Beschikbare plaatsen"
 msgstr ""
 
-#: structure/courses/courses.php:194
+#: structure/courses/courses.php:233 structure/frontpage/frontpage.php:233
 msgid "Location"
 msgstr ""
 
-#: structure/courses/courses.php:198
+#: structure/courses/courses.php:237
 msgid "Straat"
 msgstr ""
 
-#: structure/courses/courses.php:217
+#: structure/courses/courses.php:256
 msgid "Nummer"
 msgstr ""
 
-#: structure/courses/courses.php:238
+#: structure/courses/courses.php:277
 msgid "Toevoeging"
 msgstr ""
 
-#: structure/courses/courses.php:257
-#: structure/organisations/organisations.php:103
+#: structure/courses/courses.php:296
+#: structure/organisations/organisations.php:79
 msgid "Postcode"
 msgstr ""
 
-#: structure/courses/courses.php:276
-#: structure/organisations/organisations.php:122
+#: structure/courses/courses.php:315
+#: structure/organisations/organisations.php:98
 msgid "Plaats"
 msgstr ""
 
-#: structure/courses/courses.php:295 structure/courses/courses.php:421
+#: structure/courses/courses.php:334 structure/courses/courses.php:460
 msgid "Image"
 msgstr ""
 
-#: structure/courses/courses.php:345
+#: structure/courses/courses.php:384
 msgid "Tussenvoeging"
 msgstr ""
 
-#: structure/courses/courses.php:364
-#: structure/organisations/organisations.php:205
+#: structure/courses/courses.php:403
+#: structure/organisations/organisations.php:181
 #: structure/volunteers/volunteers.php:87
 msgid "Achternaam"
 msgstr ""
 
-#: structure/courses/courses.php:383 structure/header/header.php:51
+#: structure/courses/courses.php:422 structure/header/header.php:51
 msgid "Titel"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:11
+msgid "Front Page"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:15
+msgid "Course Title"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:34
+msgid "Sidebar Title"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:45
+msgid "Intro over cursussen lorep ipsum Breda cras sectum"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:53 structure/frontpage/frontpage.php:144
+msgid "Description"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:65
+msgid ""
+"<p>In tempus pulvinar mattis. Sed sed feugiat metus. Nam sollicitudin risus "
+"sapien, id bibendum urna laoreet nec. Etiam efficitur libero eget nisl "
+"euismod, a rutrum leo sagittis. Mauris egestas diam purus. In tempus "
+"pulvinar mattis. Sed sed feugiat metus. Nam sollicitudin risus sapien, id "
+"bibendum urna laoreet nec. Etiam efficitur libero eget nisl euismod, a "
+"rutrum leo sagittis. Mauris egestas diam purus.</p><p>In tempus pulvinar "
+"mattis. Sed sed feugiat metus. Nam sollicitudin risus sapien, id bibendum "
+"urna laoreet nec. Etiam efficitur libero eget nisl euismod. </p>"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:102
+msgid "Content Blocks"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:106
+msgid "Blocks"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:121
+msgid "Add Content"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:125
+msgid "Title"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:163
+msgid "Link"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:210 structure/frontpage/frontpage.php:214
+msgid "Links"
+msgstr ""
+
+#: structure/frontpage/frontpage.php:252
+msgid "Url"
 msgstr ""
 
 #: structure/header/header.php:8
@@ -634,104 +704,100 @@ msgid "Upload profielfoto contactpersoon of logo organisatie"
 msgstr ""
 
 #: structure/organisations/organisations.php:42
-msgid "Upload omslagfoto"
-msgstr ""
-
-#: structure/organisations/organisations.php:66
 msgid "Naam organisatie"
 msgstr ""
 
-#: structure/organisations/organisations.php:85
+#: structure/organisations/organisations.php:61
 msgid "Adres"
 msgstr ""
 
-#: structure/organisations/organisations.php:141
+#: structure/organisations/organisations.php:117
 msgid "Website"
 msgstr ""
 
-#: structure/organisations/organisations.php:182
+#: structure/organisations/organisations.php:158
 msgid "Contact Person"
 msgstr ""
 
-#: structure/organisations/organisations.php:186
+#: structure/organisations/organisations.php:162
 #: structure/volunteers/volunteers.php:49
 msgid "Voornaam"
 msgstr ""
 
-#: structure/organisations/organisations.php:224
+#: structure/organisations/organisations.php:200
 #: structure/volunteers/volunteers.php:68
 msgid "Tussenvoegsel"
 msgstr ""
 
-#: structure/organisations/organisations.php:243
+#: structure/organisations/organisations.php:219
 #: structure/volunteers/volunteers.php:106
 msgid "Telefoonnummer"
 msgstr ""
 
-#: structure/organisations/organisations.php:262
+#: structure/organisations/organisations.php:238
 msgid "Vertel iets over de organisatie"
 msgstr ""
 
-#: structure/organisations/organisations.php:281
+#: structure/organisations/organisations.php:257
 msgid "Het organisatieprofiel tonen in de zoekresultaten"
 msgstr ""
 
-#: structure/organisations/organisations.php:293
+#: structure/organisations/organisations.php:269
 #: structure/volunteers/volunteers.php:137
 msgid "Ja"
 msgstr ""
 
-#: structure/organisations/organisations.php:294
+#: structure/organisations/organisations.php:270
 #: structure/volunteers/volunteers.php:138
 msgid "Nee"
 msgstr ""
 
-#: structure/organisations/organisations.php:305
+#: structure/organisations/organisations.php:281
 msgid ""
 "In welke sector is jouw organisatie actief (maximaal 3 antwoorden mogelijk)"
 msgstr ""
 
-#: structure/organisations/organisations.php:317
+#: structure/organisations/organisations.php:293
 msgid "Goede doelen en belangenbehartigers"
 msgstr ""
 
-#: structure/organisations/organisations.php:318
+#: structure/organisations/organisations.php:294
 msgid "Kunst en Cultuur"
 msgstr ""
 
-#: structure/organisations/organisations.php:319
+#: structure/organisations/organisations.php:295
 msgid "Natuur en Milieu"
 msgstr ""
 
-#: structure/organisations/organisations.php:320
+#: structure/organisations/organisations.php:296
 msgid "Onderwijs, Educatie en Openbaar bestuur (incl. taal)"
 msgstr ""
 
-#: structure/organisations/organisations.php:321
+#: structure/organisations/organisations.php:297
 msgid "Sport, bewegen en recreatie"
 msgstr ""
 
-#: structure/organisations/organisations.php:322
+#: structure/organisations/organisations.php:298
 msgid "Zorg en Welzijn (incl. religie)"
 msgstr ""
 
-#: structure/organisations/organisations.php:361
-#: structure/volunteers/volunteers.php:450
+#: structure/organisations/organisations.php:337
+#: structure/volunteers/volunteers.php:439
 msgid "Facebook"
 msgstr ""
 
-#: structure/organisations/organisations.php:377
-#: structure/volunteers/volunteers.php:466
+#: structure/organisations/organisations.php:353
+#: structure/volunteers/volunteers.php:455
 msgid "Twitter"
 msgstr ""
 
-#: structure/organisations/organisations.php:393
-#: structure/volunteers/volunteers.php:482
+#: structure/organisations/organisations.php:369
+#: structure/volunteers/volunteers.php:471
 msgid "Linkedin"
 msgstr ""
 
-#: structure/organisations/organisations.php:409
-#: structure/volunteers/volunteers.php:498
+#: structure/organisations/organisations.php:385
+#: structure/volunteers/volunteers.php:487
 msgid "Instagram"
 msgstr ""
 
@@ -748,43 +814,43 @@ msgid ""
 "Waar vindt het vrijwilligerswerk plaats (maximaal 3 antwoorden mogelijk)"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:57 structure/volunteers/volunteers.php:218
+#: structure/vacancies/vacancies.php:57 structure/volunteers/volunteers.php:207
 msgid "Breda Centrum"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:58 structure/volunteers/volunteers.php:219
+#: structure/vacancies/vacancies.php:58 structure/volunteers/volunteers.php:208
 msgid "Breda Noordwest"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:59 structure/volunteers/volunteers.php:220
+#: structure/vacancies/vacancies.php:59 structure/volunteers/volunteers.php:209
 msgid "Breda Noordoost"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:60 structure/volunteers/volunteers.php:221
+#: structure/vacancies/vacancies.php:60 structure/volunteers/volunteers.php:210
 msgid "Breda Zuidwest"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:61 structure/volunteers/volunteers.php:222
+#: structure/vacancies/vacancies.php:61 structure/volunteers/volunteers.php:211
 msgid "Breda Zuidoost"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:62 structure/volunteers/volunteers.php:223
+#: structure/vacancies/vacancies.php:62 structure/volunteers/volunteers.php:212
 msgid "Bavel"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:63 structure/volunteers/volunteers.php:224
+#: structure/vacancies/vacancies.php:63 structure/volunteers/volunteers.php:213
 msgid "Effen-Rith"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:64 structure/volunteers/volunteers.php:225
+#: structure/vacancies/vacancies.php:64 structure/volunteers/volunteers.php:214
 msgid "Prinsenbeek"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:65 structure/volunteers/volunteers.php:226
+#: structure/vacancies/vacancies.php:65 structure/volunteers/volunteers.php:215
 msgid "Teteringen"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:66 structure/volunteers/volunteers.php:227
+#: structure/vacancies/vacancies.php:66 structure/volunteers/volunteers.php:216
 msgid "Ulvenhout"
 msgstr ""
 
@@ -794,16 +860,16 @@ msgid ""
 "(maximaal 1 antwoord mogelijk)"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:90 structure/volunteers/volunteers.php:251
-msgid "Regelmatig (elke week, elke 2 weken, elke maand)"
+#: structure/vacancies/vacancies.php:90 structure/volunteers/volunteers.php:240
+msgid "Regelmatig"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:91 structure/volunteers/volunteers.php:252
-msgid "Eenmalig (een dag of dagdeel)"
+#: structure/vacancies/vacancies.php:91 structure/volunteers/volunteers.php:241
+msgid "Eenmalig"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:92 structure/volunteers/volunteers.php:253
-msgid "Tijdelijk (maximaal 3 maanden, projectmatig)"
+#: structure/vacancies/vacancies.php:92 structure/volunteers/volunteers.php:242
+msgid "Tijdelijk"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:104
@@ -813,22 +879,22 @@ msgid ""
 msgstr ""
 
 #: structure/vacancies/vacancies.php:116
-#: structure/volunteers/volunteers.php:277
+#: structure/volunteers/volunteers.php:266
 msgid "1 t/m 4 uur"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:117
-#: structure/volunteers/volunteers.php:278
+#: structure/volunteers/volunteers.php:267
 msgid "5 t/m 8 uur"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:118
-#: structure/volunteers/volunteers.php:279
+#: structure/volunteers/volunteers.php:268
 msgid "9 t/m 16 uur"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:119
-#: structure/volunteers/volunteers.php:280
+#: structure/volunteers/volunteers.php:269
 msgid "17 uur of meer"
 msgstr ""
 
@@ -837,87 +903,87 @@ msgid "Wat voor type mooi werk bied je aan (maximaal 3 antwoorden mogelijk)"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:143
-#: structure/volunteers/volunteers.php:303
+#: structure/volunteers/volunteers.php:292
 msgid "Activiteitenbegeleiding en recreatie"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:144
-#: structure/volunteers/volunteers.php:304
+#: structure/volunteers/volunteers.php:293
 msgid "Administratie, winkel en gastvrouw/heer"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:145
-#: structure/volunteers/volunteers.php:305
+#: structure/volunteers/volunteers.php:294
 msgid "Begeleiding, coaching en maatjes"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:146
-#: structure/volunteers/volunteers.php:306
+#: structure/volunteers/volunteers.php:295
 msgid "Bestuur en organisatie"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:147
-#: structure/volunteers/volunteers.php:307
+#: structure/volunteers/volunteers.php:296
 msgid "Computer en ICT"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:148
-#: structure/volunteers/volunteers.php:308
+#: structure/volunteers/volunteers.php:297
 msgid "Evenementen en festivals"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:149
-#: structure/volunteers/volunteers.php:309
+#: structure/volunteers/volunteers.php:298
 msgid "Financiën en boekhouding"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:150
-#: structure/volunteers/volunteers.php:310
+#: structure/volunteers/volunteers.php:299
 msgid "Fondsenwerving"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:151
-#: structure/volunteers/volunteers.php:311
+#: structure/volunteers/volunteers.php:300
 msgid "Horeca en catering"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:152
-#: structure/volunteers/volunteers.php:312
+#: structure/volunteers/volunteers.php:301
 msgid "Kunst, cultuur en creatief"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:153
-#: structure/volunteers/volunteers.php:313
+#: structure/volunteers/volunteers.php:302
 msgid "Natuur, milieu en dieren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:154
-#: structure/volunteers/volunteers.php:314
+#: structure/volunteers/volunteers.php:303
 msgid "PR, communicatie en media"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:155
-#: structure/volunteers/volunteers.php:315
+#: structure/volunteers/volunteers.php:304
 msgid "Sport, bewegen en spel"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:156
-#: structure/volunteers/volunteers.php:316
+#: structure/volunteers/volunteers.php:305
 msgid "Taalondersteuning"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:157
-#: structure/volunteers/volunteers.php:317
+#: structure/volunteers/volunteers.php:306
 msgid "Techniek, klussen en onderhoud"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:158
-#: structure/volunteers/volunteers.php:318
+#: structure/volunteers/volunteers.php:307
 msgid "Vervoer en logistiek"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:159
-#: structure/volunteers/volunteers.php:319
+#: structure/volunteers/volunteers.php:308
 msgid "Voorlichting, lesgeven en huiswerkbegeleiding"
 msgstr ""
 
@@ -926,82 +992,82 @@ msgid "Over welke competenties beschikt de vrijwilliger bij voorkeur"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:183
-#: structure/volunteers/volunteers.php:343
+#: structure/volunteers/volunteers.php:332
 msgid "Adviseren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:184
-#: structure/volunteers/volunteers.php:344
+#: structure/volunteers/volunteers.php:333
 msgid "Begeleiden"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:185
-#: structure/volunteers/volunteers.php:345
+#: structure/volunteers/volunteers.php:334
 msgid "Besturen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:186
-#: structure/volunteers/volunteers.php:346
+#: structure/volunteers/volunteers.php:335
 msgid "Communiceren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:187
-#: structure/volunteers/volunteers.php:347
+#: structure/volunteers/volunteers.php:336
 msgid "Coördineren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:188
-#: structure/volunteers/volunteers.php:348
+#: structure/volunteers/volunteers.php:337
 msgid "Denken"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:189
-#: structure/volunteers/volunteers.php:349
+#: structure/volunteers/volunteers.php:338
 msgid "Doen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:190
-#: structure/volunteers/volunteers.php:350
+#: structure/volunteers/volunteers.php:339
 msgid "Geordend werken"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:191
-#: structure/volunteers/volunteers.php:351
+#: structure/volunteers/volunteers.php:340
 msgid "Handig zijn"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:192
-#: structure/volunteers/volunteers.php:352
+#: structure/volunteers/volunteers.php:341
 msgid "Initiatief nemen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:193
-#: structure/volunteers/volunteers.php:353
+#: structure/volunteers/volunteers.php:342
 msgid "Ondernemen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:194
-#: structure/volunteers/volunteers.php:354
+#: structure/volunteers/volunteers.php:343
 msgid "Organiseren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:195
-#: structure/volunteers/volunteers.php:355
+#: structure/volunteers/volunteers.php:344
 msgid "Presenteren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:196
-#: structure/volunteers/volunteers.php:356
+#: structure/volunteers/volunteers.php:345
 msgid "Rekenen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:197
-#: structure/volunteers/volunteers.php:357
+#: structure/volunteers/volunteers.php:346
 msgid "Samenwerken"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:198
-#: structure/volunteers/volunteers.php:358
+#: structure/volunteers/volunteers.php:347
 msgid "Schrijven"
 msgstr ""
 
@@ -1012,37 +1078,37 @@ msgid ""
 msgstr ""
 
 #: structure/vacancies/vacancies.php:222
-#: structure/volunteers/volunteers.php:383
+#: structure/volunteers/volunteers.php:372
 msgid "Chronisch zieken"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:223
-#: structure/volunteers/volunteers.php:384
+#: structure/volunteers/volunteers.php:373
 msgid "Dak- en thuislozen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:224
-#: structure/volunteers/volunteers.php:385
+#: structure/volunteers/volunteers.php:374
 msgid "Jeugd/jongeren"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:225
-#: structure/volunteers/volunteers.php:386
+#: structure/volunteers/volunteers.php:375
 msgid "Kinderen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:226
-#: structure/volunteers/volunteers.php:387
+#: structure/volunteers/volunteers.php:376
 msgid "Mensen met een lichamelijke beperking"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:227
-#: structure/volunteers/volunteers.php:388
+#: structure/volunteers/volunteers.php:377
 msgid "Mensen met een psychische/psychiatrische beperking"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:228
-#: structure/volunteers/volunteers.php:389
+#: structure/volunteers/volunteers.php:378
 msgid "Mensen met verstandelijke beperking"
 msgstr ""
 
@@ -1051,12 +1117,12 @@ msgid "Mensen met een zintuiglijke beperking"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:230
-#: structure/volunteers/volunteers.php:391
+#: structure/volunteers/volunteers.php:380
 msgid "Ouderen"
 msgstr ""
 
 #: structure/vacancies/vacancies.php:231
-#: structure/volunteers/volunteers.php:392
+#: structure/volunteers/volunteers.php:381
 msgid "Vluchtelingen en statushouders"
 msgstr ""
 
@@ -1108,10 +1174,6 @@ msgstr ""
 msgid "Uiterste reactiedatum"
 msgstr ""
 
-#: structure/vacancies/vacancies.php:341
-msgid "Ik ga akkoord met de Algemene Voorwaarden"
-msgstr ""
-
 #: structure/volunteers/volunteers.php:25
 msgid "Upload profielfoto"
 msgstr ""
@@ -1121,92 +1183,72 @@ msgid "Je profiel tonen in de zoekresultaten"
 msgstr ""
 
 #: structure/volunteers/volunteers.php:149
-msgid "Wat is je leeftijd"
+msgid "Wat is je geboortedatum"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:161
-msgid "Jonger dan 18 jaar"
-msgstr ""
-
-#: structure/volunteers/volunteers.php:162
-msgid "18 – 27 jaar"
-msgstr ""
-
-#: structure/volunteers/volunteers.php:163
-msgid "28 – 45 jaar"
-msgstr ""
-
-#: structure/volunteers/volunteers.php:164
-msgid "46 – 64 jaar"
-msgstr ""
-
-#: structure/volunteers/volunteers.php:165
-msgid "Ouder dan 65 jaar"
-msgstr ""
-
-#: structure/volunteers/volunteers.php:177
+#: structure/volunteers/volunteers.php:166
 msgid "Wat is je opleiding of werk- en denkniveau"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:189
+#: structure/volunteers/volunteers.php:178
 msgid "Basisschool"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:190
+#: structure/volunteers/volunteers.php:179
 msgid "VMBO/MAVO/LBO"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:191
+#: structure/volunteers/volunteers.php:180
 msgid "HAVO/VWO"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:192
+#: structure/volunteers/volunteers.php:181
 msgid "MBO"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:193
+#: structure/volunteers/volunteers.php:182
 msgid "HBO/Universiteit"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:205
+#: structure/volunteers/volunteers.php:194
 msgid "Waar wil je vrijwilligerswerk doen"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:217
-#: structure/volunteers/volunteers.php:382
+#: structure/volunteers/volunteers.php:206
+#: structure/volunteers/volunteers.php:371
 msgid "Geen voorkeur"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:239
+#: structure/volunteers/volunteers.php:228
 msgid "Hoe vaak wil je\tvrijwilligerswerk doen"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:265
+#: structure/volunteers/volunteers.php:254
 msgid ""
 "Hoeveel uren per week of per keer ben je maximaal beschikbaar voor "
 "vrijwilligerswerk"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:268
+#: structure/volunteers/volunteers.php:257
 msgid "maximaal 1 antwoord mogelijk"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:291
+#: structure/volunteers/volunteers.php:280
 msgid "Wat voor soort vrijwilligerswerk wil je doen"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:331
+#: structure/volunteers/volunteers.php:320
 msgid "Waar ben je goed in"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:370
+#: structure/volunteers/volunteers.php:359
 msgid "Wil je met bepaalde doelgroepen werken"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:390
+#: structure/volunteers/volunteers.php:379
 msgid "Mensen met en zintuiglijke beperking"
 msgstr ""
 
-#: structure/volunteers/volunteers.php:404
+#: structure/volunteers/volunteers.php:393
 msgid "Vertel iets over jezelf"
 msgstr ""
