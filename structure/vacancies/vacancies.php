@@ -329,51 +329,6 @@ function register_custom_fields_vacancy()
                 'active' => 1,
                 'description' => '',
             )
-        ); 
-        
-        acf_add_local_field_group(
-            array (
-                'key' => 'group_5b86d5b97f387',
-                'title' => 'Vacancy Comment',
-                'fields' => array (
-                    array (
-                        'key' => 'field_5b86d5cc8043b',
-                        'label' => '<a href='.home_url("/algemene-voorwaarden").'>'.__('Ik ga akkoord met de Algemene Voorwaarden', 'mooiwerk').'</a>',
-                        'name' => 'tos',
-                        'type' => 'true_false',
-                        'instructions' => '',
-                        'required' => 1,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'message' => '',
-                        'default_value' => 0,
-                        'ui' => 0,
-                        'ui_on_text' => '',
-                        'ui_off_text' => '',
-                    ),
-                ),
-                'location' => array (
-                    array (
-                        array (
-                            'param' => 'comment',
-                            'operator' => '==',
-                            'value' => 'vacancies',
-                        ),
-                    ),
-                ),
-                'menu_order' => 0,
-                'position' => 'normal',
-                'style' => 'default',
-                'label_placement' => 'top',
-                'instruction_placement' => 'label',
-                'hide_on_screen' => '',
-                'active' => 1,
-                'description' => '',
-            )
         );
     }
 }

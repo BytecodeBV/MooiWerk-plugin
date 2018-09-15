@@ -106,10 +106,16 @@ function change_template_single_author($template)
         if (in_array('organisation', $author_roles)) {
             $template = plugin_dir_path(__FILE__) . 'structure/organisations/single.blade.php';
         } elseif (in_array('volunteer', $author_roles)) {
-            $template = plugin_dir_path(__FILE__) . 'structure/volunteers/single.blade.php';
+            $user = wp_get_current_user();  
+            if (current_user_can('administrator') || in_array('organisation', (array) $user->roles)) {
+                $template = plugin_dir_path(__FILE__) . 'structure/volunteers/single.blade.php';
+            } else {
+                $template = locate_template('views/404.blade.php');
+            }
         } else {
             _e('gebruiker was geen organisatie noch een vrijwilliger', 'mooiwerk');
         }
+
     }
     return $template;
 }
@@ -238,50 +244,6 @@ function remove_admin_bar()
 }
 add_action('after_setup_theme', 'remove_admin_bar');
 
-
-function register_custom_fields_users()
-{
-    if (function_exists('acf_add_local_field_group')) {
-        acf_add_local_field_group([
-            'key' => 'acf_user',
-            'title' => __('User Custom Fields', 'mooiwerk'),
-            'fields' => [
-                [
-                    'key' => 'field_acf_form_first_name',
-                    'label' => __('Naam', 'mooiwerk'),
-                    'name' => 'first_name',
-                    'type' => 'text',
-                ],
-                [
-                    'key' => 'field_acf_form_email',
-                    'label' => __('Email', 'mooiwerk'),
-                    'name' => 'email',
-                    'type' => 'text',
-                ],
-            ],
-            'location' => [
-                [
-                    [
-                        'param' => 'user_role',
-                        'operator' => '==',
-                        'value' => 'all',
-                        'order_no' => 0,
-                        'group_no' => 0,
-                    ],
-                ],
-            ],
-            'options' => [
-                'position' => 'normal',
-                'layout' => 'no_box',
-                'hide_on_screen' => [
-                ],
-            ],
-            'menu_order' => 0,
-        ]);
-    }
-}
-//add_action('acf/init', 'register_custom_fields_users');
-
 function restrict_post_deletion($post_ID)
 {
     $restricted_pages = array(
@@ -299,6 +261,7 @@ function restrict_post_deletion($post_ID)
         __('Inloggen', 'mooiwerk'),
         __('Uitloggen', 'mooiwerk'),
         __('Registreren', 'mooiwerk'),
+        __('Nieuw account', 'mooiwerk'),
         __('Registreer Organisatie', 'mooiwerk'),
         __('Registreer Vrijwilliger', 'mooiwerk'),
         __('Maak hier een veilig wachtwoord aan', 'mooiwerk'),

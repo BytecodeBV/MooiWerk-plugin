@@ -144,33 +144,22 @@ function register_custom_fields_volunteer() {
                         'layout' => 'vertical',
                         'return_format' => 'value',
                     ),
-                    array(
+                    array (
                         'key' => 'field_5b7ef21994886',
-                        'label' => __('Wat is je leeftijd', 'mooiwerk'),
+                        'label' => __('Wat is je geboortedatum', 'mooiwerk'),
                         'name' => 'age',
-                        'type' => 'checkbox',
+                        'type' => 'date_picker',
                         'instructions' => '',
-                        'required' => 0,
+                        'required' => 1,
                         'conditional_logic' => 0,
-                        'wrapper' => array(
+                        'wrapper' => array (
                             'width' => '',
                             'class' => '',
                             'id' => '',
                         ),
-                        'choices' => array(
-                            'Jonger dan 18 jaar' => __('Jonger dan 18 jaar', 'mooiwerk'),
-                            '18 – 27 jaar' => __('18 – 27 jaar', 'mooiwerk'),
-                            '28 – 45 jaar' => __('28 – 45 jaar', 'mooiwerk'),
-                            '46 – 64 jaar' => __('46 – 64 jaar', 'mooiwerk'),
-                            'Ouder dan 65 jaar' => __('Ouder dan 65 jaar', 'mooiwerk'),
-                        ),
-                        'allow_custom' => 0,
-                        'save_custom' => 0,
-                        'default_value' => array(
-                        ),
-                        'layout' => 'vertical',
-                        'toggle' => 0,
-                        'return_format' => 'value',
+                        'display_format' => 'd/m/Y',
+                        'return_format' => 'd/m/Y',
+                        'first_day' => 1,
                     ),
                     array(
                         'key' => 'field_5b7ef24e94887',
@@ -248,9 +237,9 @@ function register_custom_fields_volunteer() {
                             'id' => '',
                         ),
                         'choices' => array(
-                            'Regelmatig (elke week, elke 2 weken, elke maand)' => __('Regelmatig (elke week, elke 2 weken, elke maand)', 'mooiwerk'),
-                            'Eenmalig (een dag of dagdeel)' => __('Eenmalig (een dag of dagdeel)', 'mooiwerk'),
-                            'Tijdelijk (maximaal 3 maanden, projectmatig)' => __('Tijdelijk (maximaal 3 maanden, projectmatig)', 'mooiwerk'),
+                            'Regelmatig' => __('Regelmatig', 'mooiwerk'),
+                            'Eenmalig' => __('Eenmalig', 'mooiwerk'),
+                            'Tijdelijk' => __('Tijdelijk', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
@@ -545,13 +534,16 @@ add_action('acf/init', 'register_custom_fields_volunteer');
 /**
  * Set template for archive page.
  */    
-function archive_volunteer_template( $page_template )
+function archive_volunteer_template($page_template )
 {
-    if (is_page(__('Vrijwilligers', 'mooiwerk')) 
-        && (current_user_can('administrator')
-        || current_user_can('organisation'))
-    ) {
-        $page_template = plugin_dir_path(__FILE__).'/archive-volunteers.blade.php';
+    $user = wp_get_current_user();    
+
+    if (is_page(__('Vrijwilligers', 'mooiwerk'))) {
+        if (current_user_can('administrator') || in_array('organisation', (array) $user->roles)) {
+            $page_template = plugin_dir_path(__FILE__).'/archive-volunteers.blade.php';
+        } else {
+            $page_template = locate_template('views/404.blade.php');
+        }
     }
     return $page_template;
 }

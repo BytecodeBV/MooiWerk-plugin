@@ -157,6 +157,11 @@ class MooiWerk
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'structure/frontpage/frontpage.php';
 
+         /**
+         * The class responsible for the custom posts page functionality.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'structure/advies/advies.php';
+
         /**
          * The class responsible for the custom content block functionality.
          */

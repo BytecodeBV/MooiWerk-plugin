@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.page-header-image')
+  @include('partials.page-header')
     <main class="cv">
         <div class="container">
             @if(have_posts())
@@ -38,44 +38,39 @@
                             $user = wp_get_current_user();
                             $role = ( array ) $user->roles;
                             global $post;
+                            if(get_field('favorites','user_'.$user->ID)){
+                                $favorites = get_field('favorites','user_'.$user->ID);
+                            } else {
+                                $favorites = [];
+                            }
+                            
                             
                             // Handle forms received
                             if (isset($_POST['Favoriet']) && $role[0] == 'volunteer'){
-                                $user_id = $_POST['user_id'];
                                 $post_id = $_POST['post_id'];
-                                $current_array = get_field('favorite','user_'.$user_id);
-                                $current_array = (array)$current_array;
-                                if(!in_array($post_id,$current_array)){
-                                    $current_array[] = $post_id;
-                                    update_field('favorite', $current_array, 'user_'.$user_id);
-                                }
-                            } else if(isset($_POST['Reageer']) && $role[0] == 'volunteer'){
-                                $user_id = $_POST['user_id'];
-                                $post_id = $_POST['post_id'];
-                                $current_array = get_field('applications','user_'.$user_id);
-                                $current_array = (array)$current_array;
-                                if(!in_array($post_id,$current_array)){
-                                    $current_array[] = $post_id;
-                                    update_field('applications', $current_array, 'user_'.$user_id);
+                                
+                                if(!in_array($post_id,$favorites)){
+                                    $favorites[] = $post_id;
+                                    update_field('favorites', $favorites, 'user_'.$user->ID);
+                                } else {
+                                    $index = array_search($post_id, $favorites);
+                                    if($index !== false){
+                                        unset($favorites[$index]);
+                                        update_field('favorites', $favorites, 'user_'.$user->ID);
+                                    }
                                 }
                             }
                         @endphp
                         <nav class="col d-flex flex-column flex-sm-row justify-content-between border-top cv__social-bar">
                             <div class="cv__links d-flex">  
-                                @if($role[0] == 'volunteer' && !isExpired($date))                  
+                                @if($role[0] == 'volunteer' && !isExpired($date))
                                     <form method="post">
-                                        <input type="hidden" name="user_id" value="{{ $user->ID  }}">
                                         <input type="hidden" name="post_id" value="{{ $post->ID }}">
-                                        <input type="submit" name="Reageer" value="{{__('Reageer nu ›', 'mooiwerk')}}" class="cv__link">
-                                    </form>
-                                    <form method="post">
-                                        <input type="hidden" name="user_id" value="{{ $user->ID  }}">
-                                        <input type="hidden" name="post_id" value="{{ $post->ID }}">
-                                        <input type="submit" name="Favoriet" value="{{__('Favoriet ›', 'mooiwerk')}}" class="cv__link">
+                                        <input type="hidden" name="Favoriet" value="1">
+                                        <button type="submit"><i class="{{in_array($post->ID, $favorites)?'fas' : 'far'}} fa-heart"></i></button>
                                     </form>
                                 @elseif (!is_user_logged_in() && !isExpired($date))
-                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">{{__('Reageer nu ›', 'mooiwerk')}}</a>
-                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link">{{__('Favoriet ›', 'mooiwerk')}}</a>
+                                    <a href="{{ wp_login_url(get_permalink()) }}"  class="cv__link"><i class="far fa-heart"></i></a>
                                 @endif
                             </div>     
                         
@@ -150,57 +145,69 @@
                             <div class="sidebar__item cv__extra">
                                 <h5 class="sidebar__title">{{__('Extra informatie', 'mooiwerk')}}</h5>
                                 <ul class="cv__extra-list">
-                                    <li class="cv__extra-list-item">
-                                        <img src="@asset('images/academy.svg')" alt="Academic Icon" class="cv__extra-icon">{{$acf['opleidingsniveau']}}
+                                    <li class="cv__extra-list-item academie">
+                                        {{$acf['opleidingsniveau']}}
                                     </li>
-                                    <li class="cv__extra-list-item">
-                                        <img src="@asset('images/work.svg')" alt="Work Icon" class="cv__extra-icon">{{$acf['ervaring']}}
+                                    <li class="cv__extra-list-item work">
+                                        {{$acf['ervaring']}}
                                     </li>
-                                    <li class="cv__extra-list-item">
-                                        <img src="@asset('images/cash.svg')" alt="Cash Icon" class="cv__extra-icon">{{$acf['vergoeding']}}
+                                    <li class="cv__extra-list-item cash">
+                                        {{$acf['vergoeding']}}
                                     </li>
                                 </ul>
                             </div>                           
-                            <div class="sidebar__item company">
+                            <div class="sidebar__item company-widget">
                                 <h5 class="sidebar__title"><a href="{{get_author_posts_url($author)}}">{{ get_field('name', 'user_' . $author) }}</a></h5>
                                 <div>
-                                    <div class="d-flex flex-column company__profile">
-                                        <div class="company__logo-wrapper">
+                                    <div class="d-flex flex-column company-widget__profile">
+                                        <div class="company-widget__logo-wrapper my-2">
                                             @php
                                                 $image = get_field('logo', 'user_' . $author);
                                                 $image = $image ? $image : '//placehold.it/114x76';
                                             @endphp
-                                            <img src="{{ $image }}" class="company__logo">
+                                            <img src="{{ $image }}" class="company-widget__logo">
                                         </div>
-                                        <div class="company__contact">
-                                            <div class="d-flex flex-column company__contact-group">
+                                        <div class="company-widget__contact">
+                                            <div class="d-flex flex-column company-widget__contact-group">
                                                 @if(get_field('address', 'user_' . $author))
-                                                <small class="company__address">{{ get_field('address', 'user_' . $author)['address'] }}</small>
+                                                <small class="company-widget__address">{{ get_field('address', 'user_' . $author)['address'] }}</small>
                                                 @endif
                                                 @if(get_field('postcode', 'user_' . $author))
-                                                <small class="company__phone">{{ get_field('postcode', 'user_' . $author) }}</small>
+                                                <small class="company-widget__phone">{{ get_field('postcode', 'user_' . $author) }}</small>
                                                 @endif
                                                 @if(get_field('place', 'user_' . $author))
-                                                <small class="company__email">{{ get_field('place', 'user_' . $author) }}</small>
+                                                <small class="company-widget__email">{{ get_field('place', 'user_' . $author) }}</small>
                                                 @endif
                                                 @if(get_field('website', 'user_' . $ID))
-                                                <small class="company__website">{{ get_field('website', 'user_' . $author)}}</small>
+                                                <small class="company-widget__website">{{ get_field('website', 'user_' . $author)}}</small>
                                                 @endif                                
                                             </div>
-                                            <nav class="company__social-links mt-3">
-                                                <a href="{{get_field('facebook', 'user_' . $author)}}" target="_blank" class="company__social-link mr-2">
-                                                    <img src="@asset('images/facebook.svg')" alt="Facebook" class="company__social-link-icon">
-                                                </a>
-                                                <a href="{{get_field('twitter', 'user_' . $author)}}" target="_blank" class="company__social-link mr-2">
-                                                    <img src="@asset('images/twitter.svg')" alt="Twitter" class="company__social-link-icon">
-                                                </a>
-                                                <a href="{{get_field('linkedin', 'user_' . $author)}}" target="_blank" class="company__social-link mr-2">
-                                                    <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company__social-link-icon">
-                                                </a>
-                                                <a href="{{get_field('instagram', 'user_' . $author)}}" target="_blank" class="company__social-link">
-                                                    <img src="@asset('images/instagram.svg')" alt="Instagram" class="company__social-link-icon">
-                                                </a>
+                                            <nav class="company-widget__social-links mt-3">
+                                                @if(get_field('facebook', 'user_' . $author))
+                                                    <a href="{{get_field('facebook', 'user_' . $author)}}" target="_blank" class="company-widget__social-link mr-2">
+                                                        <img src="@asset('images/facebook.svg')" alt="Facebook" class="company-widget__social-link-icon">
+                                                    </a>
+                                                @endif
+                                                @if(get_field('twitter', 'user_' . $author))
+                                                    <a href="{{get_field('twitter', 'user_' . $author)}}" target="_blank" class="company-widget__social-link mr-2">
+                                                        <img src="@asset('images/twitter.svg')" alt="Twitter" class="company-widget__social-link-icon">
+                                                    </a>
+                                                @endif
+                                                @if(get_field('linkedin', 'user_' . $author))
+                                                    <a href="{{get_field('linkedin', 'user_' . $author)}}" target="_blank" class="company-widget__social-link mr-2">
+                                                        <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company-widget__social-link-icon">
+                                                    </a>
+                                                @endif
+                                                @if(get_field('instagram', 'user_' . $author))
+                                                    <a href="{{get_field('instagram', 'user_' . $author)}}" target="_blank" class="company-widget__social-link">
+                                                        <img src="@asset('images/instagram.svg')" alt="Instagram" class="company-widget__social-link-icon">
+                                                    </a>
+                                                @endif
                                             </nav>
+                                            @if(get_field('bio', 'user_' . $author))
+                                                <div class="company-widget__bio my-2">{!! wp_kses_post(wp_trim_words(get_field('bio', 'user_' . $author), 25, '...')) !!}</div>                                                    
+                                            @endif
+                                            <a href="{{ get_author_posts_url($author) }}" class="card-link">{{__('lees meer ›', 'mooiwerk')}}</a>
                                         </div>
                                     </div>
                                 </div>

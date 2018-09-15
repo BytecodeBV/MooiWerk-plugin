@@ -27,7 +27,7 @@
                                     $posts = get_field('favorites', 'user_' . $user->ID);
                                 @endphp
                                 @if ($posts)
-                                <h1>{{__('Your Favorites', 'mooiwerk')}}</h1>
+                                <h1>{{__('Favorieten', 'mooiwerk')}}</h1>
                                     @foreach ($posts as $p){{-- // variable must NOT be called $post (IMPORTANT) --}}
                                         @php
                                         $p = get_post($p);

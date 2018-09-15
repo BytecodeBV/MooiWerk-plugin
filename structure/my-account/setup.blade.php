@@ -50,7 +50,6 @@
                     'id' => 'stage-2',
                     'form' => false,                                       
                     'fields' => array(
-                        'field_5b7ee9fb950e8', //profile_pic
                         'field_5b7eec737da38', //bio
                         'field_5b7eecca7da39', //show in search
                     ),

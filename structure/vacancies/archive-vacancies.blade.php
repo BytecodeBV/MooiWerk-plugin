@@ -7,15 +7,21 @@
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
                     $pages = ['Vacatures', 'Organisaties', 'Vrijwilligers'];
+                    $user = wp_get_current_user();
+                    $roles = $user->roles;
                 @endphp
                 @foreach($pages as $page)
-                    @php 
-                        if($page == 'Vrijwilligers') {
-                            if (!current_user_can('administrator') || !current_user_can('organisation')) {
+                    @if ( $page == 'Vrijwilligers' )
+                        @php
+                            if(in_array('administrator', $roles)) {
+                            } elseif (in_array('organisation', $roles)) {
+                            } else {
                                 continue;
                             }
-                        }
-                        $page_object = get_page_by_title( $page, NULL, 'page' );
+                        @endphp
+                    @endif
+                    @php 
+                      $page_object = get_page_by_title( $page, NULL, 'page' );
                     @endphp
                     @if($page_object)
                         <li class="nav-item">
