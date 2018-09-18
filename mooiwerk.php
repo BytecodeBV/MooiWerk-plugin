@@ -162,7 +162,7 @@ function numeric_pagination($current_page, $num_pages)
     }
 
     for ($i = $start_number; $i <= $end_number; $i++) {
-
+		$page_url = get_pagenum_link($i);
         if ($i === $current_page) {
             echo '<li class="page-item active custom-pagination__item"><a href="'.$page_url.'" class="page-link custom-pagination__link">';
             echo " [{$i}] ";
