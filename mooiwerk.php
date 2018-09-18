@@ -162,12 +162,13 @@ function numeric_pagination($current_page, $num_pages)
     }
 
     for ($i = $start_number; $i <= $end_number; $i++) {
+
         if ($i === $current_page) {
-            echo '<li class="page-item active custom-pagination__item"><a href="?page='.$i.'" class="page-link custom-pagination__link">';
+            echo '<li class="page-item active custom-pagination__item"><a href="'.$page_url.'" class="page-link custom-pagination__link">';
             echo " [{$i}] ";
             echo '</a></li>';
         } else {
-            echo '<li class="page-item custom-pagination__item"><a href="?page='.$i.'" class="page-link custom-pagination__link">';
+            echo '<li class="page-item custom-pagination__item"><a href="'.$page_url.'" class="page-link custom-pagination__link">';
             echo " {$i} ";
             echo '</a></li>';
         }
@@ -272,7 +273,6 @@ function restrict_post_deletion($post_ID)
         exit;
     }
 }
-//add_action('before_edit_post', 'restrict_post_deletion', 10, 1);
-//add_action('edit_post', 'restrict_post_deletion', 10, 1);
+
 add_action('wp_trash_post', 'restrict_post_deletion', 10, 1);
 add_action('before_delete_post', 'restrict_post_deletion', 10, 1);
