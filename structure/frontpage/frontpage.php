@@ -96,113 +96,134 @@ function register_custom_fields_frontpage() {
             ]
         );
 
-        acf_add_local_field_group(
-            [
-                'key' => 'group_5b990fcf252e8',
-                'title' => __('Content Blocks', 'mooiwerk'),
-                'fields' => [
-                    [
-                        'key' => 'field_5b990ff405436',
-                        'label' => __('Blocks', 'mooiwerk'),
-                        'name' => 'content_blocks',
-                        'type' => 'repeater',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => [
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
+        $block_fields = [
+            'key' => 'group_5b990fcf252e8',
+            'title' => __('Content Blocks', 'mooiwerk'),
+            'fields' => [
+                [
+                    'key' => 'field_5b990ff405436',
+                    'label' => __('Blocks', 'mooiwerk'),
+                    'name' => 'content_blocks',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'collapsed' => 'field_5b99107c05437',
+                    'min' => 3,
+                    'max' => 4,
+                    'layout' => 'row',
+                    'button_label' => __('Add Content', 'mooiwerk'),
+                    'sub_fields' => [
+                        [
+                            'key' => 'field_5b99107c05437',
+                            'label' => __('Title', 'mooiwerk'),
+                            'name' => 'title',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => [
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ],
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
                         ],
-                        'collapsed' => 'field_5b99107c05437',
-                        'min' => 3,
-                        'max' => 4,
-                        'layout' => 'row',
-                        'button_label' => __('Add Content', 'mooiwerk'),
-                        'sub_fields' => [
-                            [
-                                'key' => 'field_5b99107c05437',
-                                'label' => __('Title', 'mooiwerk'),
-                                'name' => 'title',
-                                'type' => 'text',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => [
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ],
-                                'default_value' => '',
-                                'placeholder' => '',
-                                'prepend' => '',
-                                'append' => '',
-                                'maxlength' => '',
+                        [
+                            'key' => 'field_5b9910c205438',
+                            'label' => __('Description', 'mooiwerk'),
+                            'name' => 'description',
+                            'type' => 'textarea',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => [
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
                             ],
-                            [
-                                'key' => 'field_5b9910c205438',
-                                'label' => __('Description', 'mooiwerk'),
-                                'name' => 'description',
-                                'type' => 'textarea',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => [
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ],
-                                'default_value' => '',
-                                'placeholder' => '',
-                                'maxlength' => '',
-                                'rows' => '',
-                                'new_lines' => 'wpautop',
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'maxlength' => '',
+                            'rows' => '',
+                            'new_lines' => 'wpautop',
+                        ],
+                        [
+                            'key' => 'field_5b9910e905439',
+                            'label' => __('Link', 'mooiwerk'),
+                            'name' => 'link',
+                            'type' => 'url',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => [
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
                             ],
-                            [
-                                'key' => 'field_5b9910e905439',
-                                'label' => __('Link', 'mooiwerk'),
-                                'name' => 'link',
-                                'type' => 'url',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => [
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ],
-                                'default_value' => '',
-                                'placeholder' => '',
-                            ],
+                            'default_value' => '',
+                            'placeholder' => '',
                         ],
                     ],
                 ],
-                'location' => [
+            ],
+            'location' => [
+                [
                     [
-                        [
-                            'param' => 'page_type',
-                            'operator' => '==',
-                            'value' => 'front_page',
-                        ],
-                    ],
-                    [
-                        [
-                            'param' => 'page_type',
-                            'operator' => '==',
-                            'value' => 'posts_page',
-                        ],
+                        'param' => 'page_type',
+                        'operator' => '==',
+                        'value' => 'front_page',
                     ],
                 ],
-                'menu_order' => 0,
-                'position' => 'normal',
-                'style' => 'default',
-                'label_placement' => 'top',
-                'instruction_placement' => 'label',
-                'hide_on_screen' => '',
-                'active' => 1,
-                'description' => '',
-            ]
-        );
+                [
+                    [
+                        'param' => 'page_type',
+                        'operator' => '==',
+                        'value' => 'posts_page',
+                    ],
+                ],
+            ],
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        ];
+
+        $vacancies_page = get_page_by_title(__('Vacatures', 'mooiwerk'));
+        if (!empty($vacancies_page)) {
+            $block_fields['location'][] = [
+                [
+                    'param' => 'page',
+                    'operator' => '==',
+                    'value' => $vacancies_page->ID,
+                ],
+            ];
+        }
+        
+        $classes_page = get_page_by_title(__('Vrijwilligersacademie', 'mooiwerk'));
+        if (!empty($classes_page)) {
+            $block_fields['location'][] = [
+                [
+                    'param' => 'page',
+                    'operator' => '==',
+                    'value' => $classes_page->ID,
+                ],
+            ];
+        }
+        acf_add_local_field_group($block_fields);
 
         acf_add_local_field_group(
             [

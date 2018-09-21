@@ -5,7 +5,7 @@
     <section class="company">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-lg-8">
                     @php
                         $ID = get_queried_object()->ID;
                         $usermeta = get_user_meta($ID);
@@ -120,7 +120,7 @@
                         wp_reset_postdata();
                     @endphp
                 </div>
-                <aside class="col-sm-4 company__sidebar blog__sidebar sidebar">
+                <aside class="col-lg-4 company__sidebar blog__sidebar sidebar">
                     {{-- dynamic_sidebar('sidebar-primary') --}}
                 </aside>
             </div>

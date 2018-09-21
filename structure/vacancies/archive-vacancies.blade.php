@@ -2,7 +2,14 @@
 
 @section('content')
     @include('partials.page-header')
-    <section class="vacancy-list">
+    @php
+        $vacancy_page = get_page_by_title(__('Vacatures', 'mooiwerk'));
+        $blocks = App::getBlocks($vacancy_page->ID);
+    @endphp
+    @if($blocks)
+        @include('partials.content-blocks')
+    @endif
+    <section class="vacancy-list vacancy-list_drop-padding">
         <div class="container">                           
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
@@ -59,12 +66,12 @@
                     'relation' => 'AND',
                     array(
                         'key'     => 'date',
-                        'value'   => date('d/m/Y'),
+                        'value'   => date('Y-m-d'),
                         'compare' => '>=',
                         'type' => 'DATE',
                     )
                 ); // Array of arrays that individually store key/value pairs.
-                            $filter_keys = array(
+                $filter_keys = array(
                     'field_5b7ef8e109d65' => 'region',
                     'field_5b7ef92009d66' => 'frequency',
                     'field_5b7ef96709d67' => 'period',
@@ -77,7 +84,7 @@
                 $labels = array(
                     'field_5b7ef8e109d65' => __('Locatie', 'mooiwerk'),
                     'field_5b7ef92009d66' => __('Hoe vaak', 'mooiwerk'),
-                    'field_5b7ef96709d67' => __('Uren per week', 'mooiwerk'),
+                    'field_5b7ef96709d67' => __('Uren per dag', 'mooiwerk'),
                     'field_5b7ef9ba09d68' => __('Categorie', 'mooiwerk'),
                     'field_5b7ef9f609d69' => __('Benodigde competenties', 'mooiwerk'),
                     'field_5b7efa5509d6a' => __('Doelgroep', 'mooiwerk'),
@@ -111,7 +118,7 @@
                                 </a>
                                 <i class="fa fa-angle-right layered__group-header" aria-hidden="true"></i>
                             </div>
-                            <div class="b-4 layered__field filter collapse" data-filter="{{  $key }}" id="{{  $key }}">
+                            <div class="layered__field filter collapse" data-filter="{{  $key }}" id="{{  $key }}">
                                 {!! render_field($field); !!}
                             </div>
                         </section>
@@ -120,29 +127,14 @@
                 </aside>
                 <main class="col-lg-8 vacancy-list__items">
                 @php
-                    /**
-                     * Add key, value pair to the post meta filters if it is set.
-                     */
-                    function add_to_meta_query_if_get_exists($filter_key, $filter_value, &$query){
-                        if(isset($_GET[$filter_key])){
-                            $values_to_search = explode(',', $_GET[$filter_key]);
-                            foreach ($values_to_search as $value) {
-                                $meta_addition = array(
-                                    'key' => rawurldecode($filter_key),
-                                    'value' => rawurldecode($value),
-                                    'compare' => 'LIKE'
-                                );
-                                array_push($query,$meta_addition);
-                            }
-                        }
-                    }
+                    error_log(json_encode($meta_query));
                     // Arguments for out main query
                     $args = array(
                         // Add filter and pagination arguments here later, and get them from ?= variables with default values.
                         'post_type' => 'vacancies',
                         'posts_per_page' => $posts_per_page,
                         'paged' => $current_page,
-                        'meta_query' => $meta_query
+                        'meta_query' => $meta_query,
                     );
 
 
@@ -182,15 +174,15 @@
                         <div class="card shadow border-light vacancy-list__item  vacancy-card">
                             <div class="row vacancy-card__header-wrapper">
                                 <div class="col-xxl-2 col-md-3 col-xs-12 vacancy-card__figure d-flex align-items-center">
-                                <img src="{{ $vacancy['image_link']? $vacancy['image_link'] : '//placehold.it/114x76' }}" class="vacancy-card__image">
+                                    <a href="{{ $vacancy['link'] }}"><img src="{{ $vacancy['image_link']? $vacancy['image_link'] : '//placehold.it/114x76' }}" class="vacancy-card__image"></a>
                                 </div>
                                 <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
-                                    <h2 class="card-title vacancy-card__header">{{ $vacancy['title'] }}</h2>
+                                    <h2 class="card-title vacancy-card__header"><a href="{{ $vacancy['link'] }}">{{ $vacancy['title'] }}</a></h2>
                                     <h3 class="card-subtitle vacancy-card__subheader">{{ $vacancy['subtitle'] }}</h3>
                                 </div>
                             </div>
                             <div class="card-body vacancy-card__body">
-                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link">{{__('lees meer ›', 'mooiwerk')}}</a></div>       
+                                <div class="vacancy-card__text">{!! $vacancy['excerpt'] !!}<a href="{{ $vacancy['link'] }}" class="card-link vacancy-card__link vacancy-card__link-spacer">{{__('lees meer ›', 'mooiwerk')}}</a></div>       
                             </div>
                             <div class="card-footer vacancy-card__footer">{{ $vacancy['footer'] }}</div>
                         </div>

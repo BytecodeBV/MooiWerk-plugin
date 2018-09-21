@@ -99,6 +99,9 @@ class MooiWerk
      */
     private function load_dependencies()
     {
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/functions.php';
+
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/hooks.php';
         /**
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
@@ -151,6 +154,11 @@ class MooiWerk
          * The code responsible for the header functionality.
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'structure/header/header.php';
+
+         /**
+         * The code responsible for the teams functionality.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'structure/teams/teams.php';
 
         /**
          * The class responsible for the custom frontpage functionality.

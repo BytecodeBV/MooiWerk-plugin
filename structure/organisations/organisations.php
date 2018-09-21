@@ -60,7 +60,7 @@ function register_custom_fields_organisation() {
                         'key' => 'field_5b7eea36950ea',
                         'label' => __('Adres', 'mooiwerk'),
                         'name' => 'address',
-                        'type' => 'google_map',
+                        'type' => 'text',
                         'instructions' => '',
                         'required' => 1,
                         'conditional_logic' => 0,
