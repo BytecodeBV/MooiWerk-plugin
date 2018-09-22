@@ -4,7 +4,22 @@
     @include('partials.page-header')
     @php
         $vacancy_page = get_page_by_title(__('Vacatures', 'mooiwerk'));
-        $blocks = App::getBlocks($vacancy_page->ID);
+        if (method_exists('App','getBlocks')) {
+            $blocks = App::getBlocks($vacancy_page->ID);
+        } else {
+            $rows = get_field('content_blocks', $vacancy_page->ID);
+            $blocks = [];
+            if ($rows) {
+                $blocks = array_map(function ($row) {
+                    return [
+                        'title' => $row['title'],
+                        'content' => $row['description'],
+                        'link' => $row['link'],
+                    ];
+                }, $rows);
+            }
+        }
+        
     @endphp
     @if($blocks)
         @include('partials.content-blocks')
