@@ -70,11 +70,11 @@
                                         $field['type'] = 'checkbox';
                                     }
                                    if (isset($_GET[$key])){                                                                                
-                                        $field['value'] = explode(',', $_GET[$key]);
+                                        $field['value'] = explode('_', $_GET[$key]);
                                         if ($key == 'availability') {
-                                            add_to_meta_query_if_get_exists_or($key,$_GET[$key],$meta_query);
+                                            add_to_meta_query_if_get_exists_or($key, $field['value'], $meta_query);
                                         } else {                                            
-                                            add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
+                                            add_to_meta_query_if_get_exists($key, $field['value'], $meta_query);
                                         }
                                     } else {
                                         $field['value'] = array();

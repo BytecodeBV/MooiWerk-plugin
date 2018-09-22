@@ -77,8 +77,8 @@
                             $field = get_field_object($acf_key, false, false);
 
                             if (isset($_GET[$key])) {
-                                $field['value'] = explode(',', $_GET[$key]);
-                                add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
+                                $field['value'] = explode('_', $_GET[$key]);
+                                add_to_meta_query_if_get_exists($key, $field['value'], $meta_query);
                             } else {
                                 $field['value'] = array();
                             }

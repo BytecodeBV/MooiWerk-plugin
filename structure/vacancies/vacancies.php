@@ -115,8 +115,6 @@ function register_custom_fields_vacancy()
                         'choices' => array (
                             '1 tot 4 uur' => __('1 tot 4 uur', 'mooiwerk'),
                             '4 tot 8 uur' => __('4 tot 8 uur', 'mooiwerk'),
-                            //'9 t/m 16 uur' => __('9 t/m 16 uur', 'mooiwerk'),
-                            //'17 uur of meer' => __('17 uur of meer', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,

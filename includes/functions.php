@@ -62,9 +62,8 @@ function numeric_pagination($current_page, $num_pages)
  * Add key, value pair to the post meta filters if it is set.
  */
 function add_to_meta_query_if_get_exists($filter_key, $filter_value, &$query) {
-    if (isset($_GET[$filter_key])) {
-        $values_to_search = explode(',', $_GET[$filter_key]);
-        foreach ($values_to_search as $value) {
+    if (isset($filter_value)) {
+        foreach ($filter_value as $value) {
             $meta_addition = [
                 'key' => rawurldecode($filter_key),
                 'value' => rawurldecode($value),
@@ -81,9 +80,8 @@ function add_to_meta_query_if_get_exists($filter_key, $filter_value, &$query) {
 function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query)
 {
     $nested_meta = ['relation' => 'OR'];
-    if (isset($_GET[$filter_key])) {
-        $values_to_search = explode(',', $_GET[$filter_key]);
-        foreach ($values_to_search as $value) {
+    if (isset($filter_value)) {
+        foreach ($filter_value as $value) {
             $meta_addition = [
                 'key' => rawurldecode($filter_key),
                 'value' => rawurldecode($value),
@@ -154,7 +152,7 @@ function filter_script($page)
                 }                
             });
             // append to args
-            args[ filter ] = vals.join(',');
+            args[ filter ] = vals.join('_');
         });
         // update url
         url += '?';
