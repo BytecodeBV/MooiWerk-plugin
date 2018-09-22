@@ -70,11 +70,11 @@
                                         $field['type'] = 'checkbox';
                                     }
                                    if (isset($_GET[$key])){                                                                                
-                                        $field['value'] = explode(',', $_GET[$key]);
+                                        $field['value'] = explode('_', $_GET[$key]);
                                         if ($key == 'availability') {
-                                            add_to_meta_query_if_get_exists_or($key,$_GET[$key],$meta_query);
+                                            add_to_meta_query_if_get_exists_or($key, $field['value'], $meta_query);
                                         } else {                                            
-                                            add_to_meta_query_if_get_exists($key,$_GET[$key],$meta_query);
+                                            add_to_meta_query_if_get_exists($key, $field['value'], $meta_query);
                                         }
                                     } else {
                                         $field['value'] = array();
@@ -82,8 +82,15 @@
                                    
                                 @endphp
                                 <section class="mb-4 layered__group">
-                                    <h2 class="layered__group-header">{{$field['label']}}</h2>
-                                    <div class="filter" data-filter="{{$key}}">
+                                    <div class="d-flex justify-content-between">                                
+                                        <a data-toggle="collapse" href="#{{ $key }}" role="button">
+                                            <h2 class="layered__group-header">
+                                                {{$field['label']}}
+                                            </h2>
+                                        </a>
+                                        <i class="fa fa-angle-right layered__group-header" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="layered__field filter collapse" data-filter="{{$key}}" id="{{$key}}">
                                         {!! render_field($field) !!}
                                     </div>
                                 </section>
@@ -91,41 +98,7 @@
                         </div>
                     </aside>
                     @php
-                        /**
-                         * Add key, value pair to the post meta filters if it is set.
-                         */
-                        function add_to_meta_query_if_get_exists($filter_key, $filter_value, &$query){
-                            if(isset($_GET[$filter_key])){
-                                $values_to_search = explode(',', $_GET[$filter_key]);
-                                foreach ($values_to_search as $value) {
-                                    $meta_addition = array(
-                                        'key' => rawurldecode($filter_key),
-                                        'value' => rawurldecode($value),
-                                        'compare' => 'LIKE'
-                                    );
-                                    array_push($query,$meta_addition);
-                                }
-                            }
-                        }
-
-                        /**
-                         * Add key, value pair OR to the post meta filters if it is set.
-                         */
-                        function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query){
-                            $nested_meta = ['relation' => 'OR'];
-                            if(isset($_GET[$filter_key])){
-                                $values_to_search = explode(',', $_GET[$filter_key]);
-                                foreach ($values_to_search as $value) {
-                                    $meta_addition = array(
-                                        'key' => rawurldecode($filter_key),
-                                        'value' => rawurldecode($value),
-                                        'compare' => 'LIKE'
-                                    );
-                                    array_push($nested_meta,$meta_addition);
-                                }
-                            }
-                            array_push($query,$nested_meta);
-                        }
+                        
                         // Check if user wants to show up in results.
                         $check_pref = array(
                             'key' => 'searchable',
@@ -172,18 +145,18 @@
                                             $image = get_field('profile_image', 'user_' . $user->ID);
                                             $image = $image ? $image : '//placehold.it/114x76';
                                         @endphp
-                                        <img src="{{$image}}" class="vacancy-card__image">
+                                        <a href="{{ get_author_posts_url($user->ID) }}"><img src="{{$image}}" class="vacancy-card__image"></a>
                                     </div>
                                     <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
-                                        <h2 class="card-title vacancy-card__header">{{ get_field('first-name', 'user_' . $user->ID)}} {{get_field('last-name', 'user_' . $user->ID) }}</h2>
+                                        <h2 class="card-title vacancy-card__header"><a href="{{ get_author_posts_url($user->ID) }}">{{ get_field('first-name', 'user_' . $user->ID)}} {{get_field('last-name', 'user_' . $user->ID) }}</a></h2>
                                         @if(get_field('categorie', 'user_' . $user->ID))                                            
-                                        <h3 class="card-subtitle vacancy-card__subheader">{{get_field('age', 'user_' . $user->ID)}}</h3>
+                                            <h3 class="card-subtitle vacancy-card__subheader">{{get_field('age', 'user_' . $user->ID)}}</h3>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="card-body vacancy-card__body">
                                     <div class="vacancy-card__text">{!!get_field('bio', 'user_' . $user->ID)!!}</div>
-                                    <a href="{{ get_author_posts_url($user->ID) }}" class="card-link">lees meer ›</a>
+                                    <a href="{{ get_author_posts_url($user->ID) }}" class="card-link vacancy-card__link">lees meer ›</a>
                                 </div>
                                 <div class="card-footer vacancy-card__footer">{{is_array(get_field('qualification', 'user_' . $user->ID))? implode(', ',get_field('qualification', 'user_' . $user->ID)) : get_field('qualification', 'user_' . $user->ID)}}</div>                                
                             </div>

@@ -14,8 +14,8 @@
     <section class="company">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8">                    
-                    <h1 class="company__name">{{ $userdata->display_name }}</h1>
+                <div class="col-lg-8">                    
+                    <h1 class="company__name">{{ get_field('name', 'user_' . $ID) }}</h1>
                     <div class="d-flex company__profile">
                         <div class="company__logo-wrapper">
                             @php
@@ -26,37 +26,43 @@
                         </div>
                         <div class="company__contact">
                             <div class="d-flex flex-column company__contact-group">
-                                @if(get_field('address', 'user_' . $ID))
-                                <small class="company__address">{{ get_field('address', 'user_' . $ID)['address'] }}</small>
+                                @if($address = get_field('address', 'user_' . $ID))
+                                    @php
+                                        //fallback for already saved google fields
+                                        if (is_array($address)) {
+                                            $address = $address['address'];
+                                        }
+                                    @endphp
+                                    <small class="company__address">{{ $address }}</small>
                                 @endif
-                                @if(get_field('postcode', 'user_' . $ID))
-                                <small class="company__phone">{{ get_field('postcode', 'user_' . $ID) }}</small>
+                                @if($postcode = get_field('postcode', 'user_' . $ID))
+                                    <small class="company__postcode">{{ $postcode }}</small>
                                 @endif
-                                @if(get_field('place', 'user_' . $ID))
-                                <small class="company__email">{{ get_field('place', 'user_' . $ID) }}</small>
+                                @if($place = get_field('place', 'user_' . $ID))
+                                    <small class="company__city">{{ $place }}</small>
                                 @endif
-                                @if(get_field('website', 'user_' . $ID))
-                                <small class="company__website">{{ get_field('website', 'user_' . $ID)}}</small>
+                                @if($website = get_field('website', 'user_' . $ID))
+                                    <small class="company__website">{{ $website }}</small>
                                 @endif                                
                             </div>
                             <nav class="company__social-links">
-                                @if(get_field('facebook', 'user_' . $ID))
-                                    <a href="{{get_field('facebook', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                @if($facebook = get_field('facebook', 'user_' . $ID))
+                                    <a href="{{$facebook}}" target="_blank" class="company__social-link mr-2">
                                         <img src="@asset('images/facebook.svg')" alt="Facebook" class="company__social-link-icon">
                                     </a>
                                  @endif
-                                @if(get_field('twitter', 'user_' . $ID))
-                                    <a href="{{get_field('twitter', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                @if($twitter = get_field('twitter', 'user_' . $ID))
+                                    <a href="{{$twitter}}" target="_blank" class="company__social-link mr-2">
                                         <img src="@asset('images/twitter.svg')" alt="Twitter" class="company__social-link-icon">
                                     </a>
                                  @endif
-                                @if(get_field('linkedin', 'user_' . $ID))
-                                    <a href="{{get_field('linkedin', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                @if($linkedin = get_field('linkedin', 'user_' . $ID))
+                                    <a href="{{$linkedin}}" target="_blank" class="company__social-link mr-2">
                                         <img src="@asset('images/linkedin.svg')" alt="Linkedin" class="company__social-link-icon">
                                     </a>
                                 @endif
-                                @if(get_field('instagram', 'user_' . $ID))
-                                    <a href="{{get_field('instagram', 'user_' . $ID)}}" target="_blank" class="company__social-link mr-2">
+                                @if($instagram = get_field('instagram', 'user_' . $ID))
+                                    <a href="{{$instagram}}" target="_blank" class="company__social-link mr-2">
                                         <img src="@asset('images/instagram.svg')" alt="Instagram" class="company__social-link-icon">
                                     </a>
                                 @endif
@@ -114,7 +120,18 @@
                         wp_reset_postdata();
                     @endphp
                 </div>
-                <aside class="col-sm-4 company__sidebar blog__sidebar sidebar">
+                <aside class="col-lg-4 company__sidebar blog__sidebar sidebar">
+                    @if ($address)
+                        <div class="sidebar__item map">
+                            <!--h5 class="sidebar__title">{{__('Location', 'mooiwerk')}}</h5-->
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q={{urlencode($address)}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     {!! dynamic_sidebar('sidebar-primary') !!}
                 </aside>
             </div>

@@ -19,7 +19,7 @@
                             'ervaring' => implode(', ', get_field('competency')),
                             'vergoeding' => implode(', ', get_field('compensation'))
                         ];
-                        $date = date_create_from_format('m/d/Y', get_field('date'));                        
+                        $date = date_create_from_format('d/m/Y', get_field('date'));                        
                         $date = date_format($date, 'm/d/Y');
                     @endphp
                     @if(isExpired($date))

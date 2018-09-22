@@ -101,7 +101,7 @@ function register_custom_fields_vacancy()
                     ),
                     array (
                         'key' => 'field_5b7ef96709d67',
-                        'label' => __('Hoeveel uren per week of per keer is voor deze vacature nodig (maximaal 1 antwoord mogelijk)', 'mooiwerk'),
+                        'label' => __('Hoeveel uren per dag ben je met dit werk bezig?', 'mooiwerk'),
                         'name' => 'period',
                         'type' => 'checkbox',
                         'instructions' => '',
@@ -113,10 +113,8 @@ function register_custom_fields_vacancy()
                             'id' => '',
                         ),
                         'choices' => array (
-                            '1 t/m 4 uur' => __('1 t/m 4 uur', 'mooiwerk'),
-                            '5 t/m 8 uur' => __('5 t/m 8 uur', 'mooiwerk'),
-                            '9 t/m 16 uur' => __('9 t/m 16 uur', 'mooiwerk'),
-                            '17 uur of meer' => __('17 uur of meer', 'mooiwerk'),
+                            '1 tot 4 uur' => __('1 tot 4 uur', 'mooiwerk'),
+                            '4 tot 8 uur' => __('4 tot 8 uur', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
