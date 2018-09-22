@@ -127,7 +127,6 @@
                 </aside>
                 <main class="col-lg-8 vacancy-list__items">
                 @php
-                    error_log(json_encode($meta_query));
                     // Arguments for out main query
                     $args = array(
                         // Add filter and pagination arguments here later, and get them from ?= variables with default values.
