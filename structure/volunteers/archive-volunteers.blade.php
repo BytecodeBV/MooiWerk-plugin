@@ -90,7 +90,7 @@
                                         </a>
                                         <i class="fa fa-angle-right layered__group-header" aria-hidden="true"></i>
                                     </div>
-                                    <div class="layered__field filter collapse" data-filter="{{$key}}" id="{{$key}}">
+                                    <div class="layered__field filter {{ empty($field['value'])? 'collapse' : '' }}" data-filter="{{$key}}" id="{{$key}}">
                                         {!! render_field($field) !!}
                                     </div>
                                 </section>
