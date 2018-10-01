@@ -313,6 +313,114 @@ function register_custom_fields_frontpage() {
                 'description' => '',
             ]
         );
+
+        acf_add_local_field_group(
+            array (
+                'key' => 'group_5ba91cc670839',
+                'title' => __('News Section', 'mooiwerk'),
+                'fields' => array (
+                    array (
+                        'key' => 'field_5ba91cdca85a0',
+                        'label' => __('Featured Posts', 'mooiwerk'),
+                        'name' => 'featured',
+                        'type' => 'repeater',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'collapsed' => '',
+                        'min' => 6,
+                        'max' => 8,
+                        'layout' => 'table',
+                        'button_label' => '',
+                        'sub_fields' => array (
+                            array (
+                                'key' => 'field_5ba91d02a85a1',
+                                'label' => __('Blog Post', 'mooiwerk'),
+                                'name' => 'post_id',
+                                'type' => 'post_object',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array (
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'post_type' => array (
+                                    0 => 'post',
+                                ),
+                                'taxonomy' => array (
+                                ),
+                                'allow_null' => 1,
+                                'multiple' => 0,
+                                'return_format' => 'id',
+                                'ui' => 1,
+                            ),
+                            array (
+                                'key' => 'field_5ba91d27a85a2',
+                                'label' => __('Summary', 'mooiwerk'),
+                                'name' => 'excerpt',
+                                'type' => 'textarea',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array (
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'default_value' => '',
+                                'placeholder' => '',
+                                'maxlength' => 155,
+                                'rows' => '',
+                                'new_lines' => '',
+                            ),
+                            array (
+                                'key' => 'field_5ba91d4ca85a3',
+                                'label' => __('Is Big', 'mooiwerk'),
+                                'name' => 'is_big',
+                                'type' => 'true_false',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array (
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'message' => '',
+                                'default_value' => 0,
+                                'ui' => 0,
+                                'ui_on_text' => '',
+                                'ui_off_text' => '',
+                            ),
+                        ),
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'page_type',
+                            'operator' => '==',
+                            'value' => 'front_page',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => 1,
+                'description' => '',
+            )
+        );
     }
 }
 add_action('acf/init', 'register_custom_fields_frontpage');

@@ -78,7 +78,11 @@
 
                             if (isset($_GET[$key])) {
                                 $field['value'] = explode('_', $_GET[$key]);
-                                add_to_meta_query_if_get_exists($key, $field['value'], $meta_query);
+                                if ($acf_key == 'field_5b7eed557da3a') {                                    
+                                    add_to_meta_query_if_get_exists_or($key, $field['value'], $meta_query);
+                                } else {
+                                    add_to_meta_query_if_get_exists($key, $field['value'], $meta_query);
+                                }
                             } else {
                                 $field['value'] = array();
                             }
@@ -92,7 +96,7 @@
                                     </a>
                                     <i class="fa fa-angle-right layered__group-header" aria-hidden="true"></i>
                                 </div>
-                                <div class="layered__field filter collapse" data-filter="{{$key}}" id="{{$key}}">
+                                <div class="layered__field filter {{ empty($field['value'])? 'collapse' : '' }}" data-filter="{{$key}}" id="{{$key}}">
                                     {!! render_field($field); !!}
                                 </div>
                             </section>
