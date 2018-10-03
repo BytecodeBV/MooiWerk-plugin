@@ -31,6 +31,7 @@
                                             'field_5b7eea36950ea', //address
                                             'field_5b7eea5e950eb', //postcode
                                             'field_5b7eea9a950ec', //place
+                                            'field_5bb48c0adb986', //email
                                             'field_5b7eeac7950ed', //website
                                             'field_5b7eeb458880a', //facebook
                                             'field_5b7eeb578880b', //twitter
@@ -58,6 +59,7 @@
                                             'field_5b7ef13794880', //first-name
                                             'field_5b7ef15394881', //initials
                                             'field_5b7ef16094882', //last-name
+                                            'field_5bb4920ddb987', //email
                                             'field_5b7ef19394884', //telephone                                            
                                             'field_5b7ef21994886', //age
                                             'field_5b7ef4639488e', //bio

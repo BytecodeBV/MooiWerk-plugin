@@ -54,7 +54,7 @@
                                             return ($comment->comment_post_ID == $p->ID);
                                         });
                                         @endphp
-                                        <div class="card shadow border-light  vacancy-card">                                        
+                                        <div class="card shadow border-light comment-card vacancy-card">                                        
                                             <div class="card-body">                                            
                                                 <h2 class="card-title vacancy-card__header">{{ $vacancy['title'] }}</h2>
                                                 <div class="card-text">{!! apply_filters('the_content', $vacancy['excerpt']) !!}</div>
