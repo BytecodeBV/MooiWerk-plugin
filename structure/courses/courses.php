@@ -38,58 +38,6 @@ function register_custom_tax_wcs_category()
 add_action('init', 'register_custom_tax_wcs_category');
 
 /**
- * Create Course categorires
- */
-function create_course_terms() 
-{
-    if (!term_exists(__('Persoonlijke ontwikkeling', 'mooiwerk'), 'wcs_category')) {
-        wp_insert_term(
-            __('Persoonlijke ontwikkeling', 'mooiwerk'),
-            'wcs_category'
-        );
-    }
-
-    if (!term_exists(__('Sociale veiligheid', 'mooiwerk'), 'wcs_category')) {
-        wp_insert_term(
-            __('Sociale veiligheid', 'mooiwerk'), // the term
-            'wcs_category'
-        );
-    }
-
-    if (!term_exists(__('Financiën en sponsoring', 'mooiwerk'), 'wcs_category')) {
-        wp_insert_term(
-            __('Financiën en sponsoring', 'mooiwerk'), // the term
-            'wcs_category'
-        );
-    }
-
-    if (!term_exists(__('Communicatie en PR', 'mooiwerk'), 'wcs_category')) {
-        wp_insert_term(
-            __('Communicatie en PR', 'mooiwerk'), // the term
-            'wcs_category'
-        );
-    }
-
-    if (!term_exists(__('Werving en Selectie', 'mooiwerk'), 'wcs_category')) {
-        wp_insert_term(
-            __('Werving en Selectie', 'mooiwerk'), // the term
-            'wcs_category'
-        );
-    }
-
-    if (!term_exists(__('Organisatie en Bestuur', 'mooiwerk'), 'wcs_category')) {
-        wp_insert_term(
-            __('Organisatie en Bestuur', 'mooiwerk'), // the term
-            'wcs_category'
-        );
-    }
-
-    
-}
-
-add_action('init', 'create_course_terms');
-
-/**
  * Add Custom Fields to the events plugin on init.
  */
 function register_custom_fields_course() {
