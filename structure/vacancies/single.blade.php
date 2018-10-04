@@ -27,7 +27,7 @@
                     @endif                
                     <div class="row">
                         <div class="col-sm-10  cv__header">
-                            <h1 class="cv__name"> {{ $title }}</h1>
+                            <h1 class="cv__name"> {!! $title !!}</h1>
                             <p class="cv__detail">{{ $category }}</p>
                             <p class="cv__detail"> {{ $time }}</p>
                         </div>
@@ -111,7 +111,7 @@
                                         'period' => __('Uren per week', 'mooiwerk'),
                                         'categories' => __('Categorie', 'mooiwerk'),
                                         'target' => __('Doelgroep', 'mooiwerk'),
-                                        'date' => __('Datum', 'mooiwerk')
+                                        'date' => __('Vervaldatum', 'mooiwerk')
                                     );
                                 @endphp
                                 @if( $fields )
@@ -170,7 +170,7 @@
                                         <div class="company-widget__contact">
                                             <div class="d-flex flex-column company-widget__contact-group">
                                                 @if(get_field('address', 'user_' . $author))
-                                                <small class="company-widget__address">{{ get_field('address', 'user_' . $author)['address'] }}</small>
+                                                <small class="company-widget__address">{{ get_field('address', 'user_' . $author) }}</small>
                                                 @endif
                                                 @if(get_field('postcode', 'user_' . $author))
                                                 <small class="company-widget__phone">{{ get_field('postcode', 'user_' . $author) }}</small>

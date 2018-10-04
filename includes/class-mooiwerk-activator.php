@@ -49,28 +49,28 @@ class MooiWerk_Activator {
         create_page(__('Favorieten', 'mooiwerk'));
         create_page(__('Wijzig Wachtwoord', 'mooiwerk'));
         create_page(__('Opstelling', 'mooiwerk'));
-        create_page(__('Inloggen', 'mooiwerk'), 'login', '[theme-my-login action="login"]');
-        create_page(__('Uitloggen', 'mooiwerk'), 'logout', '[theme-my-login action="logout"]');
+        create_page(__('Inloggen', 'mooiwerk'), '[theme-my-login action="login"]');
+        create_page(__('Uitloggen', 'mooiwerk'), '[theme-my-login action="logout"]');
         create_page(__('Registreren', 'mooiwerk'));
-        create_page(__('Registreer Organisatie', 'mooiwerk'), null, '[theme-my-login action="register"]');
-        create_page(__('Registreer Vrijwilliger', 'mooiwerk'), null, '[theme-my-login action="register"]');
-        create_page(__('Account aanmaken', 'mooiwerk'), 'registreer');
-        create_page(__('Maak hier een veilig wachtwoord aan', 'mooiwerk'), 'lostpassword', '[theme-my-login action="lostpassword"]');
-        create_page(__('Maak hier een veilig wachtwoord aan', 'mooiwerk'), 'resetpass', '[theme-my-login action="resetpass"]');
+        create_page(__('Registreer Organisatie', 'mooiwerk'), '[theme-my-login action="register"]');
+        create_page(__('Registreer Vrijwilliger', 'mooiwerk'), '[theme-my-login action="register"]');
+        create_page(__('Nieuw account', 'mooiwerk'), '[theme-my-login action="register"]');
+        create_page(__('Maak hier een veilig wachtwoord aan', 'mooiwerk'), '[theme-my-login action="lostpassword"]');
+        create_page(__('Maak hier een veilig wachtwoord aan', 'mooiwerk'), '[theme-my-login action="resetpass"]');
     }
 }
 
 /**
  * Create a WordPress page.
  */
-function create_page($name, $slug = NULL, $content = NULL, $template = NULL) {
+function create_page($name, $content = NULL, $template = NULL) {
     if (get_page_by_title($name) == NULL){
         $post = array(
             'comment_status' => 'closed',
             'ping_status' =>  'closed' ,
             'post_author' => 1,
             'post_date' => date('Y-m-d H:i:s'),
-            'post_name' => empty($slug)? $name: $lug,
+            'post_name' => $name,
             'post_status' => 'publish' ,
             'post_title' => $name,
             'post_type' => 'page'

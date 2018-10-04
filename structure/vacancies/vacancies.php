@@ -64,6 +64,7 @@ function register_custom_fields_vacancy()
                             'Prinsenbeek' => __('Prinsenbeek', 'mooiwerk'),
                             'Teteringen' => __('Teteringen', 'mooiwerk'),
                             'Ulvenhout' => __('Ulvenhout', 'mooiwerk'),
+                            'Geen vaste locatie' => __('Geen vaste locatie', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
@@ -115,6 +116,8 @@ function register_custom_fields_vacancy()
                         'choices' => array (
                             '1 tot 4 uur' => __('1 tot 4 uur', 'mooiwerk'),
                             '4 tot 8 uur' => __('4 tot 8 uur', 'mooiwerk'),
+                            '9 tot 16 uur' => __('9 tot 16 uur', 'mooiwerk'),
+                            '17 uur of meer' => __('17 uur of meer', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
@@ -281,7 +284,7 @@ function register_custom_fields_vacancy()
                         'choices' => array (
                             'Vrijwilligersvergoeding' => __('Vrijwilligersvergoeding', 'mooiwerk'),
                             'Onkostenvergoeding' => __('Onkostenvergoeding', 'mooiwerk'),
-                            'Geen vergoeding' => __('Geen vergoeding', 'mooiwerk'),
+                            'Geen vergoeding' => __('Gewoon MOOIWERK!', 'mooiwerk'),
                         ),
                         'allow_custom' => 0,
                         'save_custom' => 0,
