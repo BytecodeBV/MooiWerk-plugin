@@ -24,11 +24,10 @@
     @if($blocks)
         @include('partials.content-blocks')
     @endif
-    <section class="vacancy-list vacancy-list_drop-padding">
+    <section class="vacancy-list {{ empty($blocks)? '' : 'vacancy-list_drop-padding' }}">
         <div class="container">                           
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
-                    //$pages = ['Vacatures', 'Organisaties', 'Vrijwilligers'];
                     $pages = ['Vacatures', 'Organisaties'];
                     $user = wp_get_current_user();
                     $roles = $user->roles;
@@ -130,7 +129,7 @@
                                 </a>
                                 <i class="fa fa-angle-right layered__group-header" aria-hidden="true"></i>
                             </div>
-                            <div class="layered__field filter collapse" data-filter="{{  $key }}" id="{{  $key }}">
+                            <div class="layered__field filter {{ empty($field['value'])? 'collapse' : '' }}" data-filter="{{  $key }}" id="{{  $key }}">
                                 {!! render_field($field); !!}
                             </div>
                         </section>

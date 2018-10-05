@@ -3,10 +3,10 @@
 @section('content')
     @include('partials.page-header')
     @php
-
         if(!is_user_logged_in()){
             wp_redirect(home_url());
-        }
+            exit;        
+            }
 
         $user = wp_get_current_user();        
         $role = ( array ) $user->roles;
@@ -14,7 +14,11 @@
         //disable redirect to this page after login
         if (get_field('logged-in', "user_".$user->ID) == false) {
             update_field('logged-in', true, 'user_'.$user->ID);
-        }           
+            } else {
+            //if loggedin before redirect to account page
+            wp_redirect(home_url('/mijn-account'));
+            exit;
+        }        
         
         $title = "";
 
