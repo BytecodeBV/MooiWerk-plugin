@@ -313,8 +313,7 @@ function register_custom_fields_frontpage() {
                 'description' => '',
             ]
         );
-    }
-}
+
         acf_add_local_field_group(
             array (
                 'key' => 'group_5ba91cc670839',
@@ -425,4 +424,3 @@ function register_custom_fields_frontpage() {
     }
 }
 add_action('acf/init', 'register_custom_fields_frontpage');
-

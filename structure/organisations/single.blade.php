@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">                    
-                    <h1 class="company__name">{!! get_field('name', 'user_' . $ID) !!}</h1>
+                    <h1 class="company__name">{{ get_field('name', 'user_' . $ID) }}</h1>
                     <div class="d-flex company__profile">
                         <div class="company__logo-wrapper">
                             @php
@@ -81,7 +81,7 @@
                         $posts = get_posts($args);
                     @endphp
                     @if ($posts)
-                    <h1>Vacatures</h1>    
+                    <h1>Vacancies</h1>    
                         @foreach ($posts as $p)
                             @php
                                 $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');
@@ -105,7 +105,7 @@
                                     <img src="{{ $vacancy['image_link']? $vacancy['image_link'] : '//placehold.it/114x76' }}" class="vacancy-card__image">
                                     </div>
                                     <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
-                                        <h2 class="card-title vacancy-card__header">{!! $vacancy['title'] !!}</h2>
+                                        <h2 class="card-title vacancy-card__header">{{ $vacancy['title'] }}</h2>
                                         <h3 class="card-subtitle vacancy-card__subheader">{{ $vacancy['subtitle'] }}</h3>
                                     </div>
                                 </div>

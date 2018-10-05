@@ -88,16 +88,14 @@
                 ); // Array of arrays that individually store key/value pairs.
                 $filter_keys = array(
                     'field_5b7ef8e109d65' => 'region',
-                    'field_5b7ef96709d67' => 'period',
                     'field_5b7ef92009d66' => 'frequency',
                     'field_5b7ef9ba09d68' => 'categories',
                     'field_5b7efa5509d6a' => 'target',
                     'field_5b7efb4209d6c' => 'compensation'
                 );
                 $labels = array(
-                    'field_5b7ef8e109d65' => __('Waar?', 'mooiwerk'),
-                    'field_5b7ef96709d67' => __('Beschikbare tijd?', 'mooiwerk'),
-                    'field_5b7ef92009d66' => __('Hoe vaak?', 'mooiwerk'),
+                    'field_5b7ef8e109d65' => __('Waar', 'mooiwerk'),
+                    'field_5b7ef92009d66' => __('Hoe vaak', 'mooiwerk'),
                     'field_5b7ef9ba09d68' => __('Soort MOOIWERK?', 'mooiwerk'),
                     'field_5b7efa5509d6a' => __('MOOIWERK met ...?', 'mooiwerk'),
                     'field_5b7efb4209d6c' => __('Beloning', 'mooiwerk')
@@ -180,6 +178,10 @@
                         } else {
                             $vacancy['subtitle'] = $categories;
                         }
+                        $inzet = get_field('schedule', $p->ID);
+                        if ($inzet) {
+                            $vacancy['inzet'] = $inzet[0]['aantal']." ".$inzet[0]['duur']." ".implode(" / ", $inzet[0]['uren']);
+                        }
                         @endphp
                         <div class="card shadow border-light vacancy-list__item  vacancy-card">
                             <div class="row vacancy-card__header-wrapper">
@@ -189,6 +191,9 @@
                                 <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
                                     <h2 class="card-title vacancy-card__header"><a href="{{ $vacancy['link'] }}">{!! $vacancy['title'] !!}</a></h2>
                                     <h3 class="card-subtitle vacancy-card__subheader">{{ $vacancy['subtitle'] }}</h3>
+                                    @if ($vacancy['inzet'])
+                                        <h6><strong>Inzet: {{ $vacancy['inzet'] }} </strong></h6>
+                                    @endif
                                 </div>
                             </div>
                             <div class="card-body vacancy-card__body">
