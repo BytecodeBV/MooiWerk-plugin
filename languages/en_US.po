@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-10-05 18:04+0100\n"
-"PO-Revision-Date: 2018-10-05 18:04+0100\n"
+"POT-Creation-Date: 2018-10-05 18:41+0100\n"
+"PO-Revision-Date: 2018-10-05 18:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -216,22 +216,23 @@ msgstr ""
 
 #: structure/organisations/archive-organisations.blade.php:169
 #, python-format
-msgid "No of Vacancies: %s"
+msgid "Aantal vacatures: %s"
 msgstr ""
 
 #: structure/organisations/archive-organisations.blade.php:173
 msgid "Geen organisatie gevonden die aan uw zoekopdracht voldeed."
 msgstr ""
 
-#: structure/organisations/single.blade.php:126
-#: structure/courses/courses.php:233 structure/frontpage/frontpage.php:254
-msgid "Location"
-msgstr ""
-
+#: structure/organisations/single.blade.php:84
 #: structure/vacancies/archive-vacancies.blade.php:6
 #: includes/class-mooiwerk-activator.php:40 includes/hooks.php:56
 #: structure/frontpage/frontpage.php:205 structure/header/header.php:207
 msgid "Vacatures"
+msgstr ""
+
+#: structure/organisations/single.blade.php:126
+#: structure/courses/courses.php:181 structure/frontpage/frontpage.php:254
+msgid "Location"
 msgstr ""
 
 #: structure/vacancies/archive-vacancies.blade.php:97
@@ -291,7 +292,7 @@ msgstr ""
 msgid "Uren per week"
 msgstr ""
 
-#: structure/vacancies/single.blade.php:113 structure/courses/courses.php:123
+#: structure/vacancies/single.blade.php:113 structure/courses/courses.php:71
 msgid "Doelgroep"
 msgstr ""
 
@@ -319,7 +320,7 @@ msgstr ""
 msgid "Geen vrijwilliger gevonden die aan uw zoekopdracht voldeed."
 msgstr ""
 
-#: includes/class-mooiwerk-activator.php:35 structure/courses/courses.php:441
+#: includes/class-mooiwerk-activator.php:35 structure/courses/courses.php:389
 msgid "Organisatie"
 msgstr ""
 
@@ -334,7 +335,7 @@ msgid "Organisaties"
 msgstr ""
 
 #: includes/class-mooiwerk-activator.php:39 includes/hooks.php:55
-#: structure/courses/courses.php:135 structure/header/header.php:209
+#: structure/courses/courses.php:83 structure/header/header.php:209
 #: structure/volunteers/volunteers.php:559
 msgid "Vrijwilligers"
 msgstr ""
@@ -471,95 +472,71 @@ msgstr ""
 msgid "Voeg een nieuwe categorie toe"
 msgstr ""
 
-#: structure/courses/courses.php:45 structure/courses/courses.php:47
-msgid "Persoonlijke ontwikkeling"
-msgstr ""
-
-#: structure/courses/courses.php:52 structure/courses/courses.php:54
-msgid "Sociale veiligheid"
-msgstr ""
-
-#: structure/courses/courses.php:59 structure/courses/courses.php:61
-msgid "Financiën en sponsoring"
-msgstr ""
-
-#: structure/courses/courses.php:66 structure/courses/courses.php:68
-msgid "Communicatie en PR"
-msgstr ""
-
-#: structure/courses/courses.php:73 structure/courses/courses.php:75
-msgid "Werving en Selectie"
-msgstr ""
-
-#: structure/courses/courses.php:80 structure/courses/courses.php:82
-msgid "Organisatie en Bestuur"
-msgstr ""
-
-#: structure/courses/courses.php:104
+#: structure/courses/courses.php:52
 msgid "Sub titel"
 msgstr ""
 
-#: structure/courses/courses.php:136
+#: structure/courses/courses.php:84
 msgid "Professionals"
 msgstr ""
 
-#: structure/courses/courses.php:137
+#: structure/courses/courses.php:85
 msgid "Bestuur"
 msgstr ""
 
-#: structure/courses/courses.php:138
+#: structure/courses/courses.php:86
 msgid "Coordinatoren"
 msgstr ""
 
-#: structure/courses/courses.php:150
+#: structure/courses/courses.php:98
 msgid "Programma"
 msgstr ""
 
-#: structure/courses/courses.php:169
+#: structure/courses/courses.php:117
 msgid "Kosten/Prijs"
 msgstr ""
 
-#: structure/courses/courses.php:190
+#: structure/courses/courses.php:138
 msgid "Beschikbare plaatsen"
 msgstr ""
 
-#: structure/courses/courses.php:237
+#: structure/courses/courses.php:185
 msgid "Straat"
 msgstr ""
 
-#: structure/courses/courses.php:256
+#: structure/courses/courses.php:204
 msgid "Nummer"
 msgstr ""
 
-#: structure/courses/courses.php:277
+#: structure/courses/courses.php:225
 msgid "Toevoeging"
 msgstr ""
 
-#: structure/courses/courses.php:296
+#: structure/courses/courses.php:244
 #: structure/organisations/organisations.php:79
 msgid "Postcode"
 msgstr ""
 
-#: structure/courses/courses.php:315
+#: structure/courses/courses.php:263
 #: structure/organisations/organisations.php:98
 msgid "Plaats"
 msgstr ""
 
-#: structure/courses/courses.php:334 structure/courses/courses.php:460
+#: structure/courses/courses.php:282 structure/courses/courses.php:408
 msgid "Image"
 msgstr ""
 
-#: structure/courses/courses.php:384
+#: structure/courses/courses.php:332
 msgid "Tussenvoeging"
 msgstr ""
 
-#: structure/courses/courses.php:403
+#: structure/courses/courses.php:351
 #: structure/organisations/organisations.php:199
 #: structure/volunteers/volunteers.php:87
 msgid "Achternaam"
 msgstr ""
 
-#: structure/courses/courses.php:422 structure/header/header.php:51
+#: structure/courses/courses.php:370 structure/header/header.php:51
 msgid "Titel"
 msgstr ""
 
