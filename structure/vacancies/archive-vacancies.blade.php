@@ -28,7 +28,7 @@
         <div class="container">                           
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
-                    $pages = ['Vacatures', 'Organisaties', 'Vrijwilligers'];
+                    $pages = ['Vacatures', 'Organisaties'];
                     $user = wp_get_current_user();
                     $roles = $user->roles;
                 @endphp
@@ -88,23 +88,19 @@
                 ); // Array of arrays that individually store key/value pairs.
                 $filter_keys = array(
                     'field_5b7ef8e109d65' => 'region',
-                    'field_5b7ef92009d66' => 'frequency',
                     'field_5b7ef96709d67' => 'period',
+                    'field_5b7ef92009d66' => 'frequency',
                     'field_5b7ef9ba09d68' => 'categories',
-                    'field_5b7ef9f609d69' => 'competency',
                     'field_5b7efa5509d6a' => 'target',
-                    'field_5b7efab409d6b' => 'requirements',
                     'field_5b7efb4209d6c' => 'compensation'
                 );
                 $labels = array(
-                    'field_5b7ef8e109d65' => __('Locatie', 'mooiwerk'),
-                    'field_5b7ef92009d66' => __('Hoe vaak', 'mooiwerk'),
-                    'field_5b7ef96709d67' => __('Uren per dag', 'mooiwerk'),
-                    'field_5b7ef9ba09d68' => __('Categorie', 'mooiwerk'),
-                    'field_5b7ef9f609d69' => __('Benodigde competenties', 'mooiwerk'),
-                    'field_5b7efa5509d6a' => __('Doelgroep', 'mooiwerk'),
-                    'field_5b7efab409d6b' => __('Ook geschikt voor', 'mooiwerk'),
-                    'field_5b7efb4209d6c' => __('Vergoeding', 'mooiwerk')
+                    'field_5b7ef8e109d65' => __('Waar?', 'mooiwerk'),
+                    'field_5b7ef96709d67' => __('Beschikbare tijd?', 'mooiwerk'),
+                    'field_5b7ef92009d66' => __('Hoe vaak?', 'mooiwerk'),
+                    'field_5b7ef9ba09d68' => __('Soort MOOIWERK?', 'mooiwerk'),
+                    'field_5b7efa5509d6a' => __('MOOIWERK met ...?', 'mooiwerk'),
+                    'field_5b7efb4209d6c' => __('Beloning', 'mooiwerk')
                 );
             @endphp
                 <aside id="archive-filters" class="col-lg-4 vacancy-list__layered layered">
@@ -191,7 +187,7 @@
                                     <a href="{{ $vacancy['link'] }}"><img src="{{ $vacancy['image_link']? $vacancy['image_link'] : '//placehold.it/114x76' }}" class="vacancy-card__image"></a>
                                 </div>
                                 <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
-                                    <h2 class="card-title vacancy-card__header"><a href="{{ $vacancy['link'] }}">{{ $vacancy['title'] }}</a></h2>
+                                    <h2 class="card-title vacancy-card__header"><a href="{{ $vacancy['link'] }}">{!! $vacancy['title'] !!}</a></h2>
                                     <h3 class="card-subtitle vacancy-card__subheader">{{ $vacancy['subtitle'] }}</h3>
                                 </div>
                             </div>

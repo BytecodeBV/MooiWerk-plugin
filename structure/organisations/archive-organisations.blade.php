@@ -6,7 +6,7 @@
         <div class="container">
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
-                    $pages = ['Organisaties', 'Vacatures', 'Vrijwilligers'];
+                    $pages = ['Vacatures', 'Organisaties'];
                     $user = wp_get_current_user();
                     $roles = $user->roles;
                 @endphp
@@ -147,7 +147,7 @@
                                         <a href="{{ get_author_posts_url($user->ID) }}"><img src="{{$image}}" class="vacancy-card__image"></a>
                                     </div>
                                     <div class="col-xxl-10 col-md-9 col-xs-12 vacancy-card__header-group">
-                                        <h2 class="card-title vacancy-card__header"><a href="{{ get_author_posts_url($user->ID) }}">{{  get_field('name', 'user_' . $user->ID) }}</a></h2>                                          
+                                        <h2 class="card-title vacancy-card__header"><a href="{{ get_author_posts_url($user->ID) }}">{!!  get_field('name', 'user_' . $user->ID) !!}</a></h2>                                          
                                         <h3 class="card-subtitle vacancy-card__subheader">{{get_field('place', 'user_' . $user->ID)}}</h3>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     else
                                         $count = 0;
                                 @endphp
-                                <div class="card-footer vacancy-card__footer">{{sprintf(__('No of Vacancies: %s', 'mooiwerk'), $count)}}</div>                                
+                                <div class="card-footer vacancy-card__footer">{{sprintf(__('Aantal vacatures: %s', 'mooiwerk'), $count)}}</div>                                
                             </div>
                         @endforeach                
                     @else 

@@ -57,7 +57,7 @@
                                             <img src="{{ $vacancy['image_link']? $vacancy['image_link'] : '//placehold.it/144x76' }}" class="vacancy-card__image">
                                             </div>
                                             <div class="col-md-8 col-xs-12 vacancy-card__header-group">
-                                                <h2 class="card-title vacancy-card__header">{{ $vacancy['title'] }}</h2>
+                                                <h2 class="card-title vacancy-card__header">{!! $vacancy['title'] !!}</h2>
                                                 <h3 class="card-subtitle vacancy-card__subheader">{{ $vacancy['subtitle'] }}</h3>
                                             </div>
                                         </div>
