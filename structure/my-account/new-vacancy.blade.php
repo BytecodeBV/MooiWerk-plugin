@@ -51,7 +51,7 @@
                         'post_status'	=> 'publish' // You could change the status to a custom review status here
                     )
                 );
-                $title = __("New Vacancy", 'mooiwerk');
+                $title = __("Nieuwe Vacature", 'mooiwerk');
                 break;
             case 2:
                 $options = array(
@@ -64,7 +64,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = __('Target', 'mooiwerk');
+                $title = __('Doelgroep', 'mooiwerk');
                 break;
             case 3:
                 $options = array(
@@ -77,7 +77,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = __("Requirements", 'mooiwerk');
+                $title = __("Benodigde vaardigheden", 'mooiwerk');
                 break;
             case 4:
                 $options = array(
@@ -90,7 +90,7 @@
                     'html_before_fields' => '',
                     'html_after_fields' => '',
                 );
-                $title = __("Compensation", 'mooiwerk');
+                $title = __("Beloning", 'mooiwerk');
                 break;
         }
 

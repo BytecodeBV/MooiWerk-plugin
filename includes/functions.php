@@ -178,3 +178,15 @@ function isExpired($time)
 {
     return (time() > strtotime($time));
 }
+
+//get user role
+function get_current_user_role()
+{
+    if (is_user_logged_in()) {
+        $user = wp_get_current_user();
+        $role = ( array ) $user->roles;
+        return $role[0];
+    } else {
+        return false;
+    }
+}

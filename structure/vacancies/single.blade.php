@@ -171,8 +171,8 @@
                                         </div>
                                         <div class="company-widget__contact">
                                             <div class="d-flex flex-column company-widget__contact-group">
-                                                @if(get_field('address', 'user_' . $author))
-                                                <small class="company-widget__address">{{ get_field('address', 'user_' . $author)}}</small>
+                                                @if($address = get_field('address', 'user_' . $author))
+                                                <small class="company-widget__address">{{ is_array($address)? $address[0] : $address }}</small>
                                                 @endif
                                                 @if(get_field('postcode', 'user_' . $author))
                                                 <small class="company-widget__phone">{{ get_field('postcode', 'user_' . $author) }}</small>

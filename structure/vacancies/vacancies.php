@@ -403,6 +403,122 @@ function register_custom_fields_vacancy()
                 'description' => '',
             )
         );
+        /* DELETE: Volunteer & Organisation comment status
+        acf_add_local_field_group(
+            array (
+                'key' => 'group_5bb8857d2f613',
+                'title' => 'Organisation Comment',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5bb8859ed5713',
+                        'label' => 'Action',
+                        'name' => 'action',
+                        'type' => 'select',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                            'Weiger' => 'Weiger',
+                            'Accepteer' => 'Accepteer',
+                            'Vraag' => 'Vraag',
+                        ),
+                        'default_value' => array (
+                        ),
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'return_format' => 'value',
+                        'placeholder' => '',
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'comment',
+                            'operator' => '==',
+                            'value' => 'vacancies',
+                        ),
+                        array (
+                            'param' => 'current_user',
+                            'operator' => '==',
+                            'value' => 'is_author',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => 1,
+                'description' => '',
+            )
+        );
+        
+        acf_add_local_field_group(
+            array (
+                'key' => 'group_5bb8847e3bffa',
+                'title' => 'Volunteer Comment',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5bb884e235353',
+                        'label' => 'Action',
+                        'name' => 'action',
+                        'type' => 'select',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                            'Reageer' => 'Reageer',
+                            'Vraag' => 'Vraag',
+                        ),
+                        'default_value' => array (
+                        ),
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'return_format' => 'value',
+                        'placeholder' => '',
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'comment',
+                            'operator' => '==',
+                            'value' => 'vacancies',
+                        ),
+                        array (
+                            'param' => 'current_user_role',
+                            'operator' => '==',
+                            'value' => 'volunteer',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => 1,
+                'description' => '',
+            )
+        );
+        */
     }
 }
 add_action('acf/init', 'register_custom_fields_vacancy');

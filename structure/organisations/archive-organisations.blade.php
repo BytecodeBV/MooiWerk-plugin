@@ -6,7 +6,7 @@
         <div class="container">
             <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                 @php
-                    $pages = ['Organisaties', 'Vacatures'];
+                    $pages = ['Vacatures', 'Organisaties'];
                     $user = wp_get_current_user();
                     $roles = $user->roles;
                 @endphp
