@@ -8,7 +8,7 @@ function register_custom_fields_frontpage() {
         acf_add_local_field_group(
             [
                 'key' => 'group_5b5a18ac28cdd',
-                'title' => __('Front Page', 'mooiwerk'),
+                'title' => __('Course Section', 'mooiwerk'),
                 'fields' => [
                     [
                         'key' => 'field_5b5a18eeaf710',
@@ -74,6 +74,50 @@ function register_custom_fields_frontpage() {
                         'toolbar' => 'full',
                         'media_upload' => 1,
                         'delay' => 0,
+                    ],
+                    [
+                        'key' => 'field_5bbca11869d97',
+                        'label' => __('Courses', 'mooiwerk'),
+                        'name' => 'courses',
+                        'type' => 'repeater',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => [
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'collapsed' => '',
+                        'min' => 3,
+                        'max' => '',
+                        'layout' => 'block',
+                        'button_label' => '',
+                        'sub_fields' => [
+                            [
+                                'key' => 'field_5bbca17a69d98',
+                                'label' => __('Course', 'mooiwerk'),
+                                'name' => 'course',
+                                'type' => 'post_object',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => [
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ],
+                                'post_type' => [
+                                    0 => 'class',
+                                ],
+                                'taxonomy' => [
+                                ],
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'return_format' => 'id',
+                                'ui' => 1,
+                            ],
+                        ],
                     ],
                 ],
                 'location' => [
@@ -212,7 +256,7 @@ function register_custom_fields_frontpage() {
                 ],
             ];
         }
-        
+
         $classes_page = get_page_by_title(__('Vrijwilligersacademie', 'mooiwerk'));
         if (!empty($classes_page)) {
             $block_fields['location'][] = [
@@ -228,7 +272,7 @@ function register_custom_fields_frontpage() {
         acf_add_local_field_group(
             [
                 'key' => 'group_5b9911463a200',
-                'title' => __('Links', 'mooiwerk'),
+                'title' => __('Links Section', 'mooiwerk'),
                 'fields' => [
                     [
                         'key' => 'field_5b99116f2e3f1',
@@ -313,14 +357,13 @@ function register_custom_fields_frontpage() {
                 'description' => '',
             ]
         );
-    }
-}
+
         acf_add_local_field_group(
-            array (
+            [
                 'key' => 'group_5ba91cc670839',
                 'title' => __('News Section', 'mooiwerk'),
-                'fields' => array (
-                    array (
+                'fields' => [
+                    [
                         'key' => 'field_5ba91cdca85a0',
                         'label' => __('Featured Posts', 'mooiwerk'),
                         'name' => 'featured',
@@ -328,18 +371,18 @@ function register_custom_fields_frontpage() {
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
-                        'wrapper' => array (
+                        'wrapper' => [
                             'width' => '',
                             'class' => '',
                             'id' => '',
-                        ),
+                        ],
                         'collapsed' => '',
                         'min' => 6,
                         'max' => 8,
                         'layout' => 'table',
                         'button_label' => '',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => [
+                            [
                                 'key' => 'field_5ba91d02a85a1',
                                 'label' => __('Blog Post', 'mooiwerk'),
                                 'name' => 'post_id',
@@ -347,22 +390,22 @@ function register_custom_fields_frontpage() {
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => [
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
-                                ),
-                                'post_type' => array (
+                                ],
+                                'post_type' => [
                                     0 => 'post',
-                                ),
-                                'taxonomy' => array (
-                                ),
+                                ],
+                                'taxonomy' => [
+                                ],
                                 'allow_null' => 1,
                                 'multiple' => 0,
                                 'return_format' => 'id',
                                 'ui' => 1,
-                            ),
-                            array (
+                            ],
+                            [
                                 'key' => 'field_5ba91d27a85a2',
                                 'label' => __('Summary', 'mooiwerk'),
                                 'name' => 'excerpt',
@@ -370,18 +413,18 @@ function register_custom_fields_frontpage() {
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => [
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
-                                ),
+                                ],
                                 'default_value' => '',
                                 'placeholder' => '',
                                 'maxlength' => 155,
                                 'rows' => '',
                                 'new_lines' => '',
-                            ),
-                            array (
+                            ],
+                            [
                                 'key' => 'field_5ba91d4ca85a3',
                                 'label' => __('Is Big', 'mooiwerk'),
                                 'name' => 'is_big',
@@ -389,29 +432,29 @@ function register_custom_fields_frontpage() {
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => [
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
-                                ),
+                                ],
                                 'message' => '',
                                 'default_value' => 0,
                                 'ui' => 0,
                                 'ui_on_text' => '',
                                 'ui_off_text' => '',
-                            ),
-                        ),
-                    ),
-                ),
-                'location' => array (
-                    array (
-                        array (
+                            ],
+                        ],
+                    ],
+                ],
+                'location' => [
+                    [
+                        [
                             'param' => 'page_type',
                             'operator' => '==',
                             'value' => 'front_page',
-                        ),
-                    ),
-                ),
+                        ],
+                    ],
+                ],
                 'menu_order' => 0,
                 'position' => 'normal',
                 'style' => 'default',
@@ -420,9 +463,8 @@ function register_custom_fields_frontpage() {
                 'hide_on_screen' => '',
                 'active' => 1,
                 'description' => '',
-            )
+            ]
         );
     }
 }
 add_action('acf/init', 'register_custom_fields_frontpage');
-

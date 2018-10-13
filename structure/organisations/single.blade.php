@@ -81,7 +81,7 @@
                         $posts = get_posts($args);
                     @endphp
                     @if ($posts)
-                    <h1>Vacatures</h1>    
+                    <h1>{{ __('Vacatures', 'mooiwerk')}}</h1>    
                         @foreach ($posts as $p)
                             @php
                                 $time = human_time_diff(get_post_time('U', true, $p), current_time('timestamp')) . __(' geleden', 'mooiwerk');

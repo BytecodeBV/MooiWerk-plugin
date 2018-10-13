@@ -108,7 +108,7 @@
                                     $labels = array(
                                         'region' => __('Locatie', 'mooiwerk'),
                                         'frequency' => __('Hoe vaak', 'mooiwerk'),
-                                        'period' => __('Uren per week', 'mooiwerk'),
+                                        'schedule' => __('Uren per week', 'mooiwerk'),
                                         'categories' => __('Categorie', 'mooiwerk'),
                                         'target' => __('Doelgroep', 'mooiwerk'),
                                         'date' => __('Vervaldatum', 'mooiwerk')
@@ -123,7 +123,9 @@
                                                     <div class="card">
                                                         <div class="card-block block-{{$loop->iteration}}">
                                                             <h3 class="card-title">{{$value}}</h3>
-                                                            @if( is_array(get_field($name)) )
+                                                            @if( $name == 'schedule' && is_array( $inzet = get_field($name)) )
+                                                                <p class="card-text">{{$inzet[0]['aantal']." ".$inzet[0]['duur']." ".implode(", ", $inzet[0]['uren'])}}</p>
+                                                            @elseif( is_array(get_field($name)) )
                                                                 <p class="card-text">{{implode(", ", get_field($name))}}</p>
                                                             @else
                                                                 <p class="card-text">{{get_field($name)}}</p> 
@@ -169,8 +171,8 @@
                                         </div>
                                         <div class="company-widget__contact">
                                             <div class="d-flex flex-column company-widget__contact-group">
-                                                @if(get_field('address', 'user_' . $author))
-                                                <small class="company-widget__address">{{ get_field('address', 'user_' . $author) }}</small>
+                                                @if($address = get_field('address', 'user_' . $author))
+                                                <small class="company-widget__address">{{ is_array($address)? $address[0] : $address }}</small>
                                                 @endif
                                                 @if(get_field('postcode', 'user_' . $author))
                                                 <small class="company-widget__phone">{{ get_field('postcode', 'user_' . $author) }}</small>

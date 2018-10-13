@@ -64,10 +64,10 @@
                         <div class="d-flex flex-wrap text-dark company__categories">
                             @if(is_array($categories))
                                 @foreach($categories as $category)
-                                <span class="btn bg-transparent border border-dark company__category">{{$category}}</span>
+                                <span class="btn bg-transparent border border-dark company__category mb-3">{{$category}}</span>
                                 @endforeach
                             @else
-                                <span class="btn bg-transparent border border-dark company__category">{{$categories}}</span>
+                                <span class="btn bg-transparent border border-dark company__category mb-3">{{$categories}}</span>
                             @endif
                         </div>
                     @endif

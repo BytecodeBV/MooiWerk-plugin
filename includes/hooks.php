@@ -14,7 +14,7 @@ function change_template_single_author($template) {
         } elseif (in_array('volunteer', $author_roles)) {
             $user = wp_get_current_user();
             if (current_user_can('administrator') || in_array('organisation', (array) $user->roles)) {
-                $template = plugin_dir_path(__FILE__) . 'structure/volunteers/single.blade.php';
+                $template = plugin_dir_path(dirname(__FILE__)). 'structure/volunteers/single.blade.php';
             } else {
                 $template = locate_template('views/404.blade.php');
             }
@@ -79,3 +79,61 @@ function restrict_post_deletion($post_ID) {
 
 add_action('wp_trash_post', 'restrict_post_deletion', 10, 1);
 //add_action('before_delete_post', 'restrict_post_deletion', 10, 1);
+
+//add rule to acf location rules to check against author
+add_filter(
+    'acf/location/rule_values/current_user',
+    function ($choices) {
+        $choices[ 'is_author' ] = "Is author";
+        return $choices;
+    }
+);
+
+//acf location rule is_author matching function
+add_filter(
+    'acf/location/rule_match/current_user',
+    function ($match, $rule, $options) {        
+        if ($rule['value'] == 'is_author') {            
+            global $post;
+            $author_id = $post->post_author;
+            $current_user = wp_get_current_user();
+            if ($rule['operator'] == "==") {
+                $match = ( $current_user->ID == $author_id);
+            } elseif ($rule['operator'] == "!=") {
+                $match = ( $current_user->ID != $author_id );
+            }
+        }
+        return $match;
+    },
+    10, 
+    3
+);
+
+/* DELETE: hook to update user vacancy apply/accept/reject status
+//try add_action('wp_insert_comment', function ($comment_id, $comment_object){}, 99, 2) if comment_post doesnt work
+add_action('comment_post', function ($comment_ID, $comment_approved) {
+    $comment = get_comment($comment_ID);
+    $comment_post = get_post($comment->comment_post_ID);
+    $author_id = $comment_post->post_author;
+    $action = get_field('action', 'comment_'.$comment_ID);
+    if ($author_id == $comment->user_id && in_array($action, ['Weiger', 'Accepteer'])) {
+        $user_comment = get_comment($comment->comment_parent);
+        if ($user_comment) {
+            $reactions = get_user_meta($user_comment->user_id, 'reacties', true);
+            if (empty($reactions)) {
+                $reactions = [];
+            }
+            $reactions[$user_comment->comment_post_ID] = $action;
+            update_user_meta($user_comment->user_id, 'reacties', $reactions);
+        }        
+    } elseif (get_current_user_role() == 'volunteer' && $action == 'Reageer') {
+        $comment = get_comment($comment_ID);
+        $reactions = get_user_meta($comment->user_id, 'reacties', true);
+        if (empty($reactions)) {
+            $reactions = [];
+        }
+        $reactions[$comment->comment_post_ID] = $action;
+        update_user_meta($comment->user_id, 'reacties', $reactions);
+    }
+}, 10, 2);
+*/

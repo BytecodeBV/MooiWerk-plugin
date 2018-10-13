@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="nav nav-tabs tab-pager justify-content-end mb-5">
                     @php
-                        $pages = ['Vrijwilligers', 'Organisaties', 'Vacatures'];
+                        $pages = ['Vacatures', 'Organisaties', 'Vrijwilligers'];
                     @endphp
                     @foreach($pages as $page)
                         @php
@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body vacancy-card__body">
-                                    <div class="vacancy-card__text">{!!get_field('bio', 'user_' . $user->ID)!!}</div>
+                                    <div class="vacancy-card__text">{!! wp_kses_post(wp_trim_words(get_field('bio', 'user_' . $user->ID), 25, '...')) !!}</div>
                                     <a href="{{ get_author_posts_url($user->ID) }}" class="card-link vacancy-card__link">lees meer ›</a>
                                 </div>
                                 <div class="card-footer vacancy-card__footer">{{is_array(get_field('qualification', 'user_' . $user->ID))? implode(', ',get_field('qualification', 'user_' . $user->ID)) : get_field('qualification', 'user_' . $user->ID)}}</div>                                
