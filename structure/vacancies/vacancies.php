@@ -157,7 +157,7 @@ function register_custom_fields_vacancy()
                                     'keer per dag' => 'keer per dag',
                                     'keer per week' => 'keer per week',
                                     'keer per weekend' => 'keer per weekend',
-                                    'keer per waand' => 'keer per maand',
+                                    'keer per maand' => 'keer per maand',
                                     'keer per kwartaal' => 'keer per kwartaal',
                                     'keer per jaar' => 'keer per jaar',
                                 ),
