@@ -45,6 +45,7 @@
                         'field_5b7ef9ba09d68' , //categories
                         'field_5b7ef9f609d69', //competency
                         'field_5b7efba009d6d', //date
+                        'field_5bc8a669b23c2', //status
                     ),
                     'new_post'	=> array(
                         'post_type'		=> 'vacancies',

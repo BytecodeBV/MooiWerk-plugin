@@ -383,6 +383,35 @@ function register_custom_fields_vacancy()
                         'return_format' => 'd/m/Y',
                         'first_day' => 1,
                     ),
+                    array (
+                        'key' => 'field_5bc8a669b23c2',
+                        'label' => __('Status', 'mooiwerk'),
+                        'name' => 'status',
+                        'type' => 'select',
+                        'instructions' => '',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                            'concept' => __('Concept', 'mooiwerk'),
+                            'gepubliceerd' => __('Gepubliceerd', 'mooiwerk'),
+                            'verlopen' => __('Verlopen', 'mooiwerk'),
+                            'vervuld' => __('Vervuld', 'mooiwerk'),
+                            'archief' => __('Archief', 'mooiwerk'),
+                        ),
+                        'default_value' => array (
+                        ),
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'return_format' => 'value',
+                        'placeholder' => '',
+                    ),
                 ),
                 'location' => array (
                     array (

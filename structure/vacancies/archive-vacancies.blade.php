@@ -84,7 +84,12 @@
                         'value'   => date('Y-m-d'),
                         'compare' => '>=',
                         'type' => 'DATE',
-                    )
+                    ),
+                    array(
+                        'key'     => 'status',
+                        'value'   => ['concept','archief'],
+                        'compare' => 'NOT IN',
+                    ),
                 ); // Array of arrays that individually store key/value pairs.
                 $filter_keys = array(
                     'field_5b7ef8e109d65' => 'region',
