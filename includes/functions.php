@@ -2,8 +2,7 @@
 /*
  * Check if field  group exists
  */
-function is_field_group_exists($value, $type = 'post_title')
-{
+function is_field_group_exists($value, $type = 'post_title') {
     $exists = false;
     if ($field_groups = get_posts(['post_type' => 'acf-field-group'])) {
         foreach ($field_groups as $field_group) {
@@ -18,8 +17,7 @@ function is_field_group_exists($value, $type = 'post_title')
 /*
  * Output pagination for posts and users.
  */
-function numeric_pagination($current_page, $num_pages)
-{
+function numeric_pagination($current_page, $num_pages) {
     echo '<nav class="d-flex justify-content-center vacancy-list__pagination custom-pagination">' .
     '<ul class="pagination pagination-sm custom-pagination__list">';
     $start_number = $current_page - 2;
@@ -77,8 +75,7 @@ function add_to_meta_query_if_get_exists($filter_key, $filter_value, &$query) {
 /**
  * Add key, value pair OR to the post meta filters if it is set.
  */
-function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query)
-{
+function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query) {
     $nested_meta = ['relation' => 'OR'];
     if (isset($filter_value)) {
         foreach ($filter_value as $value) {
@@ -96,8 +93,7 @@ function add_to_meta_query_if_get_exists_or($filter_key, $filter_value, &$query)
 /**
  * Function add_to_meta_query_if_get_exists rewrite in pure form.
  */
-function get_query_meta_from_value($filter_key, $filter_value, $or = false)
-{
+function get_query_meta_from_value($filter_key, $filter_value, $or = false) {
     if (is_string($filter_value)) {
         $values_to_search = explode(',', $filter_value);
         if (length($values_to_search) == 1) {
@@ -129,8 +125,7 @@ function get_query_meta_from_value($filter_key, $filter_value, $or = false)
  * Script to add filter variables to the url and refresh.
  * Originally taken from ACF documentation.
  */
-function filter_script($page)
-{
+function filter_script($page) {
     ?>
 
 <script type="text/javascript">
@@ -174,14 +169,12 @@ function filter_script($page)
 }
 
 //compare dates
-function isExpired($time)
-{
+function isExpired($time) {
     return (time() > strtotime($time));
 }
 
 //get user role
-function get_current_user_role()
-{
+function get_current_user_role() {
     if (is_user_logged_in()) {
         $user = wp_get_current_user();
         $role = ( array ) $user->roles;
@@ -189,4 +182,37 @@ function get_current_user_role()
     } else {
         return false;
     }
+}
+
+//get available tickes
+function get_available_event_tickets($event_id) {
+    $timestamp = get_post_meta($event_id, '_wcs_timestamp', true);
+    $woo_booking_capacity = get_post_meta($event_id, WCS_PREFIX . '_woo_capacity', true);
+    $woo_booking_label = get_post_meta($event_id, WCS_PREFIX . '_woo_label', true);
+    $woo_booking_product = get_post_meta($event_id, WCS_PREFIX . '_woo_product', true);
+    $woo_booking_history = get_post_meta($event_id, '_' . WCS_PREFIX . '_woo_history', true);
+    if (empty($woo_booking_label) || empty($woo_booking_capacity) || empty($woo_booking_product) || intval($woo_booking_capacity) <= 0) {
+        return false;
+    }
+
+    $product = wc_get_product($woo_booking_product);
+
+    if (!is_object($product)) {
+        return false;
+    }
+
+    if (!$product->is_purchasable()) {
+        return false;
+    }
+
+    $total = 0;
+
+    if (!empty($woo_booking_history)) {
+        $history = maybe_unserialize($woo_booking_history);
+        if (isset($history[$timestamp])) {
+            //assumes only a tickey can be purchased by aan attendee
+            $total = count($history[$timestamp]);
+        }
+    }
+    return $woo_booking_capacity - $total;
 }

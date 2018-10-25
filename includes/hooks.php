@@ -14,7 +14,7 @@ function change_template_single_author($template) {
         } elseif (in_array('volunteer', $author_roles)) {
             $user = wp_get_current_user();
             if (current_user_can('administrator') || in_array('organisation', (array) $user->roles)) {
-                $template = plugin_dir_path(dirname(__FILE__)). 'structure/volunteers/single.blade.php';
+                $template = plugin_dir_path(dirname(__FILE__)) . 'structure/volunteers/single.blade.php';
             } else {
                 $template = locate_template('views/404.blade.php');
             }
@@ -84,7 +84,7 @@ add_action('wp_trash_post', 'restrict_post_deletion', 10, 1);
 add_filter(
     'acf/location/rule_values/current_user',
     function ($choices) {
-        $choices[ 'is_author' ] = "Is author";
+        $choices['is_author'] = 'Is author';
         return $choices;
     }
 );
@@ -92,20 +92,20 @@ add_filter(
 //acf location rule is_author matching function
 add_filter(
     'acf/location/rule_match/current_user',
-    function ($match, $rule, $options) {        
-        if ($rule['value'] == 'is_author') {            
+    function ($match, $rule, $options) {
+        if ($rule['value'] == 'is_author') {
             global $post;
             $author_id = $post->post_author;
             $current_user = wp_get_current_user();
-            if ($rule['operator'] == "==") {
-                $match = ( $current_user->ID == $author_id);
-            } elseif ($rule['operator'] == "!=") {
-                $match = ( $current_user->ID != $author_id );
+            if ($rule['operator'] == '==') {
+                $match = ($current_user->ID == $author_id);
+            } elseif ($rule['operator'] == '!=') {
+                $match = ($current_user->ID != $author_id);
             }
         }
         return $match;
     },
-    10, 
+    10,
     3
 );
 
@@ -125,7 +125,7 @@ add_action('comment_post', function ($comment_ID, $comment_approved) {
             }
             $reactions[$user_comment->comment_post_ID] = $action;
             update_user_meta($user_comment->user_id, 'reacties', $reactions);
-        }        
+        }
     } elseif (get_current_user_role() == 'volunteer' && $action == 'Reageer') {
         $comment = get_comment($comment_ID);
         $reactions = get_user_meta($comment->user_id, 'reacties', true);
@@ -137,3 +137,32 @@ add_action('comment_post', function ($comment_ID, $comment_approved) {
     }
 }, 10, 2);
 */
+
+add_filter(
+    'wcs_event_meta', 
+    function ($event_data, $event_id, $event_timestamp) {
+        $available = get_available_event_tickets($event_id);
+        if (defined('WCS_PREFIX') && $available) {
+            $event_data['available'] = $available;
+        }
+        return $event_data;
+    }, 
+    10, 
+    3
+);
+
+add_action(
+    'acf/init', 
+    function () {
+        if (function_exists('acf_add_options_page')) {            
+            acf_add_options_page(
+                array(
+                'page_title' => __('Theme General Settings', 'mooiwerk'),
+                'menu_title' => __('Theme Settings', 'mooiwerk'),
+                'menu_slug' => 'theme-general-settings',
+                )
+            );
+            
+        }
+    }
+);
