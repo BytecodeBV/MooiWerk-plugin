@@ -133,27 +133,6 @@ function register_custom_fields_course() {
                         'max' => '',
                         'step' => '',
                     ],
-                    [
-                        'key' => 'field_5b86cdf987d36',
-                        'label' => __('Beschikbare plaatsen', 'mooiwerk'),
-                        'name' => '_wcs_available',
-                        'type' => 'number',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => [
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ],
-                        'default_value' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'min' => '',
-                        'max' => '',
-                        'step' => '',
-                    ],
                 ],
                 'location' => [
                     [

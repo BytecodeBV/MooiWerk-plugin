@@ -404,6 +404,7 @@ function register_custom_fields_vacancy()
                             'archief' => __('Archief', 'mooiwerk'),
                         ),
                         'default_value' => array (
+                            'gepubliceerd'
                         ),
                         'allow_null' => 0,
                         'multiple' => 0,

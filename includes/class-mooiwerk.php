@@ -178,7 +178,7 @@ class MooiWerk
          /**
          * The class responsible for the call to action functionality.
          */
-        //require_once plugin_dir_path(dirname(__FILE__)) . 'structure/cta/cta.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'structure/cta/cta.php';
 
         /**
          * The ACF plugin dependency, which is used to add fields to the above post and user types

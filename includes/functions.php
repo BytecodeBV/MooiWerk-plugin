@@ -186,11 +186,11 @@ function get_current_user_role() {
 
 //get available tickes
 function get_available_event_tickets($event_id) {
+    $timestamp = get_post_meta($event_id, '_wcs_timestamp', true);
     $woo_booking_capacity = get_post_meta($event_id, WCS_PREFIX . '_woo_capacity', true);
     $woo_booking_label = get_post_meta($event_id, WCS_PREFIX . '_woo_label', true);
     $woo_booking_product = get_post_meta($event_id, WCS_PREFIX . '_woo_product', true);
     $woo_booking_history = get_post_meta($event_id, '_' . WCS_PREFIX . '_woo_history', true);
-
     if (empty($woo_booking_label) || empty($woo_booking_capacity) || empty($woo_booking_product) || intval($woo_booking_capacity) <= 0) {
         return false;
     }
@@ -209,24 +209,10 @@ function get_available_event_tickets($event_id) {
 
     if (!empty($woo_booking_history)) {
         $history = maybe_unserialize($woo_booking_history);
-
         if (isset($history[$timestamp])) {
-            $orders = $history[$timestamp];
-
-            foreach ($orders as $ord) {
-                $order = wc_get_order($ord);
-
-                if (!empty($order) && !is_null($order) && $order !== false && !in_array($order->get_status(), ['cancelled', 'refunded', 'rejected', 'failed'])) {
-                    $items = $order->get_items();
-                    foreach ($items as $item) {
-                        if (intval($item->get_product_id()) === intval($woo_booking_product) && $item->meta_exists('_wcs_event') && intval($item->get_meta('_wcs_event', true)) === intval($id) && $item->meta_exists('_wcs_timestamp') && intval($item->get_meta('_wcs_timestamp', true)) === intval($timestamp)) {
-                            $total += $item['qty'];
-                        }
-                    }
-                }
-            }
+            //assumes only a tickey can be purchased by aan attendee
+            $total = count($history[$timestamp]);
         }
     }
-
     return $woo_booking_capacity - $total;
 }

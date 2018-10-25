@@ -86,9 +86,16 @@
                         'type' => 'DATE',
                     ),
                     array(
+                        'relation' => 'OR',
+                        array(
+                        'key' => 'status',
+                        'compare' => 'NOT EXISTS', //patch for existing posts without status set to be included
+                        ),
+                        array(
                         'key'     => 'status',
                         'value'   => ['concept','archief'],
                         'compare' => 'NOT IN',
+                        )
                     ),
                 ); // Array of arrays that individually store key/value pairs.
                 $filter_keys = array(

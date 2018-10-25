@@ -137,6 +137,18 @@
                                         </div>
                                     </div>
                                 @endif
+                                @if ($label = get_field('vacancy_button_label', 'option'))
+                                    @php
+                                        $action_type = get_field('vacancy_button_action_type', 'option');
+                                        if ( $action_type == "custom") {
+                                            $action = get_field('vacancy_url', 'option');
+                                        } else {
+                                            $action = get_field('vacancy_page', 'option');
+                                        }
+                                        $target = get_field('vacancy_action_target', 'option');
+                                    @endphp
+                                    <div class="my-4"><a href="{{$action}}" target="{{$target}}" class="btn btn-primary btn-lg">{{$label}}</a></div> 
+                                @endif
                                 @if (is_user_logged_in())
                                     @php comments_template('/partials/comments.blade.php') @endphp
                                 @else

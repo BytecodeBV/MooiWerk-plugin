@@ -119,6 +119,18 @@
                     @php
                         wp_reset_postdata();
                     @endphp
+                    @if ($label = get_field('organisation_button_label', 'option'))
+                        @php
+                            $action_type = get_field('organisation_button_action_type', 'option');
+                            if ( $action_type == "custom") {
+                                $action = get_field('organisation_url', 'option');
+                            } else {
+                                $action = get_field('organisation_page', 'option');
+                            }
+                            $target = get_field('organisation_action_target', 'option');
+                        @endphp
+                        <div class="my-4"><a href="{{$action}}" target="{{$target}}" class="btn btn-primary btn-lg">{{$label}}</a></div> 
+                    @endif
                 </div>
                 <aside class="col-lg-4 company__sidebar blog__sidebar sidebar">
                     @if ($address)

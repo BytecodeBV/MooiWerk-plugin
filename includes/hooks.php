@@ -138,10 +138,31 @@ add_action('comment_post', function ($comment_ID, $comment_approved) {
 }, 10, 2);
 */
 
-add_filter('wcs_event_meta', function ($event_data, $event_id, $event_timestamp) {
-    $available = get_available_event_tickets($event_id);
-    if (defined('WCS_PREFIX') && $available) {
-        $event_data['available'] = $available;
+add_filter(
+    'wcs_event_meta', 
+    function ($event_data, $event_id, $event_timestamp) {
+        $available = get_available_event_tickets($event_id);
+        if (defined('WCS_PREFIX') && $available) {
+            $event_data['available'] = $available;
+        }
+        return $event_data;
+    }, 
+    10, 
+    3
+);
+
+add_action(
+    'acf/init', 
+    function () {
+        if (function_exists('acf_add_options_page')) {            
+            acf_add_options_page(
+                array(
+                'page_title' => __('Theme General Settings', 'mooiwerk'),
+                'menu_title' => __('Theme Settings', 'mooiwerk'),
+                'menu_slug' => 'theme-general-settings',
+                )
+            );
+            
+        }
     }
-    return $event_data;
-}, 10, 3);
+);
