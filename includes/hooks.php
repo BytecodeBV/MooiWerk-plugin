@@ -14,7 +14,7 @@ function change_template_single_author($template) {
         } elseif (in_array('volunteer', $author_roles)) {
             $user = wp_get_current_user();
             if (current_user_can('administrator') || in_array('organisation', (array) $user->roles)) {
-                $template = plugin_dir_path(dirname(__FILE__)). 'structure/volunteers/single.blade.php';
+                $template = plugin_dir_path(dirname(__FILE__)) . 'structure/volunteers/single.blade.php';
             } else {
                 $template = locate_template('views/404.blade.php');
             }
@@ -84,7 +84,7 @@ add_action('wp_trash_post', 'restrict_post_deletion', 10, 1);
 add_filter(
     'acf/location/rule_values/current_user',
     function ($choices) {
-        $choices[ 'is_author' ] = "Is author";
+        $choices['is_author'] = 'Is author';
         return $choices;
     }
 );
@@ -92,20 +92,20 @@ add_filter(
 //acf location rule is_author matching function
 add_filter(
     'acf/location/rule_match/current_user',
-    function ($match, $rule, $options) {        
-        if ($rule['value'] == 'is_author') {            
+    function ($match, $rule, $options) {
+        if ($rule['value'] == 'is_author') {
             global $post;
             $author_id = $post->post_author;
             $current_user = wp_get_current_user();
-            if ($rule['operator'] == "==") {
-                $match = ( $current_user->ID == $author_id);
-            } elseif ($rule['operator'] == "!=") {
-                $match = ( $current_user->ID != $author_id );
+            if ($rule['operator'] == '==') {
+                $match = ($current_user->ID == $author_id);
+            } elseif ($rule['operator'] == '!=') {
+                $match = ($current_user->ID != $author_id);
             }
         }
         return $match;
     },
-    10, 
+    10,
     3
 );
 
@@ -125,7 +125,7 @@ add_action('comment_post', function ($comment_ID, $comment_approved) {
             }
             $reactions[$user_comment->comment_post_ID] = $action;
             update_user_meta($user_comment->user_id, 'reacties', $reactions);
-        }        
+        }
     } elseif (get_current_user_role() == 'volunteer' && $action == 'Reageer') {
         $comment = get_comment($comment_ID);
         $reactions = get_user_meta($comment->user_id, 'reacties', true);
@@ -137,3 +137,62 @@ add_action('comment_post', function ($comment_ID, $comment_approved) {
     }
 }, 10, 2);
 */
+
+add_filter(
+    'wcs_event_meta', 
+    function ($event_data, $event_id, $event_timestamp) {
+        $available = get_available_event_tickets($event_id);
+        if (defined('WCS_PREFIX') && $available) {
+            $event_data['available'] = $available;
+        }
+        return $event_data;
+    }, 
+    10, 
+    3
+);
+
+// Create Shortcode cta
+// Use the shortcode: [cta id="" title=""]
+add_shortcode(
+    'cta', 
+    function ($atts) {
+        // Attributes
+        $atts = shortcode_atts(
+            array(
+                'id' => '',
+                'title' => '',
+            ),
+            $atts,
+            'cta'
+        );
+        $output = '';
+        // Attributes in var
+        if (isset($atts['id']) && is_numeric($atts['id'])) {
+            $id = $atts['id'];
+        } elseif (isset($atts['title']) && is_string($atts['title'])) {
+            $button = get_page_by_title($atts['title'], OBJECT, 'cta');
+            if ($cta) {
+                $id = $button->ID;
+            }
+            
+        }
+
+        if ($id) {
+            $label = get_field('cta_label', $id);
+            $action_type = get_field('cta_action_type', $id);
+            if ($action_type == "custom") {
+                $action = get_field('cta_url', $id);
+            } else {
+                $action = get_field('cta_page', $id);
+            }
+            $target = get_field('cta_action_target', $id);
+     
+            $output = "<div class='my-4'>".
+            "<a href='{$action}' target='{$target}' class='btn btn-primary btn-lg'>".
+            "{$label}</a></div>";
+        }
+
+        return $output;
+
+    }
+);
