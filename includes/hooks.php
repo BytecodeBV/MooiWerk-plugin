@@ -171,7 +171,7 @@ add_shortcode(
             $id = $atts['id'];
         } elseif (isset($atts['title']) && is_string($atts['title'])) {
             $button = get_page_by_title($atts['title'], OBJECT, 'cta');
-            if ($cta) {
+            if ($button) {
                 $id = $button->ID;
             }
             
@@ -188,8 +188,10 @@ add_shortcode(
             $target = get_field('cta_action_target', $id);
      
             $output = "<div class='my-4'>".
-            "<a href='{$action}' target='{$target}' class='btn btn-primary btn-lg'>".
-            "{$label}</a></div>";
+            "<a href='{$action}' target='{$target}' class='cta-btn'>".
+            "<span class='btn-content'>{$label}</span>".
+            "<span class='icon'><i class='fa fa-arrow-right'></i>".
+            "</span></a></div>";
         }
 
         return $output;
