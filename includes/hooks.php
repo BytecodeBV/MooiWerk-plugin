@@ -151,18 +151,48 @@ add_filter(
     3
 );
 
-add_action(
-    'acf/init', 
-    function () {
-        if (function_exists('acf_add_options_page')) {            
-            acf_add_options_page(
-                array(
-                'page_title' => __('Theme General Settings', 'mooiwerk'),
-                'menu_title' => __('Theme Settings', 'mooiwerk'),
-                'menu_slug' => 'theme-general-settings',
-                )
-            );
+// Create Shortcode cta
+// Use the shortcode: [cta id="" title=""]
+add_shortcode(
+    'cta', 
+    function ($atts) {
+        // Attributes
+        $atts = shortcode_atts(
+            array(
+                'id' => '',
+                'title' => '',
+            ),
+            $atts,
+            'cta'
+        );
+        $output = '';
+        // Attributes in var
+        if (isset($atts['id']) && is_numeric($atts['id'])) {
+            $id = $atts['id'];
+        } elseif (isset($atts['title']) && is_string($atts['title'])) {
+            $button = get_page_by_title($atts['title'], OBJECT, 'cta');
+            if ($cta) {
+                $id = $button->ID;
+            }
             
         }
+
+        if ($id) {
+            $label = get_field('cta_label', $id);
+            $action_type = get_field('cta_action_type', $id);
+            if ($action_type == "custom") {
+                $action = get_field('cta_url', $id);
+            } else {
+                $action = get_field('cta_page', $id);
+            }
+            $target = get_field('cta_action_target', $id);
+     
+            $output = "<div class='my-4'>".
+            "<a href='{$action}' target='{$target}' class='btn btn-primary btn-lg'>".
+            "{$label}</a></div>";
+        }
+
+        return $output;
+
     }
 );
