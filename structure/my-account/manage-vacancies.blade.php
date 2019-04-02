@@ -25,6 +25,7 @@
                         <div id="magage-vacancies">
                             @php
                                 $args = array(
+	                                'posts_per_page'   => 100,
                                     'post_type' => 'vacancies',
                                     'author'    => $user->ID,
                                 );
