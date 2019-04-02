@@ -75,8 +75,9 @@
 
                     @php
                         $args = array(
-                        'author' => $ID,
-                        'post_type' => 'vacancies',
+                            'posts_per_page'   => 100,
+                            'author' => $ID,
+                            'post_type' => 'vacancies',
                         );
                         $posts = get_posts($args);
                     @endphp
